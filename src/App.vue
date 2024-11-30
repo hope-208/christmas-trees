@@ -1,7 +1,8 @@
 <template>
-  <div class="back-overlay"></div>
-  <HeaderItem />
-  <main></main>
+  <el-container direction="vertical">
+    <HeaderItem />
+    <el-main></el-main>
+  </el-container>
 </template>
 
 <script setup>

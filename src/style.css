@@ -12,11 +12,60 @@ body {
 }
 body .page {
   width: 100%;
+  height: 100vh;
   margin: 0 auto;
-}
-body .back-overlay {
-  background: linear-gradient(90deg, red 1%, transparent 1%) 1px 0, #54ACFF;
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1%, transparent 1%) 1px 0, #54ACFF;
   background-size: calc((100vw - 1px) / 14) 1px;
-  opacity: 0.1;
-  z-index: -5;
+}
+body .header {
+  background: linear-gradient(to top #0084FF 1%, #54ACFF 99%);
+  box-sizing: border-box;
+}
+body .header__title-container {
+  max-width: 783px;
+  width: 100%;
+  margin: 74px 0 0 101px;
+}
+body .header__title {
+  margin-block: 0;
+  margin-inline: 0;
+  font-size: 132px;
+  line-height: 85%;
+  color: #FFF;
+}
+body .header__title_accent {
+  color: #000;
+}
+body .header__subtitle {
+  max-width: 555px;
+  width: 100%;
+  margin-block: 0;
+  margin-inline: 0;
+  margin-top: 65px;
+  font-size: 28px;
+  line-height: 120%;
+  color: #FFF;
+}
+body .header__image-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 745px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 1;
+}
+body .header__image-back-stars {
+  position: absolute;
+  right: 0;
+}
+body .header__image-back {
+  position: absolute;
+  right: 0;
+}
+body .header__image {
+  position: absolute;
 }/*# sourceMappingURL=style.css.map */
