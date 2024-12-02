@@ -1,11 +1,12 @@
 @use 'base'
+@use 'fonts/stylesheet'
   
 body 
   margin: 0
   padding: 0
   // color: base.$white
   background-color: base.$blue
-  // font-family: base.$font-stack
+  font-family: Suisse,Helvetica,Arial,sans-serif
   font-weight: normal
   font-style: normal
   letter-spacing: 0
@@ -43,20 +44,21 @@ body
       margin: 74px 0 0 101px
 
     &__title
-      // font-family: Afisha Display
+      font-family: Afisha Display
       position: relative
       margin-block: 0
       margin-inline: 0
       font-size: 132px
       line-height: 85%
       color: base.$white
-      
+      font-style: normal
+      font-weight: 400
 
       &_accent
         color: base.$black
     
     &__subtitle
-      // font-family: Suisse Int'l
+      // font-family: Suisse
       max-width: 555px
       width: 100%     
       margin-block: 0
@@ -65,6 +67,8 @@ body
       font-size: 28px
       line-height: 120%
       color: base.$white
+      font-style: normal
+      font-weight: 400
     
     &__image-container
       position: absolute
@@ -142,7 +146,7 @@ body
     border-radius: 20px
   
   &__price.el-tag
-    // font-family: Suisse Int'l
+    // font-family: Suisse
     position: absolute
     right: 12px
     bottom: 10px
@@ -153,6 +157,8 @@ body
     color: base.$black
     font-size: 16px
     line-height: 22px
+    font-style: normal
+    font-weight: 400
     box-sizing: border-box
 
   &__button.el-button,
@@ -199,12 +205,13 @@ body
   &__title
     max-width: 360px
     width: 100%
-    // font-family: Suisse Int'l
+    // font-family: Suisse
     margin-block: 0
     margin-inline: 0
     color: base.$black
     font-size: 24px
-    font-width: normal
+    font-style: normal
+    font-weight: 400
     line-height: 28px
     text-align: left
     text-overflow: ellipsis
@@ -212,19 +219,23 @@ body
     overflow: hidden
   
   &__tag
-    // font-family: Suisse Int'l
+    // font-family: Suisse
     color: base.$white
     font-size: 18px
     line-height: 21px
+    font-style: normal
+    font-weight: 400
     opacity: 0.5
 
   &__date.el-text,
   &__place.el-text
     margin-right: auto
-    // font-family: Suisse Int'l
+    // font-family: Suisse
     color: base.$white
     font-size: 18px
     line-height: 21px
+    font-style: normal
+    font-weight: 400
 
 
 .swiper-button-prev,
@@ -237,9 +248,10 @@ body
 .lead.el-text
   max-width: 1234px
   width: 100%
-  // font-family: agisha
+  font-family: Afisha Display
   font-size: 60px
-  font-weight: normal
+  font-style: normal
+  font-weight: 400
   line-height: 105%
   text-align: center
 
@@ -273,9 +285,10 @@ body
     width: 100%
     color: base.$black
     margin-top: 324px
-    // font-family: agisha
+    font-family: Afisha Display
     font-size: 60px
-    font-weight: normal
+    font-style: normal
+    font-weight: 400
     line-height: 105%
     text-align: left
     color: base.$black

@@ -4,8 +4,7 @@
       <img class="gift__image" src="../assets/img/gift.svg" />
       <el-text class="gift__info title"
         >Еженедельный розыгрыш
-
-        <span class="gift__info-span"> боксов с подарками </span> для детей и
+        <span class="gift__info-span"> боксов с&nbsp;подарками </span> для детей и
         родителей
       </el-text>
     </div>

@@ -1,1 +1,21 @@
-/*# sourceMappingURL=stylesheet.css.map */
+@font-face {
+  font-display: swap;
+  font-family: Suisse;
+  font-style: normal;
+  font-weight: 400;
+  src: url(./SuisseIntl-Regular.woff2) format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: Suisse;
+  font-style: normal;
+  font-weight: 700;
+  src: url(./SuisseIntl-Medium.woff2) format("woff2");
+}
+@font-face {
+  font-display: block;
+  font-family: Afisha Display;
+  font-style: normal;
+  font-weight: 400;
+  src: url(./AfishaDisplay-Medium.woff2) format("woff2");
+}/*# sourceMappingURL=stylesheet.css.map */
