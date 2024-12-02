@@ -14,11 +14,11 @@
       >
     </div>
     <div class="header__image-container">
-      <img
+      <!-- <img
         src="../assets/img/header-stars.svg"
         alt="Фон блока: звёзды."
         class="header__image-back-stars"
-      />
+      /> -->
       <img
         src="../assets/img/header-star.svg"
         alt="Фон иллюстрации."
