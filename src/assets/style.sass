@@ -300,4 +300,63 @@ body
   &__info-span
     color: base.$blue
   
+.cards
+  max-width: 1188px
+  width: 100%
+  display: flex
+  flex-wrap: wrap
+  column-gap: 39px
+  row-gap: 80px
+  margin: 0 auto 119px
+  box-sizing: border-box
+
+.card
+  max-width: 370px
+  width: 100%
+  display: flex
+  flex-direction: column
+  box-sizing: border-box
+
+  &__caption
+    position: relative
+    max-width: 370px
+    width: 100%
+    margin-bottom: 36px
+  
+  &__label
+    position: absolute
+    top: 0
+    max-width: 103px
+    width: 100%
+    max-height: 103px
+    height: 100%
+
+  &__img
+    max-width: 315px
+    width: 100%
+    max-height: 315px
+    height: 100%
+    display: flex
+    margin-left: auto
+
+  &__title.el-text,
+  &__description.el-text
+    max-width: 321px
+    width: 100%
+    font-style: normal
+    font-weight: 400
+
+  &__title.el-text
+    color: base.$black
+    margin-bottom: 30px
+    font-family: Afisha Display
+    font-size: 28px
+    line-height: 110%
+
+  
+  &__description.el-text
+    color: base.$white
+    font-family: Suisse
+    font-size: 20px
+    line-height: 117%
 

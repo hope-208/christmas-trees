@@ -15,14 +15,17 @@
 
         <LeadText text="А какие?" color-text="black" />
 
-        <GiftBox />
+        <GiftBox style="margin-bottom: 175px" />
+        <GiftList />
         <LeadText
+          :class="'lead-form'"
           text="Как выиграть новогодний детский бокс?"
           color-text="black"
         />
         <LeadText text="И это ещё не все подарки!" color-text="black" />
-      </el-main> </el-container
-  ></el-scrollbar>
+      </el-main>
+    </el-container>
+  </el-scrollbar>
 </template>
 
 <script setup>
@@ -31,6 +34,7 @@ import CarouselItem from "@/components/CarouselItem.vue";
 // import SwiperProgramms from "@/components/SwiperProgramms.vue";
 import LeadText from "@/components/LeadText.vue";
 import GiftBox from "@/components/GiftBox.vue";
+import GiftList from "@/components/GiftList.vue";
 </script>
 
 <script>
@@ -81,5 +85,10 @@ export default {
 /* added small blur every 6 snowflakes*/
 .snowflake:nth-child(6n) {
   filter: blur(1px);
+}
+
+.lead-form.lead.el-text {
+  max-width: 890px;
+  margin-bottom: 61px;
 }
 </style>
