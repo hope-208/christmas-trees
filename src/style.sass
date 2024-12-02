@@ -23,9 +23,19 @@ body
     // opacity: 0.1
   
   .header
-    background: base.$linear-dark
+    position: relative
+    height: 864px
     // background: url(./assets/img/header-stars.svg) no-repeat center / cover
     box-sizing: border-box
+
+    &__overlay
+      width: 100%
+      height: 252px
+      position: absolute
+      top: 0
+      background: base.$linear-dark
+      opacity: 0.5
+      z-index: 0
 
     &__title-container
       max-width: 783px
@@ -34,6 +44,7 @@ body
 
     &__title
       // font-family: Afisha Display
+      position: relative
       margin-block: 0
       margin-inline: 0
       font-size: 132px
@@ -82,4 +93,194 @@ body
 
     &__image
       position: absolute
+
+.main.el-main
+  display: flex
+  flex-direction: column
+  padding: 0
+
+// .program-slider
+//   width: 100%
+//   display: flex
+
+.slider
+  max-width: 1318px
+  width: 100%
+  margin: 0 auto
+  display: flex
+  align-items: center
+  gap: 48px
+  overflow-x: hidden
+
+  &__items
+    // width: max-content
+    display: flex
+    gap: 30px
+    transition: all 0.3s ease
+    
+
+  &__item
+    max-width: 360px
+    width: 100%    
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    transition: all 0.3s ease
+  
+  &__content.el-link > .el-link__inner
+    display: flex
+    flex-direction: column
+
+  &__capture
+    position: relative
+
+  &__img
+    max-width: 360px
+    width: 100%
+    max-height: 240px
+    height: 100%
+    border-radius: 20px
+  
+  &__price.el-tag
+    // font-family: Suisse Int'l
+    position: absolute
+    right: 12px
+    bottom: 10px
+    padding: 12px 8px
+    border: 0
+    border-radius: 28px
+    background-color: base.$white
+    color: base.$black
+    font-size: 16px
+    line-height: 22px
+    box-sizing: border-box
+
+  &__button.el-button,
+  &__button
+      // position: absolute
+      // top: 0
+      max-width: 41px
+      width: 100%
+      max-height: 236px
+      height: 100%
+      padding: 0
+      margin: 0
+      border-radius: 0
+      background-color: transparent
+      border: 0
+      box-sizing: border-box
+      z-index: 10
+
+      &_prev
+        order:1
+
+      &_next
+        order:3
+
+      &_img
+        width: 100%
+
+      &::after
+        content: none
+
+      &:hover
+        background-color: transparent !important
+        border-color: transparent !important
+        color: transparent !important
+        outline: none
+
+
+
+      &_icon
+        object-fit: cover
+        box-sizing: border-box
+        cursor: pointer
+    
+  &__title
+    max-width: 360px
+    width: 100%
+    // font-family: Suisse Int'l
+    margin-block: 0
+    margin-inline: 0
+    color: base.$black
+    font-size: 24px
+    font-width: normal
+    line-height: 28px
+    text-align: left
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+  
+  &__tag
+    // font-family: Suisse Int'l
+    color: base.$white
+    font-size: 18px
+    line-height: 21px
+    opacity: 0.5
+
+  &__date.el-text,
+  &__place.el-text
+    margin-right: auto
+    // font-family: Suisse Int'l
+    color: base.$white
+    font-size: 18px
+    line-height: 21px
+
+
+.swiper-button-prev,
+.carousel__prev
+  background: transparent url('../src/assets/img/arrow-slider-left.svg') no-repeat center / contain
+
+.swiper-button-next
+  background: transparent url('../src/assets/img/arrow-slider-right.svg') no-repeat center / contain
+
+.lead.el-text
+  max-width: 1234px
+  width: 100%
+  // font-family: agisha
+  font-size: 60px
+  font-weight: normal
+  line-height: 105%
+  text-align: center
+
+.gift 
+  position: relative
+  max-width: 1234px
+  width: 100%
+  max-height: 606px
+  height: 100%
+  display: flex
+  flex-direction: column
+  gap: 58px
+  margin: 0 auto
+  padding-top: 78px 
+
+  &__card
+    max-height: 606px
+    height: 100%
+    display: flex
+    border-radius: 50px
+    background-color: base.$white
+    padding: 0 0 34px 60px
+
+  &__image
+    position: absolute
+    top: 20px
+    right: -35px
+
+  &__info.el-text
+    max-width: 712px
+    width: 100%
+    color: base.$black
+    margin-top: 324px
+    // font-family: agisha
+    font-size: 60px
+    font-weight: normal
+    line-height: 105%
+    text-align: left
+    color: base.$black
+
+  &__info-span
+    color: base.$blue
+  
 
