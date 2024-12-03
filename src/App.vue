@@ -22,7 +22,12 @@
           text="Как выиграть новогодний детский бокс?"
           color-text="black"
         />
-        <LeadText text="И это ещё не все подарки!" color-text="black" />
+        <StepsItem />
+        <LeadText
+          :class="'lead-ahter-gift'"
+          :text="'И это ещё не все подарки!'"
+          color-text="black"
+        />
       </el-main>
     </el-container>
   </el-scrollbar>
@@ -35,6 +40,7 @@ import CarouselItem from "@/components/CarouselItem.vue";
 import LeadText from "@/components/LeadText.vue";
 import GiftBox from "@/components/GiftBox.vue";
 import GiftList from "@/components/GiftList.vue";
+import StepsItem from "@/components/StepsItem.vue";
 </script>
 
 <script>
@@ -90,5 +96,9 @@ export default {
 .lead-form.lead.el-text {
   max-width: 890px;
   margin-bottom: 61px;
+}
+.lead-ahter-gift.lead.el-text {
+  max-width: 570px;
+  margin-bottom: 58px;
 }
 </style>
