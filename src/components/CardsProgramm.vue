@@ -1,15 +1,8 @@
 <template>
-  <carousel
-    ref="refCarousel"
-    class="slider"
-    :items-to-show="3"
-    :items-to-scroll="3"
-    :gap="30"
-    wrap-around
-  >
-    <slide class="slider__item" v-for="event in events" :key="event">
+  <div class="programm-container">
+    <div class="programm-card" v-for="event in events" :key="event">
       <el-link
-        class="slider__content"
+        class="programm-card__contant"
         :href="event.creation.url"
         target="_blank"
       >
@@ -22,48 +15,23 @@
           <el-tag class="slider__price">от {{ event.minPrice }} ₽</el-tag>
         </div>
         <h5 class="slider__title">{{ event.creation.name }}</h5>
-        <el-text class="slider__tag">{{ event.tags.join(", ") }}</el-text>
+        <el-row>
+          <el-text class="slider__tag">{{ event.tags.join(", ") }}</el-text>
+        </el-row>
         <el-text class="slider__date">{{ transformDate(event.dates) }}</el-text>
         <el-text class="slider__place">На 5 площадках </el-text>
       </el-link>
-    </slide>
+    </div>
+  </div>
 
-    <template #addons>
-      <el-button
-        class="slider__button slider__button_prev"
-        @click="$refs.refCarousel.prev()"
-      >
-        <img
-          class="slider__button_img"
-          src="@/assets/img/arrow-slider-left.svg"
-          alt=""
-        />
-      </el-button>
-      <el-button
-        class="slider__button slider__button_next"
-        @click="$refs.refCarousel.next()"
-      >
-        <img
-          class="slider__button_img"
-          src="@/assets/img/arrow-slider-right.svg"
-          alt=""
-        />
-      </el-button>
-    </template>
-  </carousel>
+  <el-link class="programm-container__button-link" href="#" target="_blank"
+    >Смотреть все</el-link
+  >
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide } from "vue3-carousel";
-// https://vue3-carousel.ismail9k.com/
-
 export default {
-  name: "CarouselItem",
-  components: {
-    Carousel,
-    Slide,
-  },
+  name: "CardsProgramm",
   data() {
     return {
       events: [
@@ -134,14 +102,6 @@ export default {
     };
   },
   methods: {
-    async getPrograms() {
-      await fetch("https://www.afisha.ru/exports/new_year_trees_landing.xml", {
-        mode: "no-cors",
-        method: "get",
-      }).then((response) => {
-        console.log("%c%s", "color: #8c0038", response);
-      });
-    },
     transformDate(dates) {
       const uniqueDates = dates
         .map((date) => {
@@ -171,9 +131,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.carousel__viewport {
-  order: 2;
-}
-</style>

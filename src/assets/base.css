@@ -1,1 +1,5 @@
-/*# sourceMappingURL=base.css.map */
+.el-link.is-underline::after,
+.el-link.is-underline:hover:after,
+.el-link.is-underline:hover:after {
+  border: none !important;
+}/*# sourceMappingURL=base.css.map */

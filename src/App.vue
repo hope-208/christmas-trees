@@ -32,16 +32,29 @@
         />
         <LeadGift />
         <LeadText
-          text=" Всего 350 бесплатных билетов! Сразу после покупки билетов на ёлки на сайте или в мобильном приложении Афиши, на почту вам отправится билет на Ёлку 6 января."
+          text="Всего 350 бесплатных билетов! Сразу после покупки билетов на ёлки на сайте или в мобильном приложении Афиши, на почту вам отправится билет на Ёлку 6&nbsp;января."
           color-text="white"
           style="margin-bottom: 160px"
         />
 
         <LeadText
-          text="Каким будет этот праздничный день?*"
+          text="Каким&nbsp;будет&nbsp;этот праздничный&nbsp;день?*"
           color-text="black"
         />
         <SliderContent />
+
+        <LeadText
+          text="Покупайте Ёлки всех размеров на&nbsp;Афише и получайте подарки: новогодний бокс от Афиши и бесплатный билет на Ёлку от&nbsp;Афиши и Москино"
+          color-text="white"
+          style="margin-bottom: 103px"
+        />
+
+        <LeadText
+          text="Ёлки всех размеров"
+          color-text="black"
+          style="text-align: left"
+        />
+        <CardsProgramm />
       </el-main>
     </el-container>
   </el-scrollbar>
@@ -57,6 +70,7 @@ import GiftList from "@/components/GiftList.vue";
 import StepsItem from "@/components/StepsItem.vue";
 import LeadGift from "@/components/LeadGift.vue";
 import SliderContent from "@/components/SliderContent.vue";
+import CardsProgramm from "@/components/CardsProgramm.vue";
 </script>
 
 <script>
