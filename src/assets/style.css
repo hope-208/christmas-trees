@@ -555,7 +555,7 @@ body .header__image {
   background-color: #EFEFEF;
   box-sizing: border-box;
 }
-.step__form-input.el-input:focus-visible {
+.step__form-input.el-input:hover, .step__form-input.el-input:focus, .step__form-input.el-input:focus-visible {
   border: none;
   outline: 0;
   outline-offset: 0;
