@@ -17,18 +17,31 @@
 
         <GiftBox style="margin-bottom: 175px" />
         <GiftList />
+
         <LeadText
           :class="'lead-form'"
           text="Как выиграть новогодний детский бокс?"
           color-text="black"
         />
         <StepsItem />
+
         <LeadText
           :class="'lead-ahter-gift'"
           :text="'И это ещё не все подарки!'"
           color-text="black"
         />
         <LeadGift />
+        <LeadText
+          text=" Всего 350 бесплатных билетов! Сразу после покупки билетов на ёлки на сайте или в мобильном приложении Афиши, на почту вам отправится билет на Ёлку 6 января."
+          color-text="white"
+          style="margin-bottom: 160px"
+        />
+
+        <LeadText
+          text="Каким будет этот праздничный день?*"
+          color-text="black"
+        />
+        <SliderContent />
       </el-main>
     </el-container>
   </el-scrollbar>
@@ -43,6 +56,7 @@ import GiftBox from "@/components/GiftBox.vue";
 import GiftList from "@/components/GiftList.vue";
 import StepsItem from "@/components/StepsItem.vue";
 import LeadGift from "@/components/LeadGift.vue";
+import SliderContent from "@/components/SliderContent.vue";
 </script>
 
 <script>

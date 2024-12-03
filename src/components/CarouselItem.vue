@@ -61,6 +61,8 @@
 <script>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
+// https://vue3-carousel.ismail9k.com/
+
 export default {
   name: "CarouselItem",
   components: {

@@ -8,7 +8,13 @@
           >Покупайте билеты на сайте или в мобильном приложении Афиши</el-text
         >
       </div>
-      <el-link href="#" class="step__button-link">Купить&nbsp;билет</el-link>
+      <el-link
+        href="https://www.afisha.ru/"
+        class="step__button-link"
+        target="_blank"
+      >
+        Купить&nbsp;билет</el-link
+      >
     </div>
 
     <div class="step-group">
