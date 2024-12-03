@@ -57,6 +57,8 @@
         <CardsProgramm />
       </el-main>
     </el-container>
+
+    <FooterItem />
   </el-scrollbar>
 </template>
 
@@ -71,6 +73,7 @@ import StepsItem from "@/components/StepsItem.vue";
 import LeadGift from "@/components/LeadGift.vue";
 import SliderContent from "@/components/SliderContent.vue";
 import CardsProgramm from "@/components/CardsProgramm.vue";
+import FooterItem from "@/components/FooterItem.vue";
 </script>
 
 <script>
