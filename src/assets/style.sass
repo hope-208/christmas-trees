@@ -1,7 +1,7 @@
 @use 'base'
 @use 'fonts/stylesheet'
-  
-body 
+
+body
   margin: 0
   padding: 0
   background-color: base.$blue
@@ -17,18 +17,18 @@ body
 
   .scroll
     z-index: 1
-  
+
   .scroll > .el-scrollbar__bar > .el-scrollbar__thumb
     background-color: base.$white
 
   .page
     width: 100%
     height: 100vh
-    margin: 0 auto    
+    margin: 0 auto
     background: linear-gradient(90deg, base.$light-red 1%, transparent 1%) 1px 0, base.$blue
     background-size: calc((100vw - 1px) / 14) 1px
     // opacity: 0.1
-  
+
   .header
     position: relative
     height: 864px
@@ -62,11 +62,11 @@ body
 
       &_accent
         color: base.$black
-    
+
     &__subtitle
-      // font-family: Suisse
+      font-family: Suisse
       max-width: 555px
-      width: 100%     
+      width: 100%
       margin-block: 0
       margin-inline: 0
       margin-top: 65px
@@ -75,7 +75,7 @@ body
       color: base.$white
       font-style: normal
       font-weight: 400
-    
+
     &__image-container
       position: absolute
       top: 0
@@ -110,10 +110,6 @@ body
   padding: 0
   overflow: hidden
 
-// .program-slider
-//   width: 100%
-//   display: flex
-
 .slider
   max-width: 1318px
   width: 100%
@@ -128,16 +124,15 @@ body
     display: flex
     gap: 30px
     transition: all 0.3s ease
-    
 
   &__item
     max-width: 360px
-    width: 100%    
+    width: 100%
     display: flex
     flex-direction: column
     align-items: flex-start
     transition: all 0.3s ease
-  
+
   &__content.el-link > .el-link__inner
     display: flex
     flex-direction: column
@@ -151,7 +146,7 @@ body
     max-height: 240px
     height: 100%
     border-radius: 20px
-  
+
   &__price.el-tag
     // font-family: Suisse
     position: absolute
@@ -170,45 +165,36 @@ body
 
   &__button.el-button,
   &__button
-      // position: absolute
-      // top: 0
-      max-width: 41px
+    max-width: 41px
+    width: 100%
+    max-height: 236px
+    height: 100%
+    padding: 0
+    margin: 0
+    border-radius: 0
+    background-color: transparent
+    border: 0
+    box-sizing: border-box
+    z-index: 10
+
+    &_prev
+      order: 1
+
+    &_next
+      order: 3
+
+    &_img
       width: 100%
-      max-height: 236px
-      height: 100%
-      padding: 0
-      margin: 0
-      border-radius: 0
-      background-color: transparent
-      border: 0
-      box-sizing: border-box
-      z-index: 10
 
-      &_prev
-        order:1
+    &::after
+      content: none
 
-      &_next
-        order:3
+    &:hover
+      background-color: transparent !important
+      border-color: transparent !important
+      color: transparent !important
+      outline: none
 
-      &_img
-        width: 100%
-
-      &::after
-        content: none
-
-      &:hover
-        background-color: transparent !important
-        border-color: transparent !important
-        color: transparent !important
-        outline: none
-
-
-
-      &_icon
-        object-fit: cover
-        box-sizing: border-box
-        cursor: pointer
-    
   &__title
     max-width: 360px
     width: 100%
@@ -224,7 +210,7 @@ body
     text-overflow: ellipsis
     white-space: nowrap
     overflow: hidden
-  
+
   &__tag
     // font-family: Suisse
     color: base.$white
@@ -244,14 +230,6 @@ body
     font-style: normal
     font-weight: 400
 
-
-.swiper-button-prev,
-.carousel__prev
-  background: transparent url('../src/assets/img/arrow-slider-left.svg') no-repeat center / contain
-
-.swiper-button-next
-  background: transparent url('../src/assets/img/arrow-slider-right.svg') no-repeat center / contain
-
 .lead.el-text
   max-width: 1234px
   width: 100%
@@ -262,7 +240,7 @@ body
   line-height: 105%
   text-align: center
 
-.gift 
+.gift
   position: relative
   max-width: 1234px
   width: 100%
@@ -272,7 +250,7 @@ body
   flex-direction: column
   gap: 58px
   margin: 0 auto
-  padding-top: 78px 
+  padding-top: 78px
 
   &__card
     max-height: 606px
@@ -302,7 +280,7 @@ body
 
   &__info-span
     color: base.$blue
-  
+
 .cards
   max-width: 1188px
   width: 100%
@@ -326,7 +304,7 @@ body
     width: 100%
     margin-bottom: 36px
     box-sizing: border-box
-  
+
   &__label
     position: absolute
     top: 0
@@ -357,7 +335,6 @@ body
     font-size: 28px
     line-height: 110%
 
-  
   &__description.el-text
     color: base.$white
     font-family: Suisse
@@ -372,170 +349,210 @@ body
   flex-direction: column
   gap: 40px
   box-sizing: border-box
-  
-  .step-group
-    flex-direction: column
-    position: relative
 
-  .step
+.step-group
+  flex-direction: column
+  position: relative
+
+.step
+  display: flex
+  gap: 33px
+  padding: 24px 40px 40px 24px
+  background-color: base.$white
+  border-radius: 50px
+  box-sizing: border-box
+
+  &.step-lead
+    max-width: 1234px
+    width: 100%
+    margin: 0 auto 99px
+    padding: 56px 62px
     display: flex
-    gap: 33px
-    padding: 24px 40px 40px 24px
-    background-color: base.$white
-    border-radius: 50px
+    flex-direction: column
+    align-items: flex-start
+    background: base.$white url('../assets/img/girl.png') no-repeat right / contain
+
+  &__form-container
+    flex-direction: column
+    padding: 40px
+
+  &__number.el-text
+    max-width: 80px
+    width: 100%
+    max-height: 80px
+    height: 100%
+    padding: 18px
+    display: flex
+    justify-content: center
+    align-items: center
+    align-self: flex-start
+    color: base.$white
+    text-align: center
+    font-family: Afisha Display
+    font-size: 38px
+    line-height: 117%
+    background-color: base.$blue
+    border-radius: 50%
     box-sizing: border-box
 
-    &__form-container
-      flex-direction: column 
-      padding: 40px
+  &__content
+    display: flex
+    flex-direction: column
+    gap: 50px
 
-    &__number
-      max-width: 80px
-      width: 100%
-      max-height: 80px
-      height: 100%
-      padding: 18px
-      display: flex     
-      justify-content: center
-      align-items: center
-      align-self: flex-start
+  &__header.el-text
+    max-width: 560px
+    width: 100%
+    font-family: Afisha Display
+    font-size: 60px
+    font-style: normal
+    font-weight: 400
+    line-height: 105%
+    color: base.$black
+
+  &__title.el-text
+    font-family: Afisha Display
+    font-size: 40px
+    color: base.$black
+
+  &__desc.el-text
+    display: flex
+    font-family: Suisse
+    font-size: 20px
+    line-height: 117%
+    font-weight: 400
+    color: base.$black
+    margin-right: auto
+
+  &__desc_accent.el-text
+    display: flex
+    font-family: Suisse
+    font-size: 20px
+    line-height: 117%
+    font-weight: 400
+    color: base.$blue
+
+  &__desc-form.el-text
+    margin-bottom: 36px
+    margin-left: 15px
+
+  &__desc-form_error.el-text
+    color: base.$red
+
+  &__link.el-link
+    font-family: Suisse
+    font-size: 20px
+    line-height: 117%
+    font-weight: 400
+    color: base.$gray
+
+    &:hover
+      color: base.$blue
+
+  &__button.el-button
+    max-height: 80px
+    height: 100%
+    padding: 25px 57px
+    font-family: Afisha Display
+    font-size: 32px
+    color: base.$white
+    background-color: base.$black
+    border: none
+    border-radius: 40px
+    z-index: 3
+
+    &:hover
       color: base.$white
-      text-align: center
-      font-family: Afisha Display
-      font-size: 38px
-      line-height: 117%
-      background-color: base.$blue
-      border-radius: 50%
-      box-sizing: border-box      
-    
-    &__content
-      display: flex
-      flex-direction: column
-      gap: 50px
-    
-    &__title.el-text
-      font-family: Afisha Display
-      font-size: 40px
-      color: base.$black
-
-    &__desc.el-text
-      display: flex
-      font-family: Suisse
-      font-size: 20px
-      line-height: 117%
-      font-weight: 400
-      color: base.$black
-      margin-right: auto
-
-    &__desc-form
-      margin-bottom: 36px
-      margin-left: 15px
-
-    &__desc-form_error
-      color: base.$red
-
-    &__link.el-link
-      font-family: Suisse
-      font-size: 20px
-      line-height: 117%
-      font-weight: 400
-      color: base.$gray
-    
-      &:hover
-        color: base.$blue
-    
-    &__button
-      max-height: 80px
-      height: 100%
-      padding: 25px 57px
-      font-family: Afisha Display
-      font-size: 32px
-      color: base.$white
-      background-color: base.$black
+      text-decoration: none
       border: none
-      border-radius: 40px
-      z-index: 3
-    
-      &:hover
-        color: base.$white
-        text-decoration: none
-        border: none
-        background-color: base.$gray
-        outline-offset: 0
-      
-    &__button-link
-      max-height: 80px
-      height: 100%
-      padding: 25px 57px
-      margin-top: 37px
-      font-family: Afisha Display
-      font-size: 32px
+      background-color: base.$gray
+      outline-offset: 0
+
+  &__button-link.el-link
+    max-width: 370px
+    width: 100%
+    max-height: 80px
+    height: 100%
+    padding: 21px 0
+    font-family: Afisha Display
+    font-size: 32px
+    color: base.$white
+    background-color: base.$black
+    border-radius: 40px
+    align-self: flex-end
+    box-sizing: border-box
+
+    &:hover
       color: base.$white
-      background-color: base.$black
-      border-radius: 40px
-      align-self: flex-end
-    
-      &:hover
-        color: base.$white
-        text-decoration: none
-        opacity: 0.7
-        outline-offset: 0
+      text-decoration: none
+      opacity: 0.7
+      outline-offset: 0
 
-      &.is-underline::after,
-      &.is-underline:hover::after
-        border: none
-    
-    &__form
-      max-width: 577px
-      width: 100%
-      margin-right: auto
-    
-    &__form-item
-      margin: 0
-      box-sizing: border-box
+    &.is-underline::after,
+    &.is-underline:hover::after
+      border: none
 
-    &__form-input
-      max-height: 84px
-      height: 100%
-      padding-block: 0
-      padding-inline: 0      
-      padding: 25px 38px
-      margin-bottom: 18px
-      font-family: Suisse
-      font-size: 25px
+  &__tag.el-tag
+    max-height: 70px
+    height: 100%
+    padding: 18px
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: base.$blue
+    border: none
+    border-radius: 75px
+    font-family: Suisse
+    font-size: 24px
+    line-height: 117%
+    font-weight: 400
+    color: base.$white
+
+  &__form
+    max-width: 577px
+    width: 100%
+    margin-right: auto
+
+  &__form-item.el-form-item
+    margin: 0
+    box-sizing: border-box
+
+  &__form-input.el-input
+    max-height: 84px
+    height: 100%
+    padding-block: 0
+    padding-inline: 0
+    padding: 25px 38px
+    margin-bottom: 18px
+    font-family: Suisse
+    font-size: 25px
+    color: base.$black
+    border-radius: 43px
+    background-color: base.$light-gray
+    box-sizing: border-box
+
+    &:hover,
+    &:focus
+    &:focus-visible
+      border: none
+      outline: 0
+      outline-offset: 0
+
+    &::placeholder
       color: base.$black
-      border-radius: 43px
-      background-color: base.$light-gray
-      box-sizing: border-box
+      opacity: 0.3
 
-      &:hover,
-      &:focus
-      &:focus-visible
-        border: none
-        outline: 0
-        outline-offset: 0
-    
-    
-    
-      &::placeholder
-        color: base.$black
-        opacity: 0.3
-
-    &__img
-      position: absolute
-      top: 90px
-      right: 40px
-      z-index: 1
-
-// .el-form-item.step__form-item > .el-form-item__content > .el-form-item__error
-//   display: none
+  &__img
+    position: absolute
+    top: 90px
+    right: 40px
+    z-index: 1
 
 .el-form-item.step__form-item.is-error > .el-form-item__content > .step__form-input,
 .el-form-item.step__form-item.is-error > .el-form-item__content > .step__form-input > .el-input__wrapper
   background-color: base.$light-red
   box-shadow: none
   border: none
-
 
 .el-form-item.step__form-item.is-error > .el-form-item__content > .step__form-input > .el-input__wrapper
   background-color: transparent

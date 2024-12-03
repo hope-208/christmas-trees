@@ -28,6 +28,7 @@
           :text="'И это ещё не все подарки!'"
           color-text="black"
         />
+        <LeadGift />
       </el-main>
     </el-container>
   </el-scrollbar>
@@ -41,6 +42,7 @@ import LeadText from "@/components/LeadText.vue";
 import GiftBox from "@/components/GiftBox.vue";
 import GiftList from "@/components/GiftList.vue";
 import StepsItem from "@/components/StepsItem.vue";
+import LeadGift from "@/components/LeadGift.vue";
 </script>
 
 <script>

@@ -8,9 +8,7 @@
           >Покупайте билеты на сайте или в мобильном приложении Афиши</el-text
         >
       </div>
-      <el-link href="#" class="step__button-link" type="primary"
-        >Купить&nbsp;билет</el-link
-      >
+      <el-link href="#" class="step__button-link">Купить&nbsp;билет</el-link>
     </div>
 
     <div class="step-group">
@@ -44,7 +42,6 @@
               class="step__form-input"
               v-model="formData.email"
               type="email"
-              clearable
               placeholder="example@mail.ru"
             />
           </el-form-item>
@@ -71,7 +68,6 @@
               class="step__form-input"
               v-model="formData.contact"
               placeholder="@nickname / +7 999 000 00 00"
-              clearable
             />
           </el-form-item>
           <el-text class="step__desc step__desc-form"

@@ -80,6 +80,7 @@ body .header__title_accent {
   color: #000;
 }
 body .header__subtitle {
+  font-family: Suisse;
   max-width: 555px;
   width: 100%;
   margin-block: 0;
@@ -204,12 +205,6 @@ body .header__image {
   color: transparent !important;
   outline: none;
 }
-.slider__button.el-button_icon, .slider__button_icon {
-  -o-object-fit: cover;
-     object-fit: cover;
-  box-sizing: border-box;
-  cursor: pointer;
-}
 .slider__title {
   max-width: 360px;
   width: 100%;
@@ -240,15 +235,6 @@ body .header__image {
   line-height: 21px;
   font-style: normal;
   font-weight: 400;
-}
-
-.swiper-button-prev,
-.carousel__prev {
-  background: transparent url("../src/assets/img/arrow-slider-left.svg") no-repeat center/contain;
-}
-
-.swiper-button-next {
-  background: transparent url("../src/assets/img/arrow-slider-right.svg") no-repeat center/contain;
 }
 
 .lead.el-text {
@@ -375,11 +361,13 @@ body .header__image {
   gap: 40px;
   box-sizing: border-box;
 }
-.steps .step-group {
+
+.step-group {
   flex-direction: column;
   position: relative;
 }
-.steps .step {
+
+.step {
   display: flex;
   gap: 33px;
   padding: 24px 40px 40px 24px;
@@ -387,11 +375,21 @@ body .header__image {
   border-radius: 50px;
   box-sizing: border-box;
 }
-.steps .step__form-container {
+.step.step-lead {
+  max-width: 1234px;
+  width: 100%;
+  margin: 0 auto 99px;
+  padding: 56px 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #FFF url("../assets/img/girl.png") no-repeat right/contain;
+}
+.step__form-container {
   flex-direction: column;
   padding: 40px;
 }
-.steps .step__number {
+.step__number.el-text {
   max-width: 80px;
   width: 100%;
   max-height: 80px;
@@ -410,17 +408,27 @@ body .header__image {
   border-radius: 50%;
   box-sizing: border-box;
 }
-.steps .step__content {
+.step__content {
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
-.steps .step__title.el-text {
+.step__header.el-text {
+  max-width: 560px;
+  width: 100%;
+  font-family: Afisha Display;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 105%;
+  color: #000;
+}
+.step__title.el-text {
   font-family: Afisha Display;
   font-size: 40px;
   color: #000;
 }
-.steps .step__desc.el-text {
+.step__desc.el-text {
   display: flex;
   font-family: Suisse;
   font-size: 20px;
@@ -429,24 +437,32 @@ body .header__image {
   color: #000;
   margin-right: auto;
 }
-.steps .step__desc-form {
+.step__desc_accent.el-text {
+  display: flex;
+  font-family: Suisse;
+  font-size: 20px;
+  line-height: 117%;
+  font-weight: 400;
+  color: #54ACFF;
+}
+.step__desc-form.el-text {
   margin-bottom: 36px;
   margin-left: 15px;
 }
-.steps .step__desc-form_error {
+.step__desc-form_error.el-text {
   color: #FF2100;
 }
-.steps .step__link.el-link {
+.step__link.el-link {
   font-family: Suisse;
   font-size: 20px;
   line-height: 117%;
   font-weight: 400;
   color: #A8A8A8;
 }
-.steps .step__link.el-link:hover {
+.step__link.el-link:hover {
   color: #54ACFF;
 }
-.steps .step__button {
+.step__button.el-button {
   max-height: 80px;
   height: 100%;
   padding: 25px 57px;
@@ -458,44 +474,62 @@ body .header__image {
   border-radius: 40px;
   z-index: 3;
 }
-.steps .step__button:hover {
+.step__button.el-button:hover {
   color: #FFF;
   text-decoration: none;
   border: none;
   background-color: #A8A8A8;
   outline-offset: 0;
 }
-.steps .step__button-link {
+.step__button-link.el-link {
+  max-width: 370px;
+  width: 100%;
   max-height: 80px;
   height: 100%;
-  padding: 25px 57px;
-  margin-top: 37px;
+  padding: 21px 0;
   font-family: Afisha Display;
   font-size: 32px;
   color: #FFF;
   background-color: #000;
   border-radius: 40px;
   align-self: flex-end;
+  box-sizing: border-box;
 }
-.steps .step__button-link:hover {
+.step__button-link.el-link:hover {
   color: #FFF;
   text-decoration: none;
   opacity: 0.7;
   outline-offset: 0;
 }
-.steps .step__button-link.is-underline::after, .steps .step__button-link.is-underline:hover::after {
+.step__button-link.el-link.is-underline::after, .step__button-link.el-link.is-underline:hover::after {
   border: none;
 }
-.steps .step__form {
+.step__tag.el-tag {
+  max-height: 70px;
+  height: 100%;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #54ACFF;
+  border: none;
+  border-radius: 75px;
+  font-family: Suisse;
+  font-size: 24px;
+  line-height: 117%;
+  font-weight: 400;
+  color: #FFF;
+}
+.step__form {
   max-width: 577px;
   width: 100%;
   margin-right: auto;
 }
-.steps .step__form-item {
+.step__form-item.el-form-item {
   margin: 0;
   box-sizing: border-box;
 }
-.steps .step__form-input {
+.step__form-input.el-input {
   max-height: 84px;
   height: 100%;
   padding-block: 0;
@@ -509,20 +543,20 @@ body .header__image {
   background-color: #EFEFEF;
   box-sizing: border-box;
 }
-.steps .step__form-input:focus-visible {
+.step__form-input.el-input:focus-visible {
   border: none;
   outline: 0;
   outline-offset: 0;
 }
-.steps .step__form-input::-moz-placeholder {
+.step__form-input.el-input::-moz-placeholder {
   color: #000;
   opacity: 0.3;
 }
-.steps .step__form-input::placeholder {
+.step__form-input.el-input::placeholder {
   color: #000;
   opacity: 0.3;
 }
-.steps .step__img {
+.step__img {
   position: absolute;
   top: 90px;
   right: 40px;
