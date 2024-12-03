@@ -1,5 +1,13 @@
-# Vue 3 + Vite
+# Ёлки всех размеров на афише
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Ссылка на сайт:
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+https://hope-208.github.io/christmas-trees/
+
+## Ссылка на макет в Figma:
+
+https://www.figma.com/design/4dBLkSvyFqycdAYKUVxVib/%D0%95%D0%BB%D0%BA%D0%B8?node-id=156-4974&t=i4RmZmK82q8ILv9E-4
+
+## Используемые технологии:
+
+Vue 3, Vite, Element Plus, JavaScript
