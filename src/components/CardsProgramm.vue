@@ -24,7 +24,10 @@
     </div>
   </div>
 
-  <el-link class="programm-container__button-link" href="#" target="_blank"
+  <el-link
+    class="programm-container__button-link"
+    href="https://www.afisha.ru/msk/new-year-for-kids/"
+    target="_blank"
     >Смотреть все</el-link
   >
 </template>

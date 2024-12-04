@@ -755,19 +755,20 @@ body .header__image {
 }
 .footer__info-text.el-text {
   width: 100%;
-  display: flex;
-  align-items: center;
   font-family: Suisse;
   font-size: 15px;
+  line-height: 100%;
   color: #000;
   text-align: left;
   opacity: 0.5;
   cursor: default;
 }
 .footer__info-link.el-link {
+  margin-bottom: 1px;
   font-family: Suisse;
   font-size: 15px;
   color: #000;
+  line-height: 100%;
   text-align: left;
   text-decoration: underline;
   opacity: 0.5;

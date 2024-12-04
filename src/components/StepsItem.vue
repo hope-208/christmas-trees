@@ -9,7 +9,7 @@
         >
       </div>
       <el-link
-        href="https://www.afisha.ru/"
+        href="https://www.afisha.ru/msk/new-year-for-kids/"
         class="step__button-link"
         target="_blank"
       >
