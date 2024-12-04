@@ -176,4 +176,8 @@ export default {
 .carousel__viewport {
   order: 2;
 }
+
+.carousel__track {
+  align-items: flex-start;
+}
 </style>
