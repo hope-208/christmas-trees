@@ -20,7 +20,7 @@
 
         <LeadText
           :class="'lead-form'"
-          text="Как&nbsp;выиграть новогодний&nbsp;детский бокс?"
+          text="Как выиграть новогодний детский бокс?"
           color-text="black"
         />
         <StepsItem />

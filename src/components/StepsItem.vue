@@ -3,9 +3,10 @@
     <div class="step">
       <el-text class="step__number">1</el-text>
       <div class="step__content">
-        <el-text class="step__title">Купите&nbsp;билет на&nbsp;елку</el-text>
+        <el-text class="step__title">Купите билет<br />на ёлку</el-text>
         <el-text class="step__desc"
-          >Покупайте билеты на сайте или в мобильном приложении Афиши</el-text
+          >Покупайте билеты на сайте или в&nbsp;мобильном приложении
+          Афиши</el-text
         >
       </div>
       <el-link
@@ -22,8 +23,7 @@
         <el-text class="step__number">2</el-text>
         <div class="step__content">
           <el-text class="step__title"
-            >Отметьтесь&nbsp;здесь,&nbsp;что вы&nbsp;хотите&nbsp;участвовать
-            в&nbsp;розыгрыше
+            >Отметьтесь здесь, что вы&nbsp;хотите участвовать в&nbsp;розыгрыше
           </el-text>
           <el-text class="step__desc"
             >Подписываясь, вы принимаете&nbsp;
@@ -100,12 +100,12 @@
       <el-text class="step__number">3</el-text>
       <div class="step__content">
         <el-text class="step__title"
-          >До&nbsp;31&nbsp;января&nbsp;раз в&nbsp;неделю&nbsp;проверяйте
-          почту&nbsp;и&nbsp;телеграм</el-text
+          >До&nbsp;31&nbsp;января раз в&nbsp;неделю проверяйте почту
+          и&nbsp;телеграм</el-text
         >
         <el-text class="step__desc"
-          >Проверяйте папку входящие и спам, чтобы не пропустить важное<br />
-          сообщение о победе</el-text
+          >Проверяйте папку входящие и&nbsp;спам, чтобы не&nbsp;пропустить
+          важное сообщение о&nbsp;победе</el-text
         >
       </div>
     </div>
