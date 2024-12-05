@@ -6,16 +6,16 @@
         <!-- <SwiperProgramms /> -->
         <CarouselItem />
         <LeadText
-          text="Ёлки на Афише как на рождественской ярмарке — всех размеров: для самых
+          :class="'lead-white'"
+          text="Ёлки на Афише как на&nbsp;рождественской ярмарке — всех размеров: для самых
           маленьких, школьников и подростков, весёлые, мультяшные и сказочные. А
           под Ёлками ещё и&nbsp;подарки!"
           color-text="white"
-          style="margin: 185px 0 160px"
         />
 
-        <LeadText text="А какие?" color-text="black" />
+        <LeadText :class="'lead-black'" text="А какие?" color-text="black" />
 
-        <GiftBox style="margin-bottom: 175px" />
+        <GiftBox :class="'gift-box'" />
         <GiftList />
 
         <LeadText
@@ -32,21 +32,22 @@
         />
         <LeadGift />
         <LeadText
+          :class="'lead-white'"
           text="Всего 350 бесплатных билетов! Сразу после покупки билетов на ёлки на сайте или в мобильном приложении Афиши, на почту вам отправится билет на Ёлку 6&nbsp;января."
           color-text="white"
-          style="margin-bottom: 160px"
         />
 
         <LeadText
+          :class="'lead-black'"
           text="Каким&nbsp;будет&nbsp;этот праздничный&nbsp;день?*"
           color-text="black"
         />
         <SliderContent />
 
         <LeadText
+          :class="'lead-bottom'"
           text="Покупайте Ёлки всех размеров на&nbsp;Афише и&nbsp;получайте подарки: новогодний бокс от&nbsp;Афиши и бесплатный билет на Ёлку от&nbsp;Афиши и Москино"
           color-text="white"
-          style="margin-bottom: 103px"
         />
 
         <LeadText

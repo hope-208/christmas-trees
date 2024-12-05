@@ -133,3 +133,13 @@ export default {
   },
 };
 </script>
+
+<style>
+.carousel__viewport {
+  order: 2;
+}
+
+.carousel__track {
+  align-items: flex-start;
+}
+</style>

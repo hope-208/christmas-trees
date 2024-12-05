@@ -374,7 +374,7 @@ body .header__image {
     display: none;
   }
 }
-.slider__button.el-button, .slider .slider__button {
+.slider__button.el-button, .slider__button {
   max-width: 41px;
   width: 100%;
   max-height: 236px;
@@ -387,26 +387,26 @@ body .header__image {
   box-sizing: border-box;
   z-index: 10;
 }
-.slider__button.el-button_prev, .slider .slider__button_prev {
+.slider__button.el-button_prev, .slider__button_prev {
   order: 1;
 }
-.slider__button.el-button_next, .slider .slider__button_next {
+.slider__button.el-button_next, .slider__button_next {
   order: 3;
 }
-.slider__button.el-button_img, .slider .slider__button_img {
+.slider__button.el-button_img, .slider__button_img {
   width: 100%;
 }
-.slider__button.el-button::after, .slider .slider__button::after {
+.slider__button.el-button::after, .slider__button::after {
   content: none;
 }
-.slider__button.el-button:hover, .slider .slider__button:hover {
+.slider__button.el-button:hover, .slider__button:hover {
   background-color: transparent !important;
   border-color: transparent !important;
   color: transparent !important;
   outline: none;
 }
 @media (max-width: 900px) {
-  .slider__button.el-button, .slider .slider__button {
+  .slider__button.el-button, .slider__button {
     display: none;
   }
 }
@@ -507,6 +507,53 @@ body .header__image {
   font-weight: 400;
   line-height: 105%;
   text-align: center;
+}
+
+.lead-white.el-text {
+  margin: 185px 0 160px;
+}
+@media (max-width: 1024px) {
+  .lead-white.el-text {
+    max-width: 85%;
+    font-size: 45px;
+  }
+}
+@media (max-width: 600px) {
+  .lead-white.el-text {
+    margin: 70px 0 28px;
+  }
+}
+
+.lead-bottom.el-text {
+  margin: 100px 0;
+}
+@media (max-width: 1024px) {
+  .lead-bottom.el-text {
+    max-width: 85%;
+    font-size: 45px;
+  }
+}
+@media (max-width: 600px) {
+  .lead-bottom.el-text {
+    margin: 70px 0 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .lead.el-text, .lead-white.el-text, .lead-black.el-text {
+    max-width: 85%;
+    font-size: 45px;
+  }
+}
+@media (max-width: 600px) {
+  .lead.el-text, .lead-white.el-text, .lead-black.el-text {
+    max-width: 94%;
+    font-size: 28px;
+  }
+}
+
+.gift-box {
+  margin-bottom: 175px;
 }
 
 .gift {
@@ -924,7 +971,6 @@ body .header__image {
 .slider-programm__after-text.el-text {
   max-width: 1174px;
   width: 70%;
-  margin-bottom: 97px;
   font-family: Suisse;
   font-size: 15px;
   color: #000;

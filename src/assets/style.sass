@@ -285,7 +285,8 @@ body
     @media (max-width: 1024px)
       display: none
 
-  &__button.el-button, .slider__button 
+  &__button.el-button, 
+  &__button 
     max-width: 41px
     width: 100%
     max-height: 236px
@@ -414,6 +415,39 @@ body
   font-weight: 400
   line-height: 105%
   text-align: center
+
+.lead-white.el-text
+  margin: 185px 0 160px
+
+  @media (max-width: 1024px)
+    max-width: 85%
+    font-size: 45px
+
+  @media (max-width: 600px)
+    margin: 70px 0 28px
+
+.lead-bottom.el-text
+  margin: 100px 0
+
+  @media (max-width: 1024px)
+    max-width: 85%
+    font-size: 45px
+
+  @media (max-width: 600px)
+    margin: 70px 0 28px
+
+.lead.el-text, .lead-white.el-text, .lead-black.el-text
+
+  @media (max-width: 1024px)
+    max-width: 85%
+    font-size: 45px
+
+  @media (max-width: 600px)
+    max-width: 94%
+    font-size: 28px
+
+.gift-box 
+  margin-bottom: 175px
 
 .gift
   position: relative
@@ -754,8 +788,7 @@ body
     margin: 62px auto 37px
     display: flex
     align-items: center
-    gap: 32px
-    
+    gap: 32px    
 
     &__item.carousel__slide
       max-width: 1028px
@@ -821,7 +854,6 @@ body
     &__after-text.el-text
       max-width: 1174px
       width: 70%
-      margin-bottom: 97px
       font-family: Suisse
       font-size: 15px
       color: base.$black
