@@ -1428,7 +1428,7 @@ body .header__image {
 }
 @media (max-width: 800px) {
   .footer__info {
-    width: 950%;
+    width: 95%;
     margin-top: 0;
     gap: 16px;
   }
