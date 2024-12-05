@@ -6,9 +6,9 @@
         <!-- <SwiperProgramms /> -->
         <CarouselItem />
         <LeadText
-          text="Ёлки на Афише как на рождест-венской ярмарке — всех размеров: для самых
+          text="Ёлки на Афише как на рождественской ярмарке — всех размеров: для самых
           маленьких, школьников и подростков, весёлые, мультяшные и сказочные. А
-          под Ёлками ещё и подарки!"
+          под Ёлками ещё и&nbsp;подарки!"
           color-text="white"
           style="margin: 185px 0 160px"
         />
@@ -20,14 +20,14 @@
 
         <LeadText
           :class="'lead-form'"
-          text="Как выиграть новогодний детский бокс?"
+          text="Как&nbsp;выиграть новогодний&nbsp;детский бокс?"
           color-text="black"
         />
         <StepsItem />
 
         <LeadText
           :class="'lead-ahter-gift'"
-          :text="'И это ещё не все подарки!'"
+          :text="'И&nbsp;это&nbsp;ещё&nbsp;не все&nbsp;подарки!'"
           color-text="black"
         />
         <LeadGift />
@@ -44,7 +44,7 @@
         <SliderContent />
 
         <LeadText
-          text="Покупайте Ёлки всех размеров на&nbsp;Афише и получайте подарки: новогодний бокс от Афиши и бесплатный билет на Ёлку от&nbsp;Афиши и Москино"
+          text="Покупайте Ёлки всех размеров на&nbsp;Афише и&nbsp;получайте подарки: новогодний бокс от&nbsp;Афиши и бесплатный билет на Ёлку от&nbsp;Афиши и Москино"
           color-text="white"
           style="margin-bottom: 103px"
         />
@@ -98,7 +98,7 @@ export default {
   border-radius: 50%;
   position: absolute;
   top: -5vh;
-  z-index: 0;
+  z-index: 1;
 }
 
 @keyframes snowfall {

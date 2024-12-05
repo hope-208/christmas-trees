@@ -133,6 +133,9 @@ export default {
       ],
     };
   },
+  // mounted() {
+  //   this.getPrograms();
+  // },
   methods: {
     async getPrograms() {
       await fetch("https://www.afisha.ru/exports/new_year_trees_landing.xml", {
