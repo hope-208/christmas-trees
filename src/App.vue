@@ -130,6 +130,14 @@ export default {
   max-width: 890px;
   margin-bottom: 61px;
 }
+
+@media (max-width: 940px) {
+  .lead-form.lead.el-text {
+    max-width: 80%;
+    margin-bottom: 30px;
+  }
+}
+
 .lead-ahter-gift.lead.el-text {
   max-width: 570px;
   margin-bottom: 58px;

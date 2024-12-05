@@ -21,6 +21,9 @@ body
   .scroll > .el-scrollbar__bar > .el-scrollbar__thumb
     background-color: base.$white
 
+  .carousel__slide 
+    cursor: grab
+
   .page
     width: 100%
     height: 100vh
@@ -554,10 +557,24 @@ body
   width: 100%
   display: flex
   flex-wrap: wrap
+  justify-content: center
   column-gap: 39px
   row-gap: 80px
   margin: 0 auto 119px
   box-sizing: border-box
+
+  @media (max-width: 1350px)  
+    max-width: 83%
+
+  @media (max-width: 940px)  
+    display: none
+
+.slider-cards
+  display: none
+
+  @media (max-width: 940px)  
+    display: block
+    margin-bottom: 100px
 
 .card
   max-width: 370px
@@ -566,12 +583,27 @@ body
   flex-direction: column
   box-sizing: border-box
 
+  @media (max-width: 700px)  
+    max-width: 280px
+
+  @media (max-width: 450px)  
+    max-width: 200px
+
+
   &__caption
     position: relative
     max-width: 370px
     width: 100%
     margin-bottom: 36px
     box-sizing: border-box
+
+    @media (max-width: 700px)  
+      max-width: 280px
+      margin-bottom: 25px
+
+    @media (max-width: 450px)  
+      max-width: 200px
+      margin-bottom: 19px
 
   &__label
     position: absolute
@@ -581,6 +613,14 @@ body
     max-height: 103px
     height: 100%
 
+    @media (max-width: 700px)  
+      max-width: 74px
+      max-height: 74px
+
+    @media (max-width: 450px)  
+      max-width: 54px
+      max-height: 54px
+
   &__img
     max-width: 315px
     width: 100%
@@ -589,12 +629,26 @@ body
     display: flex
     margin-left: auto
 
+    @media (max-width: 700px)  
+      max-width: 250px
+      max-height: 250px
+
+    @media (max-width: 450px)  
+      max-width: 164px
+      max-height: 164px
+
   &__title.el-text,
   &__description.el-text
     max-width: 321px
     width: 100%
     font-style: normal
     font-weight: 400
+
+    @media (max-width: 700px)  
+      max-width: 230px
+
+    @media (max-width: 450px)  
+      max-width: 176px
 
   &__title.el-text
     color: base.$black
@@ -603,11 +657,27 @@ body
     font-size: 28px
     line-height: 110%
 
+    @media (max-width: 700px)  
+      font-size: 20px
+      line-height: 105%
+      margin-bottom: 22px
+
+    @media (max-width: 450px)  
+      font-size: 14px
+      line-height: 15px
+      margin-bottom: 15px
+
   &__description.el-text
     color: base.$white
     font-family: Suisse
     font-size: 20px
     line-height: 117%
+
+    @media (max-width: 700px)  
+      font-size: 18px
+
+    @media (max-width: 450px)  
+      font-size: 14px
 
 .steps
   max-width: 1028px

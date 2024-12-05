@@ -45,6 +45,9 @@ body .scroll {
 body .scroll > .el-scrollbar__bar > .el-scrollbar__thumb {
   background-color: #FFF;
 }
+body .carousel__slide {
+  cursor: grab;
+}
 body .page {
   width: 100%;
   height: 100vh;
@@ -691,11 +694,32 @@ body .header__image {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   -moz-column-gap: 39px;
        column-gap: 39px;
   row-gap: 80px;
   margin: 0 auto 119px;
   box-sizing: border-box;
+}
+@media (max-width: 1350px) {
+  .cards {
+    max-width: 83%;
+  }
+}
+@media (max-width: 940px) {
+  .cards {
+    display: none;
+  }
+}
+
+.slider-cards {
+  display: none;
+}
+@media (max-width: 940px) {
+  .slider-cards {
+    display: block;
+    margin-bottom: 100px;
+  }
 }
 
 .card {
@@ -705,12 +729,34 @@ body .header__image {
   flex-direction: column;
   box-sizing: border-box;
 }
+@media (max-width: 700px) {
+  .card {
+    max-width: 280px;
+  }
+}
+@media (max-width: 450px) {
+  .card {
+    max-width: 200px;
+  }
+}
 .card__caption {
   position: relative;
   max-width: 370px;
   width: 100%;
   margin-bottom: 36px;
   box-sizing: border-box;
+}
+@media (max-width: 700px) {
+  .card__caption {
+    max-width: 280px;
+    margin-bottom: 25px;
+  }
+}
+@media (max-width: 450px) {
+  .card__caption {
+    max-width: 200px;
+    margin-bottom: 19px;
+  }
 }
 .card__label {
   position: absolute;
@@ -720,6 +766,18 @@ body .header__image {
   max-height: 103px;
   height: 100%;
 }
+@media (max-width: 700px) {
+  .card__label {
+    max-width: 74px;
+    max-height: 74px;
+  }
+}
+@media (max-width: 450px) {
+  .card__label {
+    max-width: 54px;
+    max-height: 54px;
+  }
+}
 .card__img {
   max-width: 315px;
   width: 100%;
@@ -728,11 +786,33 @@ body .header__image {
   display: flex;
   margin-left: auto;
 }
+@media (max-width: 700px) {
+  .card__img {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+@media (max-width: 450px) {
+  .card__img {
+    max-width: 164px;
+    max-height: 164px;
+  }
+}
 .card__title.el-text, .card__description.el-text {
   max-width: 321px;
   width: 100%;
   font-style: normal;
   font-weight: 400;
+}
+@media (max-width: 700px) {
+  .card__title.el-text, .card__description.el-text {
+    max-width: 230px;
+  }
+}
+@media (max-width: 450px) {
+  .card__title.el-text, .card__description.el-text {
+    max-width: 176px;
+  }
 }
 .card__title.el-text {
   color: #000;
@@ -741,11 +821,35 @@ body .header__image {
   font-size: 28px;
   line-height: 110%;
 }
+@media (max-width: 700px) {
+  .card__title.el-text {
+    font-size: 20px;
+    line-height: 105%;
+    margin-bottom: 22px;
+  }
+}
+@media (max-width: 450px) {
+  .card__title.el-text {
+    font-size: 14px;
+    line-height: 15px;
+    margin-bottom: 15px;
+  }
+}
 .card__description.el-text {
   color: #FFF;
   font-family: Suisse;
   font-size: 20px;
   line-height: 117%;
+}
+@media (max-width: 700px) {
+  .card__description.el-text {
+    font-size: 18px;
+  }
+}
+@media (max-width: 450px) {
+  .card__description.el-text {
+    font-size: 14px;
+  }
 }
 
 .steps {
