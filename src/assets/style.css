@@ -208,6 +208,7 @@ body .header__image-container {
   width: 100%;
   display: flex;
   align-items: flex-end;
+  overflow: hidden;
   z-index: 1;
 }
 @media (max-width: 1420px) {
@@ -565,8 +566,25 @@ body .header__image {
   display: flex;
   flex-direction: column;
   gap: 58px;
-  margin: 0 auto;
+  margin: 0 auto 175px;
   padding-top: 78px;
+}
+@media (max-width: 1420px) {
+  .gift {
+    max-width: 85%;
+  }
+}
+@media (max-width: 1024px) {
+  .gift {
+    margin: 0 auto 100px;
+  }
+}
+@media (max-width: 600px) {
+  .gift {
+    max-width: 94%;
+    max-height: 404px;
+    padding-top: 70px;
+  }
 }
 .gift__card {
   max-height: 606px;
@@ -576,10 +594,51 @@ body .header__image {
   background-color: #FFF;
   padding: 0 0 34px 60px;
 }
+@media (max-width: 1024px) {
+  .gift__card {
+    padding: 0 0 25px 40px;
+    border-radius: 24px;
+  }
+}
+@media (max-width: 600px) {
+  .gift__card {
+    max-height: 404px;
+    padding: 20px;
+  }
+}
 .gift__image {
   position: absolute;
   top: 20px;
   right: -35px;
+}
+@media (max-width: 1200px) {
+  .gift__image {
+    max-width: 55%;
+    right: 23px;
+  }
+}
+@media (max-width: 1100px) {
+  .gift__image {
+    top: 45px;
+  }
+}
+@media (max-width: 600px) {
+  .gift__image {
+    max-width: 60%;
+    right: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .gift__image {
+    max-width: 75%;
+  }
+}
+@media (max-width: 400px) {
+  .gift__image {
+    max-width: 85%;
+    right: 9px;
+    top: 48px;
+  }
 }
 .gift__info.el-text {
   max-width: 712px;
@@ -593,6 +652,35 @@ body .header__image {
   line-height: 105%;
   text-align: left;
   color: #000;
+}
+@media (max-width: 1420px) {
+  .gift__info.el-text {
+    max-width: 80%;
+    font-size: 50px;
+  }
+}
+@media (max-width: 1100px) {
+  .gift__info.el-text {
+    font-size: 40px;
+  }
+}
+@media (max-width: 800px) {
+  .gift__info.el-text {
+    font-size: 30px;
+    margin-top: 250px;
+  }
+}
+@media (max-width: 600px) {
+  .gift__info.el-text {
+    font-size: 28px;
+    line-height: 98%;
+  }
+}
+@media (max-width: 600px) {
+  .gift__info.el-text {
+    max-width: 98%;
+    margin-top: 280px;
+  }
 }
 .gift__info-span {
   color: #54ACFF;
