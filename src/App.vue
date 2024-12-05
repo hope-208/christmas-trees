@@ -65,7 +65,6 @@
 <script setup>
 import HeaderItem from "@/components/HeaderItem.vue";
 import CarouselItem from "@/components/CarouselItem.vue";
-// import SwiperProgramms from "@/components/SwiperProgramms.vue";
 import LeadText from "@/components/LeadText.vue";
 import GiftBox from "@/components/GiftBox.vue";
 import GiftList from "@/components/GiftList.vue";

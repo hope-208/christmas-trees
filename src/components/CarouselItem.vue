@@ -1,12 +1,5 @@
 <template>
-  <carousel
-    ref="refCarousel"
-    class="slider"
-    :items-to-show="3"
-    :items-to-scroll="3"
-    :gap="30"
-    wrap-around
-  >
+  <carousel ref="refCarousel" class="slider" v-bind="config">
     <slide class="slider__item" v-for="event in events" :key="event">
       <el-link
         class="slider__content"
@@ -51,13 +44,48 @@
       </el-button>
     </template>
   </carousel>
+
+  <el-link
+    class="slider__button-link"
+    href="https://www.afisha.ru/msk/new-year-for-kids/"
+    target="_blank"
+    >Смотреть все</el-link
+  >
 </template>
 
-<script>
+<script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
 // https://vue3-carousel.ismail9k.com/
 
+const config = {
+  itemsToShow: 1.5,
+  itemsToScroll: 1,
+  gap: 10,
+  snapAlign: "start",
+  wrapAround: true,
+  breakpointMode: "viewport",
+  breakpoints: {
+    900: {
+      snapAlign: "center",
+    },
+    1200: {
+      snapAlign: "center",
+      itemsToShow: 2,
+      itemsToScroll: 2,
+      gap: 15,
+    },
+    1370: {
+      snapAlign: "center",
+      itemsToShow: 3,
+      itemsToScroll: 3,
+      gap: 30,
+    },
+  },
+};
+</script>
+
+<script>
 export default {
   name: "CarouselItem",
   components: {
