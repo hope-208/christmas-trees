@@ -716,7 +716,7 @@ body
     padding: 30px 25px
     border-radius: 35px
 
-  @media (max-width: 550px)
+  @media (max-width: 800px)
     grid: 1fr / 43px 1fr
     column-gap: 16px
     padding: 10px 10px 15px
@@ -726,12 +726,30 @@ body
   &.step-lead
     max-width: 1234px
     width: 100%
-    margin: 0 auto 99px
+    margin: 0 auto
     padding: 56px 62px
     display: flex
     flex-direction: column
     align-items: flex-start
     background: base.$white url('../assets/img/girl.png') no-repeat right / contain
+
+    @media (max-width: 1350px)  
+      max-width: 85%
+
+    @media (max-width: 1200px) 
+      background: #FFF url(/christmas-trees/src/assets/img/girl.png) no-repeat bottom
+      background-size: 70%
+      background-position-x: 100%
+
+    @media (max-width: 1024px) 
+      gap: 20px
+      padding: 30px
+
+    @media (max-width: 450px) 
+      max-width: 92%
+      gap: 20px
+      padding: 20px
+      background: #FFF url(/christmas-trees/src/assets/img/girl.png) no-repeat bottom / contain
 
   &__form-container
     flex-direction: column
@@ -785,13 +803,23 @@ body
   &__header.el-text
     max-width: 560px
     width: 100%
+    align-self: flex-start
     font-family: Afisha Display
     font-size: 60px
     font-style: normal
     font-weight: 400
     color: base.$black
 
-    
+    @media (max-width: 1350px)  
+      max-width: 70%
+      font-size: 40px
+
+    @media (max-width: 800px) 
+      font-size: 28px
+      line-height: 98%
+
+    @media (max-width: 450px) 
+      max-width: 80%
 
   &__title.el-text
     font-family: Afisha Display
@@ -829,6 +857,20 @@ body
     line-height: 117%
     font-weight: 400
     color: base.$blue
+    align-self: flex-start
+
+    @media (max-width: 1350px)  
+      max-width: 70%
+      margin: 50px 0 0
+
+    @media (max-width: 800px) 
+      margin: 70px 0 0      
+      font-size: 14px
+
+    @media (max-width: 450px) 
+      max-width: 80%
+      margin: 150px 0 0 
+      
 
   &__desc-form.el-text
     margin-bottom: 36px
@@ -927,6 +969,21 @@ body
     line-height: 117%
     font-weight: 400
     color: base.$white
+
+    @media (max-width: 1350px)  
+      font-size: 20px
+
+    @media (max-width: 800px) 
+      max-height: 40px
+      padding: 12px
+      border-radius: 75px
+      font-size: 14px
+
+    @media (max-width: 450px) 
+      max-height: 40px
+      padding: 12px
+      border-radius: 75px
+      font-size: 14px
 
   &__form
     max-width: 577px
