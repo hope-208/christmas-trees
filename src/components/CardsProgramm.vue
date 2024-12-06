@@ -1,5 +1,5 @@
 <template>
-  <div class="programm-container">
+  <!-- <div class="programm-container">
     <div class="programm-card" v-for="event in events" :key="event">
       <el-link
         class="programm-card__contant"
@@ -22,7 +22,32 @@
         <el-text class="slider__place">На 5 площадках </el-text>
       </el-link>
     </div>
-  </div>
+  </div> -->
+
+  <carousel ref="refCardsProgramm" class="programm-container" v-bind="config">
+    <slide class="programm-card" v-for="event in events" :key="event">
+      <el-link
+        class="programm-card__contant"
+        :href="event.creation.url"
+        target="_blank"
+      >
+        <div class="slider__capture">
+          <el-image
+            class="slider__img"
+            :src="event.creation.image"
+            fit="cover"
+          />
+          <el-tag class="slider__price">от {{ event.minPrice }} ₽</el-tag>
+        </div>
+        <h5 class="slider__title">{{ event.creation.name }}</h5>
+        <el-row>
+          <el-text class="slider__tag">{{ event.tags.join(", ") }}</el-text>
+        </el-row>
+        <el-text class="slider__date">{{ transformDate(event.dates) }}</el-text>
+        <el-text class="slider__place">На 5 площадках </el-text>
+      </el-link>
+    </slide>
+  </carousel>
 
   <el-link
     class="programm-container__button-link"
@@ -31,6 +56,44 @@
     >Смотреть все</el-link
   >
 </template>
+
+<script setup>
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide } from "vue3-carousel";
+// https://vue3-carousel.ismail9k.com/
+
+const config = {
+  itemsToShow: 1.8,
+  itemsToScroll: 1,
+  gap: 10,
+  snapAlign: "start",
+  wrapAround: true,
+  breakpointMode: "viewport",
+  breakpoints: {
+    800: {
+      itemsToShow: 2,
+      itemsToScroll: 2,
+      snapAlign: "start",
+      wrapAround: true,
+      gap: 20,
+    },
+    1200: {
+      itemsToShow: 3,
+      itemsToScroll: 3,
+      snapAlign: "start",
+      wrapAround: true,
+      gap: 25,
+    },
+    1350: {
+      snapAlign: "center",
+      itemsToShow: 4,
+      itemsToScroll: 4,
+      gap: 30,
+      wrapAround: true,
+    },
+  },
+};
+</script>
 
 <script>
 export default {

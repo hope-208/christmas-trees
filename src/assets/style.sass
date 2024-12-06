@@ -38,6 +38,7 @@ body
     position: relative
     height: 864px
     margin-bottom: 90px
+    overflow: hidden
     // background: url(./assets/img/header-stars.svg) no-repeat center / cover
     box-sizing: border-box
 
@@ -419,6 +420,9 @@ body
   font-weight: 400
   line-height: 105%
   text-align: center
+
+  @media (max-width: 1200px)
+    max-width: 90%
 
 .lead-white.el-text
   margin: 185px 0 160px
@@ -1275,6 +1279,14 @@ body
   display: flex
   gap: 12px
 
+  @media (max-width: 1350px) 
+    max-width: 80%
+
+  @media (max-width: 900px)
+    max-width: 96%
+    margin: 30px 0 30px auto
+
+
   &__button-link.el-link
     max-width: 1239px
     width: 100%
@@ -1299,7 +1311,10 @@ body
     &.is-underline:hover::after
       border: none
 
-    @media (max-width: 900px)
+    @media (max-width: 1350px) 
+      max-width: 80%
+
+    @media (max-width: 800px)
       max-width: 94%
       max-height: 56px
       height: 100%
@@ -1307,12 +1322,19 @@ body
       margin: 0 auto
       font-size: 21px
 
+.programm-container-slider
+  width: 96%
+  margin: 24px 0 34px auto
+
 .programm-card
   max-width: 300px
   width: 100%
   display: flex
   flex-direction: column
   align-items: flex-start
+
+  @media (max-width: 900px)
+    max-width: 197px
 
   &__contant.el-link > .el-link__inner
     max-width: 300px

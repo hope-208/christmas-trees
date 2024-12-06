@@ -51,6 +51,7 @@
         />
 
         <LeadText
+          :class="'lead-text-programm'"
           text="Ёлки всех размеров"
           color-text="black"
           style="text-align: left"
@@ -136,11 +137,24 @@ export default {
   margin-bottom: 58px;
 }
 
+@media (max-width: 1350px) {
+  .lead-form.lead.el-text,
+  .lead-ahter-gift.lead.el-text,
+  .lead-text-programm.lead.el-text {
+    max-width: 80%;
+  }
+}
 @media (max-width: 940px) {
   .lead-form.lead.el-text,
   .lead-ahter-gift.lead.el-text {
     max-width: 80%;
     margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  .lead-text-programm.lead.el-text {
+    max-width: 94%;
   }
 }
 </style>

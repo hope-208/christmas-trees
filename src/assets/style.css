@@ -64,6 +64,7 @@ body .header {
   position: relative;
   height: 864px;
   margin-bottom: 90px;
+  overflow: hidden;
   box-sizing: border-box;
 }
 @media (max-width: 1420px) {
@@ -511,6 +512,11 @@ body .header__image {
   font-weight: 400;
   line-height: 105%;
   text-align: center;
+}
+@media (max-width: 1200px) {
+  .lead.el-text {
+    max-width: 90%;
+  }
 }
 
 .lead-white.el-text {
@@ -1560,6 +1566,17 @@ body .header__image {
   display: flex;
   gap: 12px;
 }
+@media (max-width: 1350px) {
+  .programm-container {
+    max-width: 80%;
+  }
+}
+@media (max-width: 900px) {
+  .programm-container {
+    max-width: 96%;
+    margin: 30px 0 30px auto;
+  }
+}
 .programm-container__button-link.el-link {
   max-width: 1239px;
   width: 100%;
@@ -1583,7 +1600,12 @@ body .header__image {
 .programm-container__button-link.el-link.is-underline::after, .programm-container__button-link.el-link.is-underline:hover::after {
   border: none;
 }
-@media (max-width: 900px) {
+@media (max-width: 1350px) {
+  .programm-container__button-link.el-link {
+    max-width: 80%;
+  }
+}
+@media (max-width: 800px) {
   .programm-container__button-link.el-link {
     max-width: 94%;
     max-height: 56px;
@@ -1594,12 +1616,22 @@ body .header__image {
   }
 }
 
+.programm-container-slider {
+  width: 96%;
+  margin: 24px 0 34px auto;
+}
+
 .programm-card {
   max-width: 300px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+@media (max-width: 900px) {
+  .programm-card {
+    max-width: 197px;
+  }
 }
 .programm-card__contant.el-link > .el-link__inner {
   max-width: 300px;
