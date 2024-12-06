@@ -57,7 +57,7 @@ body .page {
 }
 @media (max-width: 570px) {
   body .page {
-    background: url(./src/assets/img/mob-line-background.svg) no-repeat center/cover;
+    background: url("../assets/img/mob-line-background.svg") no-repeat center/cover;
   }
 }
 body .header {
@@ -939,7 +939,7 @@ body .header__image {
 }
 @media (max-width: 1200px) {
   .step.step-lead {
-    background: #FFF url(/christmas-trees/src/assets/img/girl.png) no-repeat bottom;
+    background: #FFF url("../assets/img/girl.png") no-repeat bottom;
     background-size: 70%;
     background-position-x: 100%;
   }
@@ -955,7 +955,7 @@ body .header__image {
     max-width: 92%;
     gap: 20px;
     padding: 20px;
-    background: #FFF url(/christmas-trees/src/assets/img/girl.png) no-repeat bottom/contain;
+    background: #FFF url(../assets/img/girl.png) no-repeat bottom/contain;
   }
 }
 .step__form-container {

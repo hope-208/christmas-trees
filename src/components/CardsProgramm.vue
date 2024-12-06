@@ -1,29 +1,4 @@
 <template>
-  <!-- <div class="programm-container">
-    <div class="programm-card" v-for="event in events" :key="event">
-      <el-link
-        class="programm-card__contant"
-        :href="event.creation.url"
-        target="_blank"
-      >
-        <div class="slider__capture">
-          <el-image
-            class="slider__img"
-            :src="event.creation.image"
-            fit="cover"
-          />
-          <el-tag class="slider__price">от {{ event.minPrice }} ₽</el-tag>
-        </div>
-        <h5 class="slider__title">{{ event.creation.name }}</h5>
-        <el-row>
-          <el-text class="slider__tag">{{ event.tags.join(", ") }}</el-text>
-        </el-row>
-        <el-text class="slider__date">{{ transformDate(event.dates) }}</el-text>
-        <el-text class="slider__place">На 5 площадках </el-text>
-      </el-link>
-    </div>
-  </div> -->
-
   <carousel ref="refCardsProgramm" class="programm-container" v-bind="config">
     <slide class="programm-card" v-for="event in events" :key="event">
       <el-link

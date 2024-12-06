@@ -15,18 +15,20 @@
         >
       </div>
       <div class="header__image-container">
-        <img
-          src="../assets/img/header-img.svg"
-          alt="Иллюстрация."
-          class="header__image"
-        />
+        <img :src="headerImg" alt="Иллюстрация." class="header__image" />
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import headerImg from "@/assets/img/header-img.svg";
 export default {
   name: "HeaderItem",
+  data() {
+    return {
+      headerImg,
+    };
+  },
 };
 </script>
