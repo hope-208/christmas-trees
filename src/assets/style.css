@@ -900,6 +900,15 @@ body .header__image {
 }
 @media (max-width: 800px) {
   .step {
+    grid: 1fr/60px 1fr;
+    -moz-column-gap: 16px;
+         column-gap: 16px;
+    padding: 20px 20px 25px;
+    border-radius: 24px;
+  }
+}
+@media (max-width: 550px) {
+  .step {
     grid: 1fr/43px 1fr;
     -moz-column-gap: 16px;
          column-gap: 16px;
@@ -980,14 +989,22 @@ body .header__image {
 }
 @media (max-width: 1100px) {
   .step__number.el-text {
+    max-width: 70px;
+    max-height: 70px;
     font-size: 28px;
+  }
+}
+@media (max-width: 800px) {
+  .step__number.el-text {
+    max-width: 60px;
+    max-height: 60px;
+    font-size: 21px;
   }
 }
 @media (max-width: 550px) {
   .step__number.el-text {
     max-width: 43px;
     max-height: 43px;
-    font-size: 21px;
   }
 }
 .step__content {
