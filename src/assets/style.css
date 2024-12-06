@@ -1660,7 +1660,7 @@ body .header__image {
 @media (max-width: 800px) {
   .footer {
     max-width: 95%;
-    margin: 40px auto 65px;
+    margin: 40px auto 90px;
     flex-direction: column;
     gap: 20px;
   }
