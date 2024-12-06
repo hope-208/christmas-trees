@@ -39,7 +39,7 @@
 
         <LeadText
           :class="'lead-black'"
-          text="Каким&nbsp;будет&nbsp;этот праздничный&nbsp;день?*"
+          text="Каким будет этот праздничный день?*"
           color-text="black"
         />
         <SliderContent />

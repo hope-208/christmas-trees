@@ -1,12 +1,5 @@
 <template>
-  <carousel
-    ref="refSliderProgram"
-    class="slider-programm"
-    :items-to-show="1"
-    :items-to-scroll="1"
-    wrap-around
-    :snap-align="'center'"
-  >
+  <carousel ref="refSliderProgram" class="slider-programm" v-bind="config">
     <slide
       class="slider-programm__item"
       v-for="programm in programms"
@@ -66,9 +59,38 @@
   >
 </template>
 
-<script>
+<script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
+// https://vue3-carousel.ismail9k.com/
+
+const config = {
+  itemsToShow: 1,
+  itemsToScroll: 1,
+  gap: 10,
+  snapAlign: "start",
+  wrapAround: true,
+  breakpointMode: "viewport",
+  breakpoints: {
+    800: {
+      itemsToShow: 2,
+      itemsToScroll: 2,
+      snapAlign: "start",
+      wrapAround: true,
+      gap: 30,
+    },
+    1300: {
+      snapAlign: "center",
+      itemsToShow: 1,
+      itemsToScroll: 1,
+      gap: 30,
+      wrapAround: true,
+    },
+  },
+};
+</script>
+
+<script>
 import prog_1 from "@/assets/img/1-prog.svg";
 import prog_2 from "@/assets/img/2-prog.svg";
 import prog_3 from "@/assets/img/3-prog.svg";
@@ -79,10 +101,6 @@ import prog_6 from "@/assets/img/6-prog.svg";
 
 export default {
   name: "SliderContent",
-  components: {
-    Carousel,
-    Slide,
-  },
   data() {
     return {
       programms: [
