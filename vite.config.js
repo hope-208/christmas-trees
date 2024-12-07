@@ -11,7 +11,21 @@ import vueDevTools from "vite-plugin-vue-devtools";
 // https://vite.dev/config/
 export default defineConfig({
   base: "/christmas-trees/",
-  server: { https: true },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://festivals.afisha.ru",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq) => {
+            proxyReq.setHeader("Origin", "https://festivals.afisha.ru");
+          });
+        },
+      },
+    },
+  },
   plugins: [
     vue(),
     eslintPlugin(),
