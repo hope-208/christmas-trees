@@ -1422,6 +1422,19 @@ body .header__video {
     height: 490px;
   }
 }
+.slider-programm__logo {
+  max-width: 154px;
+  max-height: 44px;
+  height: 100%;
+  margin: 0 0 27px;
+  align-self: flex-start;
+}
+@media (max-width: 900px) {
+  .slider-programm__logo {
+    max-height: 35px;
+    margin: 0 0 20px;
+  }
+}
 .slider-programm__text-container {
   width: 40%;
   padding: 40px 35px 40px;

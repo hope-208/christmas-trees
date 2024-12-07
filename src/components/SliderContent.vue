@@ -98,8 +98,8 @@ const config = {
 
 <script>
 import prog_1 from "@/assets/img/1-prog.svg";
-import prog_1_logo from "@/assets/img/prog_1_logo.svg";
 import prog_2 from "@/assets/img/2-prog.svg";
+import prog_2_logo from "@/assets/img/prog_2_logo.svg";
 import prog_3 from "@/assets/img/3-prog.svg";
 import prog_4 from "@/assets/img/4-prog.svg";
 import prog_5 from "@/assets/img/5-prog.svg";
@@ -117,7 +117,6 @@ export default {
           description:
             "Мальчик Юра находит ледяной посох Снежной королевы и освобождает ее. Королева желает заморозить весь мир в канун Нового года. Деду Морозу понадобится помощь волшебницы Бабы-яги и других героев, чтобы спасти весь мир!",
           image: prog_1,
-          logo: prog_1_logo,
           tags: ["кино", "6+"],
         },
         {
@@ -125,6 +124,7 @@ export default {
           description:
             "Кто узнал много нового за 2024 год? Тот отгадает все детские загадки про мультики, кукольные театры и музыку в ярком квизе от Афиши. Родителям, чур, не подсказывать!",
           image: prog_2,
+          logo: prog_2_logo,
           tags: ["квиз"],
         },
         {
