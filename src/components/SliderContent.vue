@@ -6,6 +6,12 @@
       :key="programm"
     >
       <div class="slider-programm__text-container">
+        <img
+          v-if="programm.logo"
+          class="slider-programm__logo"
+          :src="programm.logo"
+          alt="Логотип."
+        />
         <el-text class="slider-programm__title">{{ programm.title }}</el-text>
         <el-text class="slider-programm__desc">{{
           programm.description
@@ -92,10 +98,12 @@ const config = {
 
 <script>
 import prog_1 from "@/assets/img/1-prog.svg";
+import prog_1_logo from "@/assets/img/prog_1_logo.svg";
 import prog_2 from "@/assets/img/2-prog.svg";
 import prog_3 from "@/assets/img/3-prog.svg";
 import prog_4 from "@/assets/img/4-prog.svg";
 import prog_5 from "@/assets/img/5-prog.svg";
+import prog_5_logo from "@/assets/img/prog_5_logo.svg";
 import prog_6 from "@/assets/img/6-prog.svg";
 // https://vue3-carousel.ismail9k.com/
 
@@ -109,6 +117,7 @@ export default {
           description:
             "Мальчик Юра находит ледяной посох Снежной королевы и освобождает ее. Королева желает заморозить весь мир в канун Нового года. Деду Морозу понадобится помощь волшебницы Бабы-яги и других героев, чтобы спасти весь мир!",
           image: prog_1,
+          logo: prog_1_logo,
           tags: ["кино", "6+"],
         },
         {
@@ -135,8 +144,9 @@ export default {
         {
           title: "Музыка",
           description:
-            "Разве бывает праздник в тишине? Каждый ребёнок знает, что нет. Праздник — это про танцы, движения, улыбки и особенную атмосферную зимнюю музыку. За эту атмосферу будет отвечать диджей.",
+            "Разве бывает праздник в тишине? Каждый ребёнок знает, что нет. Праздник — это про танцы, движения, улыбки и особенную атмосферную зимнюю музыку. За эту атмосферу будет отвечать HiFi-стриминг «Звук Дети», который поставит всех на уши.",
           image: prog_5,
+          logo: prog_5_logo,
           tags: ["танцы"],
         },
         {

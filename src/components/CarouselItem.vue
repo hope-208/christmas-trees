@@ -1,6 +1,6 @@
 <template>
   <carousel ref="refCarousel" class="slider" v-bind="config">
-    <slide class="slider__item" v-for="event in events" :key="event">
+    <slide class="slider__item" v-for="event in eventList" :key="event">
       <el-link
         class="slider__content"
         :href="event.creation.url"
@@ -86,6 +86,9 @@ const config = {
 </script>
 
 <script>
+// import axios from "axios";
+// import { Api } from "@/axios/api.js";
+
 export default {
   name: "CarouselItem",
   components: {
@@ -159,19 +162,117 @@ export default {
           minPrice: 2300,
         },
       ],
+      eventList: [],
+      dataEvents: {},
     };
   },
-  // mounted() {
-  //   this.getPrograms();
-  // },
+  mounted() {
+    this.getPrograms();
+
+    const array = [
+      { creation: { name: "John", age: 30, city: "New York" } },
+      { creation: { name: "John", age: 25, city: "Los Angeles" } },
+      { creation: { name: "Jane", age: 28, city: "Chicago" } },
+      { creation: { name: "John", age: 35, city: "Houston" } },
+    ];
+
+    const map = new Map();
+
+    for (const obj of array) {
+      const name = obj.creation.name;
+      if (map.has(name)) {
+        const existingObj = map.get(name);
+        existingObj.creation.age = obj.creation.age;
+        existingObj.creation.city = obj.creation.city;
+      } else {
+        map.set(name, obj);
+      }
+    }
+
+    const result = Array.from(map.values());
+    console.log(result);
+  },
   methods: {
     async getPrograms() {
-      await fetch("https://www.afisha.ru/exports/new_year_trees_landing.xml", {
-        mode: "no-cors",
+      const res = await fetch("/api/get-feed?all=yes", {
         method: "get",
-      }).then((response) => {
-        console.log("%c%s", "color: #8c0038", response);
+        "Content-Type": "application/json; charset=utf-8",
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((res) => {
+          return res;
+        })
+        .then((data) => {
+          return data;
+        });
+
+      console.log("%c%s", "color: #1d5673", "res", res);
+
+      res.events.forEach((event) => {
+        // const eventItem = {};
+        const eventItem = {
+          creation: {
+            name: event.creation.name,
+            image: event.creation.image,
+            url: event.creation.url,
+          },
+          dates: event.dates,
+          tags: event.tags,
+          minPrice: event.minPrice,
+          place: event.place,
+        };
+
+        // eventItem.creation.name = event.creation.name;
+        // eventItem.creation.image = event.creation.image;
+        // eventItem.creation.url = event.creation.url;
+        // eventItem.dates = event.dates;
+        // eventItem.tags = event.tags;
+        // eventItem.minPrice = event.minPrice;
+        // eventItem.place = event.place;
+
+        console.log("%c%s", "color: #e57373", eventItem);
+        this.eventList.push(eventItem);
       });
+
+      console.log("%c%s", "color: #731d6d", this.eventList);
+
+      const el = {
+        creation: {
+          image:
+            "https://img05.rl0.ru/afisha/e945x-p0x80f2220x1268q85i/s4.afisha.ru/mediastorage/48/19/0391d872d4514b8da9a8e1331948.jpg",
+          name: "Жара Media Awards",
+          url: "https://www.afisha.ru/concert/zhara-media-awards-2214323/",
+        },
+
+        dates: ["2025-10-30"],
+        minPrice: "2000",
+        place: "Live Арена",
+        tags: ["Поп", "Фестивали"],
+      };
+      this.eventList.push(el);
+
+      console.log("%c%s", "color: #731d6d", this.eventList.length);
+
+      const map = new Map();
+
+      for (const obj of this.eventList) {
+        const name = obj.creation.name;
+        if (map.has(name)) {
+          const existingObj = map.get(name);
+          Object.assign(existingObj.creation.dates, obj.creation.dates);
+          Object.assign(existingObj.creation.minPrice, obj.creation.minPrice);
+          Object.assign(existingObj.creation.place, obj.creation.place);
+          Object.assign(existingObj.creation.tags, obj.creation.tags);
+        } else {
+          map.set(name, obj);
+        }
+      }
+
+      const result = Array.from(map.values());
+      console.log(result);
+      console.log(result.length);
     },
     transformDate(dates) {
       const uniqueDates = dates

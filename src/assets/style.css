@@ -285,6 +285,10 @@ body .header__image {
     transform: scale(1.3);
   }
 }
+body .header__video {
+  display: inline-block;
+  height: 100%;
+}
 
 .main.el-main {
   display: flex;

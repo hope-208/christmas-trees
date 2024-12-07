@@ -23,6 +23,8 @@
 
 <script>
 import headerImg from "@/assets/img/header-img.svg";
+// import headerImg from "@/assets/img/header-img.svg";
+
 export default {
   name: "HeaderItem",
   data() {
