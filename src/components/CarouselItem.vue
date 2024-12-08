@@ -1,6 +1,6 @@
 <template>
   <carousel ref="refCarousel" class="slider slider-carousel" v-bind="config">
-    <slide class="slider__item" v-for="event in eventList" :key="event">
+    <slide class="slider__item" v-for="event in swiperContent" :key="event">
       <el-link
         class="slider__content"
         :href="event.creation.url"
@@ -23,7 +23,7 @@
 
     <template #addons>
       <el-button
-        class="slider__button slider__button_prev"
+        class="slider__button slider__button_prev carousel__prev"
         @click="$refs.refCarousel.prev()"
       >
         <img
@@ -33,8 +33,8 @@
         />
       </el-button>
       <el-button
-        class="slider__button slider__button_next"
-        @click="$refs.refCarousel.next()"
+        class="slider__button slider__button_next carousel__next"
+        @click="($refs.refCarousel.next(), loadChunk())"
       >
         <img
           class="slider__button_img"
@@ -45,12 +45,12 @@
     </template>
   </carousel>
 
-  <!-- <el-link
+  <el-link
     class="slider__button-link"
     href="https://www.afisha.ru/msk/new-year-for-kids/"
     target="_blank"
     >Смотреть все</el-link
-  > -->
+  >
 </template>
 
 <script setup>
@@ -70,13 +70,7 @@ const config = {
       snapAlign: "start",
       itemsToShow: 2,
       itemsToScroll: 2,
-      gap: 15,
-    },
-    1200: {
-      snapAlign: "start",
-      itemsToShow: 2,
-      itemsToScroll: 2,
-      gap: 15,
+      gap: 30,
     },
     1370: {
       snapAlign: "center",
@@ -89,9 +83,6 @@ const config = {
 </script>
 
 <script>
-// import axios from "axios";
-// import { Api } from "@/axios/api.js";
-
 export default {
   name: "CarouselItem",
   components: {
@@ -166,34 +157,23 @@ export default {
         },
       ],
       eventList: [],
-      dataEvents: {},
+      allEvents: [],
+      swiperContent: [],
+      chunkSize: 6,
+      offset: 0,
     };
   },
-  mounted() {
+  created() {
     this.getPrograms();
 
-    const array = [
-      { creation: { name: "John", age: 30, city: "New York" } },
-      { creation: { name: "John", age: 25, city: "Los Angeles" } },
-      { creation: { name: "Jane", age: 28, city: "Chicago" } },
-      { creation: { name: "John", age: 35, city: "Houston" } },
-    ];
-
-    const map = new Map();
-
-    for (const obj of array) {
-      const name = obj.creation.name;
-      if (map.has(name)) {
-        const existingObj = map.get(name);
-        existingObj.creation.age = obj.creation.age;
-        existingObj.creation.city = obj.creation.city;
-      } else {
-        map.set(name, obj);
-      }
-    }
-
-    const result = Array.from(map.values());
-    console.log(result);
+    window.addEventListener("resize", () => {
+      this.$refs.refCarousel.value.update();
+    });
+  },
+  unmounted() {
+    window.removeEventListener("resize", () => {
+      this.$refs.refCarousel.value.update();
+    });
   },
   methods: {
     async getPrograms() {
@@ -211,7 +191,7 @@ export default {
           return data;
         });
 
-      console.log("%c%s", "color: #1d5673", "res", res);
+      // console.log("%c%s", "color: #1d5673", "res", res);
 
       res.events.forEach((event) => {
         // const eventItem = {};
@@ -227,21 +207,19 @@ export default {
           place: event.place,
         };
 
-        // eventItem.creation.name = event.creation.name;
-        // eventItem.creation.image = event.creation.image;
-        // eventItem.creation.url = event.creation.url;
-        // eventItem.dates = event.dates;
-        // eventItem.tags = event.tags;
-        // eventItem.minPrice = event.minPrice;
-        // eventItem.place = event.place;
-
-        console.log("%c%s", "color: #e57373", eventItem);
-        this.eventList.push(eventItem);
+        this.allEvents.push(eventItem);
       });
 
-      console.log("%c%s", "color: #731d6d", this.eventList);
+      this.loadChunk();
 
-      this.swiperContent = this.eventList.length > 0 ? this.eventList : [];
+      if (this.allEvents && this.allEvents.length > 0) {
+        if (this.offset < this.allEvents.length) {
+          this.loadChunk();
+        }
+      } else {
+        this.swiperContent = this.events;
+      }
+      // console.log("%c%s", "color: #731d6d", this.eventList);
 
       // const el = {
       //   creation: {
@@ -279,6 +257,15 @@ export default {
       // console.log(result);
       // console.log(result.length);
     },
+    loadChunk() {
+      const chunk = this.allEvents.slice(
+        this.offset,
+        this.offset + this.chunkSize,
+      );
+      this.offset += this.chunkSize;
+
+      this.swiperContent.push(...chunk);
+    },
     transformDate(dates) {
       const uniqueDates = dates
         .map((date) => {
@@ -314,7 +301,12 @@ export default {
   order: 2;
 }
 
-.carousel__track {
-  align-items: flex-start;
+@media (max-width: 600px) {
+  .carousel__viewport {
+    max-width: 98%;
+  }
 }
+/* .carousel__track {
+  align-items: flex-start;
+} */
 </style>

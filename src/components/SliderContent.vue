@@ -77,6 +77,7 @@ const config = {
   snapAlign: "start",
   wrapAround: true,
   breakpointMode: "viewport",
+  slideSize: { width: "297", height: "488" },
   breakpoints: {
     800: {
       itemsToShow: 2,

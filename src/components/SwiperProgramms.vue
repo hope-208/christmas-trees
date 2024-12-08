@@ -1,71 +1,105 @@
 <template>
-  <carousel ref="refCardsProgramm" class="programm-container" v-bind="config">
-    <slide class="programm-card" v-for="event in events" :key="event">
+  <swiper
+    ref="refSwiper"
+    class="slider slider-swiper"
+    :class="bottom ? 'slider-bottom programm-container' : ''"
+    :slidesPerView="2"
+    :slidesPerGroup="4"
+    :spaceBetween="10"
+    :lazy="true"
+    v-loading="isLoading"
+    :breakpoints="{
+      '950': {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      '1160': {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      '1350': {
+        slidesPerView: 4,
+        spaceBetween: 12,
+      },
+    }"
+    @slideChange="loadChunk"
+  >
+    <swiper-slide
+      :class="bottom ? 'programm-card' : 'slider__item'"
+      v-for="event in swiperContent"
+      :key="event"
+    >
       <el-link
-        class="programm-card__contant"
+        class="slider__content"
+        :class="bottom ? 'programm-card__contant' : ''"
         :href="event.creation.url"
         target="_blank"
       >
         <div class="slider__capture">
           <el-image
             class="slider__img"
+            :class="bottom ? 'programm-card__img' : ''"
             :src="event.creation.image"
             fit="cover"
+            loading="lazy"
+            :scroll-container="'.swiper-wrapper'"
           />
+          <div class="swiper-lazy-preloader"></div>
           <el-tag class="slider__price">от {{ event.minPrice }} ₽</el-tag>
         </div>
         <h5 class="slider__title">{{ event.creation.name }}</h5>
-        <el-row>
-          <el-text class="slider__tag">{{ event.tags.join(", ") }}</el-text>
-        </el-row>
+        <el-text
+          class="slider__tag"
+          v-for="tag in event.creation.tags"
+          :key="tag"
+          >{{ tag }}</el-text
+        >
         <el-text class="slider__date">{{ transformDate(event.dates) }}</el-text>
         <el-text class="slider__place">На 5 площадках </el-text>
       </el-link>
-    </slide>
-  </carousel>
+    </swiper-slide>
+  </swiper>
 
   <el-link
-    class="programm-container__button-link"
+    class="slider__button-link"
     href="https://www.afisha.ru/msk/new-year-for-kids/"
     target="_blank"
     >Смотреть все</el-link
   >
 </template>
 
-<script setup>
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide } from "vue3-carousel";
-// https://vue3-carousel.ismail9k.com/
+<script>
+import { Swiper, SwiperSlide } from "swiper/vue";
+// import { Lazy } from "swiper/modules";
+import "swiper/css";
+// import { Navigation } from "swiper/modules";
 
-const config = {
-  itemsToShow: 2,
-  itemsToScroll: 1,
-  gap: 10,
-  snapAlign: "start",
-  wrapAround: true,
-  breakpointMode: "viewport",
-  breakpoints: {
-    950: {
-      snapAlign: "start",
-      itemsToShow: 2,
-      itemsToScroll: 2,
-      gap: 30,
-    },
-    1370: {
-      snapAlign: "center",
-      itemsToShow: 3,
-      itemsToScroll: 3,
-      gap: 30,
+export default {
+  name: "SwiperProgramms",
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  created() {
+    this.getPrograms();
+  },
+  setup() {
+    const onSlideChange = () => {
+      this.loadChunk();
+    };
+    return {
+      onSlideChange,
+    };
+  },
+  props: {
+    bottom: {
+      type: Boolean,
+      default: false,
     },
   },
-};
-</script>
-
-<script>
-export default {
-  name: "CardsProgramm",
   data() {
     return {
+      isLoading: false,
       events: [
         {
           creation: {
@@ -138,15 +172,9 @@ export default {
       offset: 0,
     };
   },
-  created() {
-    this.getPrograms();
-
-    window.addEventListener("resize", () => {
-      this.$refs.refCardsProgramm.value.update();
-    });
-  },
   methods: {
     async getPrograms() {
+      this.isLoading = true;
       const res = await fetch("/api/get-feed", {
         method: "get",
         "Content-Type": "application/json; charset=utf-8",
@@ -226,6 +254,8 @@ export default {
       // const result = Array.from(map.values());
       // console.log(result);
       // console.log(result.length);
+
+      this.isLoading = false;
     },
     loadChunk() {
       const chunk = this.allEvents.slice(
@@ -265,3 +295,48 @@ export default {
   },
 };
 </script>
+
+<!-- <style>
+.slider-container {
+  max-width: 1318px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.swiper.slider {
+  max-width: 1140px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 88px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin: 20px auto;
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}
+</style> -->

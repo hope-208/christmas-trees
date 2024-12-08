@@ -3,8 +3,8 @@
     <el-container direction="vertical">
       <HeaderItem />
       <el-main class="main">
-        <!-- <SwiperProgramms /> -->
-        <CarouselItem />
+        <CarouselItem v-if="windowWidth >= 950" />
+        <SwiperProgramms v-if="windowWidth < 950" />
         <LeadText
           :class="'lead-white'"
           text="Ёлки на Афише как на&nbsp;рождественской ярмарке — всех размеров: для самых
@@ -56,7 +56,8 @@
           color-text="black"
           style="text-align: left"
         />
-        <CardsProgramm />
+        <!-- <CardsProgramm v-if="windowWidth >= 950" /> -->
+        <SwiperProgramms bottom />
       </el-main>
     </el-container>
 
@@ -67,25 +68,40 @@
 <script setup>
 import HeaderItem from "@/components/HeaderItem.vue";
 import CarouselItem from "@/components/CarouselItem.vue";
+import SwiperProgramms from "@/components/SwiperProgramms.vue";
 import LeadText from "@/components/LeadText.vue";
 import GiftBox from "@/components/GiftBox.vue";
 import GiftList from "@/components/GiftList.vue";
 import StepsItem from "@/components/StepsItem.vue";
 import LeadGift from "@/components/LeadGift.vue";
 import SliderContent from "@/components/SliderContent.vue";
-import CardsProgramm from "@/components/CardsProgramm.vue";
+// import CardsProgramm from "@/components/CardsProgramm.vue";
 import FooterItem from "@/components/FooterItem.vue";
 </script>
 
 <script>
 export default {
   name: "App",
+  created() {
+    this.handleResize();
+    window.addEventListener("resize", this.handleResize);
+  },
   mounted() {
     for (let i = 0; i < 50; i++) {
       const div = document.createElement("div");
       div.className = "snowflake";
       document.getElementById("app").appendChild(div);
     }
+  },
+  data() {
+    return {
+      windowWidth: 1440,
+    };
+  },
+  methods: {
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    },
   },
 };
 </script>
@@ -137,6 +153,11 @@ export default {
   margin-bottom: 58px;
 }
 
+.lead-text-programm.lead.el-text {
+  max-width: 1239px;
+  width: 100%;
+}
+
 @media (max-width: 1350px) {
   .lead-form.lead.el-text,
   .lead-ahter-gift.lead.el-text,
@@ -144,17 +165,16 @@ export default {
     max-width: 80%;
   }
 }
-@media (max-width: 940px) {
+@media (max-width: 950px) {
   .lead-form.lead.el-text,
   .lead-ahter-gift.lead.el-text {
     max-width: 80%;
     margin-bottom: 30px;
   }
-}
 
-@media (max-width: 800px) {
   .lead-text-programm.lead.el-text {
     max-width: 94%;
+    margin: 0 0 24px;
   }
 }
 </style>

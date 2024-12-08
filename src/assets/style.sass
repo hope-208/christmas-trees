@@ -29,10 +29,10 @@ body
     height: 100vh
     margin: 0 auto
     background: linear-gradient(90deg, base.$light-red 1%, transparent 1%) 1px 0, base.$blue
-    background-size: calc((100vw - 1px) / 14) 1px
+    background-size: calc((100vw - 1px) / 14) 1px      
     
-    @media (max-width: 570px)
-      background: url('../assets/img/mob-line-background.svg') no-repeat center / cover
+    @media (max-width: 1300px)
+      background: url('../assets/img/mob-line-background.svg') no-repeat center / contain
     
   .header
     position: relative
@@ -217,24 +217,57 @@ body
   padding: 0
   overflow: hidden
 
+.slider-swiper.swiper.slider
+  display: none
+
+  @media (max-width: 950px)
+    display: flex
+    max-width: 94%
+    width: 100%
+    margin: 0 auto
+    
+  @media (max-width: 600px)
+    max-width: 98%
+    margin: 0 0 0 10px
+
+.slider-carousel.carousel
+  display: flex  
+
+  @media (max-width: 949px)
+    display: none
+
+.slider-swiper.swiper.slider.slider-bottom
+  display: flex
+  max-width: 1318px
+  width: 100%
+  margin: 0 auto
+  padding: 0
+
+  @media (max-width: 1350px)
+    max-width: 80%
+
+.swiper.slider, 
 .slider
   max-width: 1318px
   width: 100%
   margin: 0 auto
+  padding: 0px 90px
   display: flex
   align-items: center
-  gap: 48px
-  overflow-x: hidden
+  overflow: hidden
 
   @media (max-width: 1370px)
-    max-width: calc(25% * 3  + 20px * 2 + 41px * 2 + 48px * 2)
+    max-width: 930px
 
-  @media (max-width: 1024px)
+  @media (max-width: 949px)
     justify-content: center
+    margin: 0 0 0 auto
+    padding: 0
 
   @media (max-width: 600px)
-    max-width: 96%
-    margin: 0 0 0 auto
+    max-width: 98%
+    margin: 0 0 0 10px
+    padding: 0
 
   &__items
     // width: max-content
@@ -242,15 +275,17 @@ body
     gap: 30px
     transition: all 0.3s ease
 
-  &__item
+  &__item,
+  &__item.carousel__slide
     max-width: 360px
-    width: 100%
+    width: 100% !important
     display: flex
     flex-direction: column
     align-items: flex-start
     transition: all 0.3s ease
+    box-sizing: border-box
 
-    @media (max-width: 600px)
+    @media (max-width: 949px)
       max-width: 197px
 
   &__content.el-link > .el-link__inner
@@ -264,15 +299,14 @@ body
   &__capture
     position: relative
 
-  &__img
-    max-width: 360px
-    width: 100%
-    max-height: 240px
-    height: 100%
+  &__img, &__img img
+    width: 360px
+    height: 240px
     border-radius: 20px
 
-    @media (max-width: 600px)
-      max-width: 197px
+    @media (max-width: 949px)
+      width: 197px
+      height: 134px
       border-radius: 10px
 
   &__price.el-tag
@@ -326,14 +360,14 @@ body
       color: transparent !important
       outline: none
     
-    @media (max-width: 900px)
+    @media (max-width: 949px)
       display: none
 
     
   &__button-link.el-link
     display: none
 
-    @media (max-width: 900px)
+    @media (max-width: 950px)
       display: block
       max-width: 94%
       width: 100%
@@ -586,7 +620,7 @@ body
 
 .card
   max-width: 370px
-  width: 100%
+  width: 100% !important
   display: flex
   flex-direction: column
   box-sizing: border-box
@@ -616,6 +650,7 @@ body
   &__label
     position: absolute
     top: 0
+    left: 0
     max-width: 103px
     width: 100%
     max-height: 103px
@@ -651,6 +686,7 @@ body
     width: 100%
     font-style: normal
     font-weight: 400
+    text-align: left
 
     @media (max-width: 700px)  
       max-width: 230px
@@ -1110,12 +1146,12 @@ body
     margin: 50px auto 30px
 
   @media (max-width: 900px) 
-    max-width: 94%
-    margin: 30px auto 20px
+    max-width: 98%
+    margin: 30px 0 10px auto
 
   &__item.carousel__slide
     max-width: 1028px
-    width: 100%
+    width: 100% !important
     height: 458px   
     display: flex
     align-items: stretch
@@ -1142,7 +1178,7 @@ body
       height: 550px 
         
     @media (max-width: 550px)
-      max-width: 79%
+      max-width: 297px
       height: 490px 
 
   &__logo
@@ -1285,7 +1321,7 @@ body
     text-align: left
     opacity: 0.5
 
-.programm-container 
+.programm-container, .slider-swiper.swiper.slider.slider-bottom.programm-container
   max-width: 1239px
   width: 100%
   margin: 44px auto
@@ -1295,9 +1331,17 @@ body
   @media (max-width: 1350px) 
     max-width: 80%
 
+  @media (max-width: 950px)
+    max-width: 94%
+    margin: 0 auto
+
   @media (max-width: 900px)
     max-width: 96%
     margin: 30px 0 30px auto
+
+  @media (max-width: 600px)
+    max-width: 98%
+    margin: 0 0 0 10px
 
 
   &__button-link.el-link
@@ -1339,15 +1383,16 @@ body
   width: 96%
   margin: 24px 0 34px auto
 
+.programm-card.swiper-slide,
 .programm-card
-  max-width: 300px
+  width: 300px !important
   width: 100%
   display: flex
   flex-direction: column
   align-items: flex-start
 
-  @media (max-width: 900px)
-    max-width: 197px
+  @media (max-width: 950px)
+    width: 197px !important
 
   &__contant.el-link > .el-link__inner
     max-width: 300px
@@ -1355,6 +1400,15 @@ body
     display: flex
     flex-direction: column
     align-items: flex-start
+  
+  &__img,
+  &__img.slider__img img
+    width: 300px
+    height: 200px
+
+    @media (max-width: 950px)
+      width: 197px !important
+      height: 134px !important
 
 .footer
   max-width: 1239px

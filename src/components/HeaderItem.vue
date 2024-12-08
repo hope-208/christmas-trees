@@ -15,22 +15,38 @@
         >
       </div>
       <div class="header__image-container">
-        <img :src="headerImg" alt="Иллюстрация." class="header__image" />
+        <!-- <el-image
+          :src="windowWidth > 950 ? headerImgSvg : headerImgPng"
+          alt="Иллюстрация."
+          class="header__image"
+        /> -->
+        <img :src="headerImgSvg" alt="Иллюстрация." class="header__image" />
       </div>
     </div>
   </header>
 </template>
 
 <script>
-import headerImg from "@/assets/img/header-img.svg";
-// import headerImg from "@/assets/img/header-img.svg";
+import headerImgPng from "@/assets/img/header-img.png";
+import headerImgSvg from "@/assets/img/header-img.svg";
 
 export default {
   name: "HeaderItem",
   data() {
     return {
-      headerImg,
+      headerImgPng,
+      headerImgSvg,
+      // windowWidth: 1440,
     };
   },
+  // created() {
+  //   this.handleResize();
+  //   window.addEventListener("resize", this.handleResize);
+  // },
+  // methods: {
+  //   handleResize() {
+  //     this.windowWidth = window.innerWidth;
+  //   },
+  // },
 };
 </script>
