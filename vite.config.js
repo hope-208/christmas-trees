@@ -14,13 +14,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://festivals.afisha.ru",
+        target: "https://test-hgiuyfu83.lejnin.ru",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
         configure: (proxy) => {
           proxy.on("proxyReq", (proxyReq) => {
-            proxyReq.setHeader("Origin", "https://festivals.afisha.ru");
+            proxyReq.setHeader("Origin", "https://test-hgiuyfu83.lejnin.ru");
           });
         },
       },

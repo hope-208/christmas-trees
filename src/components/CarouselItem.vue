@@ -1,5 +1,5 @@
 <template>
-  <carousel ref="refCarousel" class="slider" v-bind="config">
+  <carousel ref="refCarousel" class="slider slider-carousel" v-bind="config">
     <slide class="slider__item" v-for="event in eventList" :key="event">
       <el-link
         class="slider__content"
@@ -45,12 +45,12 @@
     </template>
   </carousel>
 
-  <el-link
+  <!-- <el-link
     class="slider__button-link"
     href="https://www.afisha.ru/msk/new-year-for-kids/"
     target="_blank"
     >Смотреть все</el-link
-  >
+  > -->
 </template>
 
 <script setup>
@@ -59,18 +59,21 @@ import { Carousel, Slide } from "vue3-carousel";
 // https://vue3-carousel.ismail9k.com/
 
 const config = {
-  itemsToShow: 1.5,
+  itemsToShow: 2,
   itemsToScroll: 1,
   gap: 10,
   snapAlign: "start",
   wrapAround: true,
   breakpointMode: "viewport",
   breakpoints: {
-    900: {
-      snapAlign: "center",
+    950: {
+      snapAlign: "start",
+      itemsToShow: 2,
+      itemsToScroll: 2,
+      gap: 15,
     },
     1200: {
-      snapAlign: "center",
+      snapAlign: "start",
       itemsToShow: 2,
       itemsToScroll: 2,
       gap: 15,
@@ -194,7 +197,7 @@ export default {
   },
   methods: {
     async getPrograms() {
-      const res = await fetch("/api/get-feed?all=yes", {
+      const res = await fetch("/api/get-feed", {
         method: "get",
         "Content-Type": "application/json; charset=utf-8",
       })
@@ -238,41 +241,43 @@ export default {
 
       console.log("%c%s", "color: #731d6d", this.eventList);
 
-      const el = {
-        creation: {
-          image:
-            "https://img05.rl0.ru/afisha/e945x-p0x80f2220x1268q85i/s4.afisha.ru/mediastorage/48/19/0391d872d4514b8da9a8e1331948.jpg",
-          name: "Жара Media Awards",
-          url: "https://www.afisha.ru/concert/zhara-media-awards-2214323/",
-        },
+      this.swiperContent = this.eventList.length > 0 ? this.eventList : [];
 
-        dates: ["2025-10-30"],
-        minPrice: "2000",
-        place: "Live Арена",
-        tags: ["Поп", "Фестивали"],
-      };
-      this.eventList.push(el);
+      // const el = {
+      //   creation: {
+      //     image:
+      //       "https://img05.rl0.ru/afisha/e945x-p0x80f2220x1268q85i/s4.afisha.ru/mediastorage/48/19/0391d872d4514b8da9a8e1331948.jpg",
+      //     name: "Жара Media Awards",
+      //     url: "https://www.afisha.ru/concert/zhara-media-awards-2214323/",
+      //   },
 
-      console.log("%c%s", "color: #731d6d", this.eventList.length);
+      //   dates: ["2025-10-30"],
+      //   minPrice: "2000",
+      //   place: "Live Арена",
+      //   tags: ["Поп", "Фестивали"],
+      // };
+      // this.eventList.push(el);
 
-      const map = new Map();
+      // console.log("%c%s", "color: #731d6d", this.eventList.length);
 
-      for (const obj of this.eventList) {
-        const name = obj.creation.name;
-        if (map.has(name)) {
-          const existingObj = map.get(name);
-          Object.assign(existingObj.creation.dates, obj.creation.dates);
-          Object.assign(existingObj.creation.minPrice, obj.creation.minPrice);
-          Object.assign(existingObj.creation.place, obj.creation.place);
-          Object.assign(existingObj.creation.tags, obj.creation.tags);
-        } else {
-          map.set(name, obj);
-        }
-      }
+      // const map = new Map();
 
-      const result = Array.from(map.values());
-      console.log(result);
-      console.log(result.length);
+      // for (const obj of this.eventList) {
+      //   const name = obj.creation.name;
+      //   if (map.has(name)) {
+      //     const existingObj = map.get(name);
+      //     Object.assign(existingObj.creation.dates, obj.creation.dates);
+      //     Object.assign(existingObj.creation.minPrice, obj.creation.minPrice);
+      //     Object.assign(existingObj.creation.place, obj.creation.place);
+      //     Object.assign(existingObj.creation.tags, obj.creation.tags);
+      //   } else {
+      //     map.set(name, obj);
+      //   }
+      // }
+
+      // const result = Array.from(map.values());
+      // console.log(result);
+      // console.log(result.length);
     },
     transformDate(dates) {
       const uniqueDates = dates

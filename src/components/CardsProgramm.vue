@@ -48,19 +48,19 @@ const config = {
     800: {
       itemsToShow: 2,
       itemsToScroll: 2,
-      snapAlign: "start",
+      snapAlign: "center",
       wrapAround: true,
       gap: 20,
     },
     1200: {
       itemsToShow: 3,
       itemsToScroll: 3,
-      snapAlign: "start",
+      snapAlign: "center",
       wrapAround: true,
       gap: 25,
     },
     1350: {
-      snapAlign: "start",
+      snapAlign: "center",
       itemsToShow: 4,
       itemsToScroll: 4,
       gap: 13,
