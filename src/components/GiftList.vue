@@ -28,11 +28,20 @@ import { Carousel, Slide } from "vue3-carousel";
 // https://vue3-carousel.ismail9k.com/
 
 const config = {
-  itemsToShow: 2,
-  itemsToScroll: 2,
+  itemsToShow: 1,
+  itemsToScroll: 1,
   gap: 10,
   snapAlign: "center",
   wrapAround: true,
+  breakpoints: {
+    450: {
+      snapAlign: "center",
+      itemsToShow: 2,
+      itemsToScroll: 1,
+      gap: 20,
+      wrapAround: true,
+    },
+  },
 };
 </script>
 
@@ -52,6 +61,16 @@ import img_6 from "@/assets/img/6-img.svg";
 
 export default {
   name: "GiftList",
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.$refs.refCarouselCards.value.update();
+    });
+  },
+  unmounted() {
+    window.removeEventListener("resize", () => {
+      this.$refs.refCarouselCards.value.update();
+    });
+  },
   data() {
     return {
       gifts: [
