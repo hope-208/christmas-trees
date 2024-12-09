@@ -164,6 +164,45 @@ export default {
       this.$refs.refForm.validate((valid) => {
         if (valid) {
           console.log("%c%s", "color: #00736b", "this.formData", this.formData);
+
+          // const mindboxData = {
+          //   email: this.formData.email,
+          //   contact: this.formData.contact,
+          // };
+
+          // if (this.formData.contact.charAt(0) == "@") {
+          //   mindboxData.tg = this.formData.contact;
+          // }
+
+          // if (
+          //   this.formData.contact.charAt(0) == "+" ||
+          //   this.formData.contact.charAt(0) == "8"
+          // ) {
+          //   mindboxData.mobilePhone = this.formData.contact;
+          // }
+
+          // https://api.mindbox.ru/v3/operations/{синхронная/асинхронная операция}?endpointId={уникальный идентификатор сайта/мобильного приложения/и т.п.}&operation={название операции}&deviceUUID={уникальный идентификатор устройства}
+          //   axios.post('https://api.mindbox.ru/api/v3/track', formData)
+          // .then(response => {
+          //   console.log(response.data);
+          // })
+          // .catch(error => {
+          //   console.error(error);
+          // });
+
+          // mindbox("async", {
+          //   operation: "popup",
+          //   data: {
+          //     customer: {
+          //       email: "pivan@mindbox.ru",
+          //       subscriptions: [
+          //         {
+          //           pointOfContact: "Email",
+          //         },
+          //       ],
+          //     },
+          //   },
+          // });
         } else {
           console.log("error submit!");
         }
