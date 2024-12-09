@@ -34,7 +34,10 @@
         аннулируются.</el-text
       >
       <el-text class="footer__info-text"
-        ><el-link href="#" target="_blank" class="footer__info-link"
+        ><el-link
+          href="https://www.afisha.ru/article/pravila-akcii-novogodniy-detskiy-boks-ot-afishi/"
+          target="_blank"
+          class="footer__info-link"
           >Полные&nbsp;правила</el-link
         >&nbsp;акции «новогодний бокс от Афиши»</el-text
       >
