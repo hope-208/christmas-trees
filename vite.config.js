@@ -14,13 +14,13 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://test-hgiuyfu83.lejnin.ru",
+        target: "https://unihelper.in",
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
         configure: (proxy) => {
           proxy.on("proxyReq", (proxyReq) => {
-            proxyReq.setHeader("Origin", "https://test-hgiuyfu83.lejnin.ru");
+            proxyReq.setHeader("Origin", "https://unihelper.in");
           });
         },
       },

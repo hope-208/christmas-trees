@@ -5,7 +5,6 @@
     :slidesPerView="1"
     :slidesPerGroup="1"
     :spaceBetween="10"
-    :loop="true"
     :breakpoints="{
       '950': {
         slidesPerView: 1,

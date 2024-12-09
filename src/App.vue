@@ -3,8 +3,16 @@
     <el-container direction="vertical">
       <HeaderItem />
       <el-main class="main">
-        <CarouselItem v-if="windowWidth >= 950" />
-        <SwiperProgramms v-if="windowWidth < 950" />
+        <CarouselItem
+          v-if="windowWidth >= 950"
+          :list="allEvents"
+          :test-data="events"
+        />
+        <SwiperProgramms
+          v-if="windowWidth < 950"
+          :list="allEvents"
+          :test-data="events"
+        />
         <LeadText
           :class="'lead-white'"
           text="Ёлки на Афише как на&nbsp;рождественской ярмарке — всех размеров: для самых
@@ -58,7 +66,7 @@
           style="text-align: left"
         />
         <!-- <CardsProgramm v-if="windowWidth >= 950" /> -->
-        <SwiperProgramms bottom />
+        <SwiperProgramms bottom :list="allEvents" :test-data="events" />
       </el-main>
     </el-container>
 
@@ -84,6 +92,7 @@ import FooterItem from "@/components/FooterItem.vue";
 export default {
   name: "App",
   created() {
+    this.getPrograms();
     this.handleResize();
     window.addEventListener("resize", this.handleResize);
   },
@@ -97,11 +106,108 @@ export default {
   data() {
     return {
       windowWidth: 1440,
+      events: [
+        {
+          creation: {
+            name: "Новогоднее цирковое представление у елки в ЦДРИ",
+            image:
+              "https://img01.rl0.ru/afisha/e945x-p0x51f1200x685q85i/s5.afisha.ru/mediastorage/c6/b8/78f43028492948a098bfa670b8c6.jpg",
+            url: "https://www.afisha.ru/performance/novogodnee-cirkovoe-predstavlenie-u-elki-v-cdri-311629/",
+          },
+          dates: ["2024-12-21", "2024-12-22", "2024-12-28", "2024-12-29"],
+          tags: ["Детские елки", "Детские", "Цирк"],
+          minPrice: 1500,
+        },
+        {
+          creation: {
+            name: "Ледовая сказка «Щелкунчик и Мышиный король»",
+            image:
+              "https://img.rl0.ru/afisha/e945x-p0x0f1890x1080q85i/s3.afisha.ru/mediastorage/74/61/e89892700df44c9aa703eb8d6174.jpg",
+            url: "https://www.afisha.ru/performance/ledovaya-skazka-shchelkunchik-i-myshiniy-korol-190013/",
+          },
+          dates: ["2024-12-28", "2024-12-29", "2025-01-03", "2025-01-04"],
+          tags: [
+            "Детские елки",
+            "Детские",
+            "Танцевальные",
+            "Музыкальные",
+            "Ледовые",
+          ],
+          minPrice: 1200,
+        },
+        {
+          creation: {
+            name: "Муми-тролль и Рождество",
+            image:
+              "https://img08.rl0.ru/afisha/e945x-p0x42f1024x585q85i/s2.afisha.ru/mediastorage/1b/26/c7afec791d834fbbac92c1d7261b.jpeg",
+            url: "https://www.afisha.ru/performance/mumi-troll-i-rozhdestvo-116296/",
+          },
+          dates: [
+            "2024-12-21",
+            "2024-12-22",
+            "2024-12-23",
+            "2024-12-24",
+            "2024-12-28",
+            "2024-12-29",
+          ],
+          tags: ["Кукольные", "Детские елки", "Детские"],
+          minPrice: 2300,
+        },
+        {
+          creation: {
+            name: "Щелкунчик",
+            image:
+              "https://img03.rl0.ru/afisha/e945x-p0x0f2018x1153q85i/s3.afisha.ru/mediastorage/59/ff/35a47b16b04744eeaf36979eff59.png",
+            url: "https://www.afisha.ru/performance/shchelkunchik-266172/",
+          },
+          dates: [
+            "2024-12-08",
+            "2024-12-13",
+            "2024-12-28",
+            "2024-12-29",
+            "2025-01-03",
+          ],
+          tags: ["Детские елки", "Детские"],
+          minPrice: 2300,
+        },
+      ],
+      allEvents: [],
     };
   },
   methods: {
     handleResize() {
       this.windowWidth = window.innerWidth;
+    },
+    async getPrograms() {
+      const res = await fetch("https://unihelper.in/get-feed", {
+        method: "get",
+        "Content-Type": "application/json; charset=utf-8",
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((res) => {
+          return res;
+        })
+        .then((data) => {
+          return data;
+        });
+
+      res.events.forEach((event) => {
+        const eventItem = {
+          creation: {
+            name: event.creation.name,
+            image: event.creation.image,
+            url: event.creation.url,
+          },
+          dates: event.dates,
+          tags: event.tags,
+          minPrice: event.minPrice,
+          place: event.place,
+        };
+
+        this.allEvents.push(eventItem);
+      });
     },
   },
 };
@@ -112,8 +218,7 @@ export default {
   --size: 1vw;
   width: var(--size);
   height: var(--size);
-  background: white;
-  border-radius: 50%;
+  background: url("./assets/img/star.svg") no-repeat center / cover border-box;
   position: absolute;
   top: -5vh;
   z-index: 1;
@@ -130,7 +235,7 @@ export default {
 
 @for $i from 1 through 50 {
   .snowflake:nth-child(#{$i}) {
-    --size: #{random(5) * 0.2}vw;
+    --size: #{random(12) * 0.2}vw;
     --left-ini: #{random(20) - 10}vw;
     --left-end: #{random(20) - 10}vw;
     left: #{random(100)}vw;
