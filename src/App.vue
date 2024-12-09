@@ -42,7 +42,8 @@
           text="Каким будет этот праздничный день?*"
           color-text="black"
         />
-        <SliderContent />
+        <SliderContent v-if="windowWidth >= 950" />
+        <SwiperProgrammContent v-if="windowWidth < 950" />
 
         <LeadText
           :class="'lead-bottom'"
@@ -75,7 +76,7 @@ import GiftList from "@/components/GiftList.vue";
 import StepsItem from "@/components/StepsItem.vue";
 import LeadGift from "@/components/LeadGift.vue";
 import SliderContent from "@/components/SliderContent.vue";
-// import CardsProgramm from "@/components/CardsProgramm.vue";
+import SwiperProgrammContent from "@/components/SwiperProgrammContent.vue";
 import FooterItem from "@/components/FooterItem.vue";
 </script>
 

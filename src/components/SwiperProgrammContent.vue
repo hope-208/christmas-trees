@@ -1,6 +1,19 @@
 <template>
-  <carousel ref="refSliderProgram" class="slider-programm" v-bind="config">
-    <slide
+  <swiper
+    ref="refSwiper"
+    class="slider slider-swiper slider-programm"
+    :slidesPerView="1"
+    :slidesPerGroup="1"
+    :spaceBetween="10"
+    :breakpoints="{
+      '950': {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        spaceBetween: 10,
+      },
+    }"
+  >
+    <swiper-slide
       class="slider-programm__item"
       v-for="programm in programms"
       :key="programm"
@@ -34,67 +47,13 @@
           class="slider-programm__image"
         />
       </div>
-    </slide>
-
-    <template #addons>
-      <el-button
-        class="slider__button slider__button_prev"
-        @click="$refs.refSliderProgram.prev()"
-      >
-        <img
-          class="slider__button_img"
-          src="@/assets/img/arrow-slider-left.svg"
-          alt=""
-        />
-      </el-button>
-      <el-button
-        class="slider__button slider__button_next"
-        @click="$refs.refSliderProgram.next()"
-      >
-        <img
-          class="slider__button_img"
-          src="@/assets/img/arrow-slider-right.svg"
-          alt=""
-        />
-      </el-button>
-    </template>
-  </carousel>
+    </swiper-slide>
+  </swiper>
 
   <el-text class="slider-programm__after-text"
     >*возможны изменения в программе Ёлки</el-text
   >
 </template>
-
-<script setup>
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide } from "vue3-carousel";
-// https://vue3-carousel.ismail9k.com/
-
-const config = {
-  itemsToShow: 1,
-  itemsToScroll: 1,
-  gap: 10,
-  snapAlign: "start",
-  wrapAround: true,
-  breakpointMode: "viewport",
-  breakpoints: {
-    950: {
-      itemsToShow: 2,
-      itemsToScroll: 1,
-      snapAlign: "start",
-      wrapAround: true,
-      gap: 20,
-    },
-    1300: {
-      snapAlign: "center",
-      itemsToShow: 1,
-      itemsToScroll: 1,
-      gap: 30,
-      wrapAround: true,
-    },
-  },
-};
-</script>
 
 <script>
 import prog_1 from "@/assets/img/1-prog.svg";
@@ -107,8 +66,15 @@ import prog_5_logo from "@/assets/img/prog_5_logo.svg";
 import prog_6 from "@/assets/img/6-prog.svg";
 // https://vue3-carousel.ismail9k.com/
 
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+
 export default {
-  name: "SliderContent",
+  name: "SwiperProgrammContent",
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
   data() {
     return {
       programms: [
@@ -161,13 +127,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.carousel__viewport {
-  order: 2;
-}
-
-.carousel__track {
-  align-items: flex-start;
-}
-</style>
