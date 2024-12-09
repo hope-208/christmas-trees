@@ -165,10 +165,10 @@ export default {
   },
   created() {
     this.getPrograms();
-
-    window.addEventListener("resize", () => {
-      this.$refs.refCarousel.value.update();
-    });
+    if (window.innerWidth > 950)
+      window.addEventListener("resize", () => {
+        this.$refs.refCarousel.value.update();
+      });
   },
   unmounted() {
     window.removeEventListener("resize", () => {
