@@ -3,10 +3,11 @@
     ref="refSwiper"
     class="slider slider-swiper"
     :class="bottom ? 'slider-bottom programm-container' : ''"
-    :slidesPerView="2"
+    :slidesPerView="1"
     :slidesPerGroup="4"
     :spaceBetween="10"
     :lazy="true"
+    :loop="true"
     v-loading="isLoading"
     :breakpoints="{
       '950': {
