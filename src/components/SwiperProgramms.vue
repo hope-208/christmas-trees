@@ -175,7 +175,7 @@ export default {
   methods: {
     async getPrograms() {
       this.isLoading = true;
-      const res = await fetch("/api/get-feed", {
+      const res = await fetch("https://test-hgiuyfu83.lejnin.ru/get-feed", {
         method: "get",
         "Content-Type": "application/json; charset=utf-8",
       })
