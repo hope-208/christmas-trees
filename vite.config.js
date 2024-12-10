@@ -24,6 +24,31 @@ export default defineConfig({
           });
         },
       },
+      "/mb": {
+        target: "https://personalization-web-stable.mindbox.ru",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq) => {
+            proxyReq.setHeader(
+              "Origin",
+              "https://personalization-web-stable.mindbox.ru",
+            );
+          });
+        },
+      },
+      "/mb-afisha": {
+        target: "https://afisha.mindbox.ru",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq) => {
+            proxyReq.setHeader("Origin", "https://afisha.mindbox.ru");
+          });
+        },
+      },
     },
   },
   plugins: [

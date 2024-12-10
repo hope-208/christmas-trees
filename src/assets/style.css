@@ -1876,4 +1876,85 @@ body .header__video {
   .footer__info-text.el-text, .footer__info-link.el-link {
     font-size: 14px;
   }
+}
+
+.dialog.el-dialog,
+.dialog {
+  max-width: 50%;
+  width: 100%;
+  padding: 50px;
+  border: none;
+  border-radius: 40px;
+}
+@media (max-width: 950px) {
+  .dialog.el-dialog,
+  .dialog {
+    max-width: 90%;
+    border-radius: 20px;
+  }
+}
+.dialog.el-dialog__content,
+.dialog__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.dialog.el-dialog__img,
+.dialog__img {
+  max-width: 100%;
+  max-height: 300px;
+}
+@media (max-width: 950px) {
+  .dialog.el-dialog__img,
+  .dialog__img {
+    max-width: 100%;
+    max-height: 30vh;
+  }
+}
+.dialog.el-dialog__msg,
+.dialog__msg {
+  font-family: Afisha Display;
+  font-size: 40px;
+  line-height: 105%;
+  color: #000;
+  text-align: center;
+}
+@media (max-width: 1100px) {
+  .dialog.el-dialog__msg,
+  .dialog__msg {
+    font-size: 31px;
+  }
+}
+@media (max-width: 550px) {
+  .dialog.el-dialog__msg,
+  .dialog__msg {
+    font-size: 21px;
+  }
+}
+
+.el-dialog.dialog > .el-dialog__header.show-close > .el-dialog__headerbtn {
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #54ACFF;
+  border: none;
+  border-radius: 50%;
+  font-size: 30px;
+}
+@media (max-width: 950px) {
+  .el-dialog.dialog > .el-dialog__header.show-close > .el-dialog__headerbtn {
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    font-size: 20px;
+  }
+}
+
+.el-dialog.dialog > .el-dialog__header.show-close > .el-dialog__headerbtn > .el-icon.el-dialog__close {
+  color: #FFF;
 }/*# sourceMappingURL=style.css.map */
