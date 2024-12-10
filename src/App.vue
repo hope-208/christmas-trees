@@ -1,8 +1,16 @@
 <template>
-  <el-scrollbar class="scroll">
+  <el-scrollbar class="scroll" v-loading="isLoading">
     <el-container direction="vertical">
       <HeaderItem />
       <el-main class="main">
+        <!-- <CustomSlider
+          btn
+          :slides="allEvents"
+          :test-data="events"
+          link
+          link-only-mobile
+          :name="'topEvents'"
+        /> -->
         <CarouselItem
           v-if="windowWidth >= 950"
           :list="allEvents"
@@ -76,6 +84,7 @@
 
 <script setup>
 import HeaderItem from "@/components/HeaderItem.vue";
+/*import CustomSlider from "@/components/CustomSlider.vue";*/
 import CarouselItem from "@/components/CarouselItem.vue";
 import SwiperProgramms from "@/components/SwiperProgramms.vue";
 import LeadText from "@/components/LeadText.vue";
@@ -92,9 +101,11 @@ import FooterItem from "@/components/FooterItem.vue";
 export default {
   name: "App",
   created() {
-    this.getPrograms();
     this.handleResize();
     window.addEventListener("resize", this.handleResize);
+  },
+  beforeMount() {
+    this.getPrograms();
   },
   mounted() {
     for (let i = 0; i < 50; i++) {
@@ -105,6 +116,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       windowWidth: 1440,
       events: [
         {
@@ -178,7 +190,57 @@ export default {
     handleResize() {
       this.windowWidth = window.innerWidth;
     },
+    // обработка фида
+    addUniqueEvent(event) {
+      if (
+        !this.allEvents.find(
+          (existingEvent) =>
+            existingEvent.creation.name === event.creation.name,
+        )
+      ) {
+        const eventItem = {
+          creation: {
+            name: event.creation.name,
+            image: event.creation.image,
+            url: event.creation.url,
+          },
+          dates: event.dates,
+          tags: event.tags,
+          minPrice: event.minPrice,
+          places: [],
+        };
+
+        eventItem.places.push(event.place);
+        return this.allEvents.push(eventItem);
+      } else {
+        return this.allEvents.forEach((existingEvent) => {
+          if (existingEvent.creation.name === event.creation.name) {
+            event.dates.forEach((date) => {
+              if (!existingEvent.dates.includes(date)) {
+                existingEvent.dates.push(date);
+              }
+            });
+            event.tags.forEach((tag) => {
+              if (!existingEvent.tags.includes(tag)) {
+                existingEvent.tags.push(tag);
+              }
+            });
+
+            if (!existingEvent.places.includes(event.place)) {
+              existingEvent.places.push(event.place);
+            }
+
+            existingEvent.minPrice =
+              existingEvent.minPrice < event.minPrice
+                ? existingEvent.minPrice
+                : event.minPrice;
+          }
+        });
+      }
+    },
     async getPrograms() {
+      if (this.isLoading) return;
+      this.isLoading = true;
       const res = await fetch("https://unihelper.in/get-feed", {
         method: "get",
         "Content-Type": "application/json; charset=utf-8",
@@ -194,26 +256,17 @@ export default {
         });
 
       res.events.forEach((event) => {
-        const eventItem = {
-          creation: {
-            name: event.creation.name,
-            image: event.creation.image,
-            url: event.creation.url,
-          },
-          dates: event.dates,
-          tags: event.tags,
-          minPrice: event.minPrice,
-          place: event.place,
-        };
-
-        this.allEvents.push(eventItem);
+        this.addUniqueEvent(event);
       });
+
+      this.isLoading = false;
     },
   },
 };
 </script>
 
 <style lang="scss">
+@use "sass:math";
 .snowflake {
   --size: 1vw;
   width: var(--size);
@@ -235,12 +288,12 @@ export default {
 
 @for $i from 1 through 50 {
   .snowflake:nth-child(#{$i}) {
-    --size: #{random(12) * 0.2}vw;
-    --left-ini: #{random(20) - 10}vw;
-    --left-end: #{random(20) - 10}vw;
-    left: #{random(100)}vw;
-    animation: snowfall #{5 + random(10)}s linear infinite;
-    animation-delay: -#{random(10)}s;
+    --size: #{math.random(15) * 0.2}vw;
+    --left-ini: #{math.random(20) - 10}vw;
+    --left-end: #{math.random(20) - 10}vw;
+    left: #{math.random(100)}vw;
+    animation: snowfall #{10 + math.random(10)}s linear infinite;
+    animation-delay: -#{math.random(20)}s;
   }
 }
 

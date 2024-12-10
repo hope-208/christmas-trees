@@ -62,9 +62,11 @@ import img_6 from "@/assets/img/6-img.svg";
 export default {
   name: "GiftList",
   mounted() {
-    window.addEventListener("resize", () => {
-      this.$refs.refCarouselCards.value.update();
-    });
+    if (window.innerWidth <= 940) {
+      window.addEventListener("resize", () => {
+        this.$refs.refCarouselCards.value.update();
+      });
+    }
   },
   unmounted() {
     window.removeEventListener("resize", () => {
