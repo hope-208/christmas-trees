@@ -319,7 +319,7 @@ body .header__video {
 
 .slider-swiper.swiper.slider.slider-bottom {
   display: flex;
-  max-width: 1318px;
+  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
   padding: 0;
@@ -332,13 +332,14 @@ body .header__video {
 
 .swiper.slider,
 .slider {
-  max-width: 1318px;
+  max-width: 1320px;
   width: 100%;
   margin: 0 auto;
   padding: 0px 90px;
   display: flex;
   align-items: center;
   overflow: hidden;
+  box-sizing: border-box;
 }
 @media (max-width: 1370px) {
   .swiper.slider,
@@ -435,6 +436,56 @@ body .header__video {
 @media (max-width: 1024px) {
   .swiper.slider__price.el-tag,
   .slider__price.el-tag {
+    display: none;
+  }
+}
+.swiper.slider__button.el-button, .swiper.slider__button,
+.slider__button.el-button,
+.slider__button {
+  max-width: 41px;
+  width: 100%;
+  max-height: 236px;
+  height: 100%;
+  padding: 0;
+  margin: 0 !important;
+  border-radius: 0;
+  background-color: transparent;
+  border: 0;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.swiper.slider__button.el-button_prev, .swiper.slider__button_prev,
+.slider__button.el-button_prev,
+.slider__button_prev {
+  order: 1;
+}
+.swiper.slider__button.el-button_next, .swiper.slider__button_next,
+.slider__button.el-button_next,
+.slider__button_next {
+  order: 3;
+}
+.swiper.slider__button.el-button_img, .swiper.slider__button_img,
+.slider__button.el-button_img,
+.slider__button_img {
+  width: 100%;
+}
+.swiper.slider__button.el-button::after, .swiper.slider__button::after,
+.slider__button.el-button::after,
+.slider__button::after {
+  content: none;
+}
+.swiper.slider__button.el-button:hover, .swiper.slider__button:hover,
+.slider__button.el-button:hover,
+.slider__button:hover {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: transparent !important;
+  outline: none;
+}
+@media (max-width: 949px) {
+  .swiper.slider__button.el-button, .swiper.slider__button,
+  .slider__button.el-button,
+  .slider__button {
     display: none;
   }
 }
@@ -1640,11 +1691,12 @@ body .header__video {
 }
 
 .programm-container, .slider-swiper.swiper.slider.slider-bottom.programm-container {
-  max-width: 1239px;
+  max-width: 1236px;
   width: 100%;
   margin: 44px auto;
   display: flex;
   gap: 12px;
+  box-sizing: border-box;
 }
 @media (max-width: 1350px) {
   .programm-container, .slider-swiper.swiper.slider.slider-bottom.programm-container {

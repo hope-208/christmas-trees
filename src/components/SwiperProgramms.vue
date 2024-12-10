@@ -94,23 +94,12 @@ export default {
     testData: { type: Array, default: () => [] },
   },
   mounted() {
-    // if (window.innerWidth > 950) {
-    //   window.addEventListener("resize", () => {
-    //     this.$refs.refSwiper.value.update();
-    //   });
-    // }
-
     if (this.list && this.list.length > 0) {
       this.loadChunk();
     } else {
       this.swiperContent = this.testData;
     }
   },
-  // unmounted() {
-  //   window.removeEventListener("resize", () => {
-  //     this.$refs.refSwiper.value.update();
-  //   });
-  // },
   data() {
     return {
       swiperContent: [],
