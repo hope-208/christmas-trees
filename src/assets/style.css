@@ -1215,6 +1215,9 @@ body .header__video {
     margin-left: 20px;
   }
 }
+.step__desc-form.el-text_error {
+  color: rgba(255, 0, 0, 0.15);
+}
 .step__desc-form_error.el-text {
   color: #FF2100;
 }

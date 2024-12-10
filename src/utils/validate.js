@@ -13,7 +13,8 @@ export function validateContact(str) {
     // /^@[a-zA-Z0-9_]{5,32}$/
     return reg.test(str);
   } else {
-    const reg = /^\+7\d{10}$/;
+    const reg =
+      /(?:\+7|7|8)?\s*(?:\(?\d{3}\)?[\s-]?|\d{3})?\s*\d{3}[\s-]?\d{2}[\s-]?\d{2}|\(?\d{3}\)?[\s-]?\d{7}|\d{3}[\s-]?\d{2}[\s-]?\d{2}|\d{10,15}/g;
     return reg.test(str);
   }
 }
