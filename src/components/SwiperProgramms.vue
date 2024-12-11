@@ -4,13 +4,23 @@
     class="slider slider-swiper"
     :class="bottom ? 'slider-bottom programm-container' : ''"
     :slidesPerView="1"
-    :slidesPerGroup="4"
+    :slidesPerGroup="1"
     :spaceBetween="10"
     :lazy="true"
     :breakpoints="{
-      '600': {
-        slidesPerView: 5,
-        slidesPerGroup: 5,
+      '430': {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 10,
+      },
+      '650': {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 10,
+      },
+      '870': {
+        slidesPerView: 4,
+        slidesPerGroup: 4,
         spaceBetween: 10,
       },
       '950': {

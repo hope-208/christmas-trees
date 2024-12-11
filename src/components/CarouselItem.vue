@@ -66,7 +66,7 @@ const config = {
       gap: 30,
     },
     1370: {
-      snapAlign: "center",
+      snapAlign: "start",
       itemsToShow: 3,
       itemsToScroll: 3,
       gap: 30,
