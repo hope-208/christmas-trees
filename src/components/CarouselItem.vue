@@ -1,5 +1,10 @@
 <template>
-  <carousel ref="refCarousel" class="slider slider-carousel" v-bind="config">
+  <carousel
+    ref="refCarousel"
+    v-loading="isLoading"
+    class="slider slider-carousel"
+    v-bind="config"
+  >
     <slide class="slider__item" v-for="event in swiperContent" :key="event">
       <el-link
         class="slider__content"
@@ -110,6 +115,7 @@ export default {
   // },
   data() {
     return {
+      isLoading: false,
       swiperContent: [],
       chunkSize: 6,
       offset: 0,
@@ -117,10 +123,15 @@ export default {
   },
   methods: {
     loadChunk() {
+      this.isLoading = true;
+      if (this.offset == 0) {
+        this.swiperContent = [];
+      }
       const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
       this.offset += this.chunkSize;
 
       this.swiperContent.push(...chunk);
+      this.isLoading = false;
     },
     transformDate(dates) {
       const uniqueDates = dates

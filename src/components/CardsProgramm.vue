@@ -1,5 +1,10 @@
 <template>
-  <carousel ref="refCardsProgramm" class="programm-container" v-bind="config">
+  <carousel
+    ref="refCardsProgramm"
+    v-loading="isLoading"
+    class="programm-container"
+    v-bind="config"
+  >
     <slide class="programm-card" v-for="event in swiperContent" :key="event">
       <el-link
         class="programm-card__contant"
@@ -88,6 +93,7 @@ export default {
   // },
   data() {
     return {
+      isLoading: false,
       swiperContent: [],
       chunkSize: 6,
       offset: 0,
@@ -95,10 +101,15 @@ export default {
   },
   methods: {
     loadChunk() {
+      this.isLoading = true;
+      if (this.offset == 0) {
+        this.swiperContent = [];
+      }
       const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
       this.offset += this.chunkSize;
 
       this.swiperContent.push(...chunk);
+      this.isLoading = false;
     },
     transformDate(dates) {
       const uniqueDates = dates

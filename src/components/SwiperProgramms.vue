@@ -27,7 +27,7 @@
       },
       '870': {
         slidesPerView: 'auto',
-        slidesPerGroup: 4,
+        slidesPerGroup: 5,
         spaceBetween: 10,
         edgeSwipeThreshold: 0,
         centeredSlides: false,

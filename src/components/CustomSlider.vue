@@ -1,5 +1,11 @@
 <template>
-  <div :ref="refCurrent" class="slider" :class="name" :id="name">
+  <div
+    :ref="refCurrent"
+    class="slider"
+    :class="name"
+    :id="name"
+    v-loading="isLoading"
+  >
     <el-button
       v-show="btn"
       :id="`prev-${name}`"
@@ -115,17 +121,20 @@ export default {
       countViewSlide: 3,
       gap: 30,
       isImageLoaded: false,
+      isLoading: false,
     };
   },
   methods: {
     loadChunk() {
-      const chunk = this.slides.slice(
-        this.offset,
-        this.offset + this.chunkSize,
-      );
+      this.isLoading = true;
+      if (this.offset == 0) {
+        this.swiperContent = [];
+      }
+      const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
       this.offset += this.chunkSize;
 
       this.swiperContent.push(...chunk);
+      this.isLoading = false;
     },
     transformDate(dates) {
       const uniqueDates = dates
