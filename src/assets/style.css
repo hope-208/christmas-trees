@@ -45,9 +45,6 @@ body .scroll {
 body .scroll > .el-scrollbar__bar > .el-scrollbar__thumb {
   background-color: #FFF;
 }
-body .carousel__slide {
-  cursor: grab;
-}
 body .page {
   width: 100%;
   height: 100vh;
@@ -254,15 +251,9 @@ body .header__video {
 @media (max-width: 950px) {
   .slider-swiper.swiper.slider {
     display: flex;
-    max-width: 94%;
+    max-width: 100%;
     width: 100%;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 600px) {
-  .slider-swiper.swiper.slider {
-    max-width: 98%;
-    margin: 0 0 0 10px;
+    margin: 0;
   }
 }
 
@@ -308,16 +299,17 @@ body .header__video {
 @media (max-width: 949px) {
   .swiper.slider,
   .slider {
+    max-width: 100%;
     justify-content: center;
-    margin: 0 0 0 auto;
+    margin: 0;
     padding: 0;
   }
 }
 @media (max-width: 600px) {
   .swiper.slider,
   .slider {
-    max-width: 98%;
-    margin: 0 0 0 10px;
+    max-width: 100%;
+    margin: 0;
     padding: 0;
   }
 }
@@ -478,7 +470,7 @@ body .header__video {
     max-height: 56px;
     font-size: 21px;
     padding: 15px 0 20px;
-    margin: 50px auto 120px;
+    margin: 50px auto 0;
     border-radius: 60px;
   }
 }
@@ -787,17 +779,20 @@ body .header__video {
   }
 }
 
-.slider-cards {
+.slider-cards,
+.slider-cards.swiper {
   display: none;
 }
 @media (max-width: 940px) {
-  .slider-cards {
+  .slider-cards,
+  .slider-cards.swiper {
     display: block;
     margin-bottom: 100px;
   }
 }
 
-.card {
+.card,
+.card.swiper-slide {
   max-width: 370px;
   width: 100% !important;
   display: flex;
@@ -805,16 +800,19 @@ body .header__video {
   box-sizing: border-box;
 }
 @media (max-width: 700px) {
-  .card {
+  .card,
+  .card.swiper-slide {
     max-width: 280px;
   }
 }
 @media (max-width: 450px) {
-  .card {
+  .card,
+  .card.swiper-slide {
     max-width: 200px;
   }
 }
-.card__caption {
+.card__caption,
+.card.swiper-slide__caption {
   position: relative;
   max-width: 370px;
   width: 100%;
@@ -822,18 +820,21 @@ body .header__video {
   box-sizing: border-box;
 }
 @media (max-width: 700px) {
-  .card__caption {
+  .card__caption,
+  .card.swiper-slide__caption {
     max-width: 280px;
     margin-bottom: 25px;
   }
 }
 @media (max-width: 450px) {
-  .card__caption {
+  .card__caption,
+  .card.swiper-slide__caption {
     max-width: 200px;
     margin-bottom: 19px;
   }
 }
-.card__label {
+.card__label,
+.card.swiper-slide__label {
   position: absolute;
   top: 0;
   left: 0;
@@ -843,18 +844,21 @@ body .header__video {
   height: 100%;
 }
 @media (max-width: 700px) {
-  .card__label {
+  .card__label,
+  .card.swiper-slide__label {
     max-width: 74px;
     max-height: 74px;
   }
 }
 @media (max-width: 450px) {
-  .card__label {
+  .card__label,
+  .card.swiper-slide__label {
     max-width: 54px;
     max-height: 54px;
   }
 }
-.card__img {
+.card__img,
+.card.swiper-slide__img {
   max-width: 315px;
   width: 100%;
   max-height: 315px;
@@ -863,18 +867,22 @@ body .header__video {
   margin-left: auto;
 }
 @media (max-width: 700px) {
-  .card__img {
+  .card__img,
+  .card.swiper-slide__img {
     max-width: 250px;
     max-height: 250px;
   }
 }
 @media (max-width: 450px) {
-  .card__img {
+  .card__img,
+  .card.swiper-slide__img {
     max-width: 164px;
     max-height: 164px;
   }
 }
-.card__title.el-text, .card__description.el-text {
+.card__title.el-text, .card__description.el-text,
+.card.swiper-slide__title.el-text,
+.card.swiper-slide__description.el-text {
   max-width: 321px;
   width: 100%;
   font-style: normal;
@@ -882,16 +890,21 @@ body .header__video {
   text-align: left;
 }
 @media (max-width: 700px) {
-  .card__title.el-text, .card__description.el-text {
+  .card__title.el-text, .card__description.el-text,
+  .card.swiper-slide__title.el-text,
+  .card.swiper-slide__description.el-text {
     max-width: 230px;
   }
 }
 @media (max-width: 450px) {
-  .card__title.el-text, .card__description.el-text {
+  .card__title.el-text, .card__description.el-text,
+  .card.swiper-slide__title.el-text,
+  .card.swiper-slide__description.el-text {
     max-width: 176px;
   }
 }
-.card__title.el-text {
+.card__title.el-text,
+.card.swiper-slide__title.el-text {
   color: #000;
   margin-bottom: 30px;
   font-family: Afisha Display;
@@ -899,32 +912,37 @@ body .header__video {
   line-height: 110%;
 }
 @media (max-width: 700px) {
-  .card__title.el-text {
+  .card__title.el-text,
+  .card.swiper-slide__title.el-text {
     font-size: 20px;
     line-height: 105%;
     margin-bottom: 22px;
   }
 }
 @media (max-width: 450px) {
-  .card__title.el-text {
+  .card__title.el-text,
+  .card.swiper-slide__title.el-text {
     font-size: 14px;
     line-height: 15px;
     margin-bottom: 15px;
   }
 }
-.card__description.el-text {
+.card__description.el-text,
+.card.swiper-slide__description.el-text {
   color: #FFF;
   font-family: Suisse;
   font-size: 20px;
   line-height: 117%;
 }
 @media (max-width: 700px) {
-  .card__description.el-text {
+  .card__description.el-text,
+  .card.swiper-slide__description.el-text {
     font-size: 18px;
   }
 }
 @media (max-width: 450px) {
-  .card__description.el-text {
+  .card__description.el-text,
+  .card.swiper-slide__description.el-text {
     font-size: 14px;
   }
 }
@@ -1456,8 +1474,8 @@ body .header__video {
 @media (max-width: 950px) {
   .slider-programm.slider-swiper.swiper.slider,
   .slider-programm {
-    max-width: 98%;
-    margin: 30px 0 10px auto;
+    max-width: 100%;
+    margin: 30px 0 10px;
   }
 }
 .slider-programm.slider-swiper.swiper.slider__item.carousel__slide, .slider-programm.slider-swiper.swiper.slider__item.swiper-slide,
@@ -1690,20 +1708,20 @@ body .header__video {
 }
 @media (max-width: 950px) {
   .programm-container, .slider-swiper.swiper.slider.slider-bottom.programm-container {
-    max-width: 94%;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
   }
 }
 @media (max-width: 900px) {
   .programm-container, .slider-swiper.swiper.slider.slider-bottom.programm-container {
-    max-width: 96%;
-    margin: 30px 0 30px auto;
+    max-width: 100%;
+    margin: 30px 0 0;
   }
 }
 @media (max-width: 600px) {
   .programm-container, .slider-swiper.swiper.slider.slider-bottom.programm-container {
-    max-width: 98%;
-    margin: 0 0 0 10px;
+    max-width: 100%;
+    margin: 0;
   }
 }
 .programm-container__button-link.el-link, .slider-swiper.swiper.slider.slider-bottom.programm-container__button-link.el-link {

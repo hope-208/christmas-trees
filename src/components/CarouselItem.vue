@@ -64,12 +64,16 @@ const config = {
       itemsToShow: 2,
       itemsToScroll: 2,
       gap: 30,
+      mouseDrag: false,
+      touchDrag: false,
     },
     1370: {
       snapAlign: "start",
       itemsToShow: 3,
       itemsToScroll: 3,
       gap: 30,
+      mouseDrag: false,
+      touchDrag: false,
     },
   },
 };
@@ -155,7 +159,7 @@ export default {
 
 @media (max-width: 600px) {
   .carousel__viewport {
-    max-width: 98%;
+    max-width: 100%;
   }
 }
 /* .carousel__track {

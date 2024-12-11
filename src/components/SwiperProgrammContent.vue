@@ -2,15 +2,16 @@
   <swiper
     ref="refSwiper"
     class="slider slider-swiper slider-programm"
-    :slidesPerView="1"
+    :slidesPerView="'auto'"
     :slidesPerGroup="1"
     :spaceBetween="10"
     loop
     :breakpoints="{
       '950': {
-        slidesPerView: 2,
+        slidesPerView: 'auto',
         slidesPerGroup: 2,
         spaceBetween: 10,
+        loop: true,
       },
     }"
   >

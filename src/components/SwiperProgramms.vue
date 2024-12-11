@@ -3,37 +3,52 @@
     ref="refSwiper"
     class="slider slider-swiper"
     :class="bottom ? 'slider-bottom programm-container' : ''"
-    :slidesPerView="1"
+    v-loading="isLoading"
+    :slidesPerView="'auto'"
     :slidesPerGroup="1"
     :spaceBetween="10"
+    :edgeSwipeThreshold="0"
+    :centeredSlides="false"
     :lazy="true"
     :breakpoints="{
       '430': {
-        slidesPerView: 2,
+        slidesPerView: 'auto',
         slidesPerGroup: 2,
         spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
       },
       '650': {
-        slidesPerView: 3,
+        slidesPerView: 'auto',
         slidesPerGroup: 3,
         spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
       },
       '870': {
-        slidesPerView: 4,
+        slidesPerView: 'auto',
         slidesPerGroup: 4,
         spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
       },
       '950': {
-        slidesPerView: 4,
+        slidesPerView: 'auto',
         spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
       },
       '1160': {
-        slidesPerView: 2,
+        slidesPerView: 'auto',
         spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
       },
       '1350': {
-        slidesPerView: 4,
+        slidesPerView: 'auto',
         spaceBetween: 12,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
       },
     }"
     @slideChange="loadChunk"
@@ -117,6 +132,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       swiperContent: [],
       chunkSize: 6,
       offset: 0,
@@ -124,10 +140,15 @@ export default {
   },
   methods: {
     loadChunk() {
+      this.isLoading = true;
+      if (this.offset == 0) {
+        this.swiperContent = [];
+      }
       const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
       this.offset += this.chunkSize;
 
       this.swiperContent.push(...chunk);
+      this.isLoading = false;
     },
     transformDate(dates) {
       const uniqueDates = dates

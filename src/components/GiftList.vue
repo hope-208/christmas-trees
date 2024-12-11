@@ -1,5 +1,5 @@
 <template>
-  <div class="cards">
+  <div class="cards" v-show="windowWidth >= 950">
     <div class="card" v-for="gift in gifts" :key="gift">
       <div class="card__caption">
         <img class="card__label" :src="gift.label" alt="" />
@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <carousel ref="refCarouselCards" class="slider-cards" v-bind="config">
+  <!-- <carousel ref="refCarouselCards" class="slider-cards" v-bind="config">
     <slide class="card" v-for="gift in gifts" :key="gift">
       <div class="card__caption">
         <img class="card__label" :src="gift.label" alt="" />
@@ -19,10 +19,29 @@
       <el-text class="card__title">{{ gift.title }}</el-text>
       <el-text class="card__description">{{ gift.description }}</el-text>
     </slide>
-  </carousel>
+  </carousel> -->
+
+  <swiper
+    v-show="windowWidth < 950"
+    ref="refCarouselCards"
+    class="slider-cards"
+    :slidesPerView="'auto'"
+    :slidesPerGroup="1"
+    :spaceBetween="10"
+    loop
+  >
+    <swiper-slide class="card" v-for="gift in gifts" :key="gift"
+      ><div class="card__caption">
+        <img class="card__label" :src="gift.label" alt="" />
+        <img class="card__img" :src="gift.image" alt="" />
+      </div>
+      <el-text class="card__title">{{ gift.title }}</el-text>
+      <el-text class="card__description">{{ gift.description }}</el-text>
+    </swiper-slide>
+  </swiper>
 </template>
 
-<script setup>
+<!-- <script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
 // https://vue3-carousel.ismail9k.com/
@@ -43,7 +62,7 @@ const config = {
     },
   },
 };
-</script>
+</script> -->
 
 <script>
 import label_1 from "@/assets/img/1-label.svg";
@@ -59,22 +78,22 @@ import img_4 from "@/assets/img/4-img.svg";
 import img_5 from "@/assets/img/5-img.svg";
 import img_6 from "@/assets/img/6-img.svg";
 
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+
 export default {
   name: "GiftList",
-  mounted() {
-    if (window.innerWidth <= 940) {
-      window.addEventListener("resize", () => {
-        this.$refs.refCarouselCards.value.update();
-      });
-    }
+  components: {
+    Swiper,
+    SwiperSlide,
   },
-  unmounted() {
-    window.removeEventListener("resize", () => {
-      this.$refs.refCarouselCards.value.update();
-    });
+  created() {
+    this.handleResize();
+    window.addEventListener("resize", this.handleResize);
   },
   data() {
     return {
+      windowWidth: 1440,
       gifts: [
         {
           label: label_1,
@@ -120,6 +139,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    },
   },
 };
 </script>

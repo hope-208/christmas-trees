@@ -291,7 +291,7 @@ export default {
     --size: #{math.random(15) * 0.2}vw;
     --left-ini: #{math.random(20) - 10}vw;
     --left-end: #{math.random(20) - 10}vw;
-    left: #{math.random(100)}vw;
+    left: #{math.random(95)}vw;
     animation: snowfall #{10 + math.random(10)}s linear infinite;
     animation-delay: -#{math.random(20)}s;
   }

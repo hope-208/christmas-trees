@@ -84,6 +84,8 @@ const config = {
       snapAlign: "start",
       wrapAround: true,
       gap: 20,
+      mouseDrag: false,
+      touchDrag: false,
     },
     1300: {
       snapAlign: "center",
@@ -91,6 +93,8 @@ const config = {
       itemsToScroll: 1,
       gap: 30,
       wrapAround: true,
+      mouseDrag: false,
+      touchDrag: false,
     },
   },
 };
@@ -169,5 +173,11 @@ export default {
 
 .carousel__track {
   align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .carousel__viewport {
+    max-width: 100%;
+  }
 }
 </style>
