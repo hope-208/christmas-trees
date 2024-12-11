@@ -44,13 +44,6 @@
       </el-button>
     </template>
   </carousel>
-
-  <el-link
-    class="slider__button-link"
-    href="https://www.afisha.ru/msk/new-year-for-kids/"
-    target="_blank"
-    >Смотреть все</el-link
-  >
 </template>
 
 <script setup>

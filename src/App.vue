@@ -1,6 +1,6 @@
 <template>
   <el-scrollbar class="scroll" v-loading="isLoading">
-    <el-container direction="vertical">
+    <el-container direction="vertical" style="overflow: hidden">
       <HeaderItem />
       <el-main class="main">
         <!-- <CustomSlider

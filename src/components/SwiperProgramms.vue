@@ -8,8 +8,13 @@
     :spaceBetween="10"
     :lazy="true"
     :breakpoints="{
+      '600': {
+        slidesPerView: 5,
+        slidesPerGroup: 5,
+        spaceBetween: 10,
+      },
       '950': {
-        slidesPerView: 2,
+        slidesPerView: 4,
         spaceBetween: 10,
       },
       '1160': {

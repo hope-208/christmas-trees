@@ -449,38 +449,62 @@ body .header__video {
 }
 .swiper.slider__button-link.el-link,
 .slider__button-link.el-link {
-  display: none;
+  display: block;
+  max-width: 1238px;
+  width: 100%;
+  max-height: 80px;
+  height: 100%;
+  padding: 22px 0 26px;
+  margin: 0 auto 120px;
+  font-family: Afisha Display;
+  font-weight: 500;
+  font-size: 32px;
+  color: #FFF;
+  background-color: #000;
+  border-radius: 80px;
+  text-align: center;
+  box-sizing: border-box;
+}
+@media (max-width: 1350px) {
+  .swiper.slider__button-link.el-link,
+  .slider__button-link.el-link {
+    max-width: 80%;
+  }
 }
 @media (max-width: 950px) {
   .swiper.slider__button-link.el-link,
   .slider__button-link.el-link {
-    display: block;
     max-width: 94%;
-    width: 100%;
     max-height: 56px;
-    height: 100%;
-    padding: 16px 0;
-    margin: 34px auto 0;
-    font-family: Afisha Display;
     font-size: 21px;
-    color: #FFF;
-    background-color: #000;
+    padding: 15px 0 20px;
+    margin: 50px auto 120px;
     border-radius: 60px;
-    text-align: center;
-    box-sizing: border-box;
   }
-  .swiper.slider__button-link.el-link:hover,
-  .slider__button-link.el-link:hover {
-    color: #FFF;
-    text-decoration: none;
-    outline-offset: 0;
-    background-color: #A8A8A8;
+}
+@media (max-width: 900px) {
+  .swiper.slider__button-link.el-link,
+  .slider__button-link.el-link {
+    max-width: 96%;
   }
-  .swiper.slider__button-link.el-link.is-underline::after, .swiper.slider__button-link.el-link.is-underline:hover::after,
-  .slider__button-link.el-link.is-underline::after,
-  .slider__button-link.el-link.is-underline:hover::after {
-    border: none;
+}
+@media (max-width: 600px) {
+  .swiper.slider__button-link.el-link,
+  .slider__button-link.el-link {
+    max-width: 98%;
   }
+}
+.swiper.slider__button-link.el-link:hover,
+.slider__button-link.el-link:hover {
+  color: #FFF;
+  text-decoration: none;
+  outline-offset: 0;
+  background-color: #A8A8A8;
+}
+.swiper.slider__button-link.el-link.is-underline::after, .swiper.slider__button-link.el-link.is-underline:hover::after,
+.slider__button-link.el-link.is-underline::after,
+.slider__button-link.el-link.is-underline:hover::after {
+  border: none;
 }
 .swiper.slider__title,
 .slider__title {
