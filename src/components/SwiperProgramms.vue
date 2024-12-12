@@ -1,59 +1,108 @@
 <template>
-  <div class="slider-container">
-    <swiper
-      class="slider"
-      :slidesPerView="3"
-      :spaceBetween="30"
-      navigation
-      :modules="modules"
-      loop
+  <swiper
+    ref="refSwiper"
+    class="slider slider-swiper"
+    :class="bottom ? 'slider-bottom programm-container' : ''"
+    v-loading="isLoading"
+    :slidesPerView="'auto'"
+    :slidesPerGroup="1"
+    :spaceBetween="10"
+    :edgeSwipeThreshold="0"
+    :centeredSlides="false"
+    :lazy="true"
+    :breakpoints="{
+      '430': {
+        slidesPerView: 'auto',
+        slidesPerGroup: 2,
+        spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
+      },
+      '650': {
+        slidesPerView: 'auto',
+        slidesPerGroup: 3,
+        spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
+      },
+      '870': {
+        slidesPerView: 'auto',
+        slidesPerGroup: 5,
+        spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
+      },
+      '950': {
+        slidesPerView: 'auto',
+        slidesPerGroup: 4,
+        spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
+      },
+      '1160': {
+        slidesPerView: 'auto',
+        slidesPerGroup: 4,
+        spaceBetween: 10,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
+      },
+      '1350': {
+        slidesPerView: 'auto',
+        slidesPerGroup: 4,
+        spaceBetween: 12,
+        edgeSwipeThreshold: 0,
+        centeredSlides: false,
+      },
+    }"
+    @slideChange="loadChunk"
+  >
+    <swiper-slide
+      :class="bottom ? 'programm-card' : 'slider__item'"
+      v-for="event in swiperContent"
+      :key="event"
     >
-      <swiper-slide class="slider__item" v-for="event in events" :key="event">
-        <el-link
-          class="slider__content"
-          :href="event.creation.url"
-          target="_blank"
+      <el-link
+        class="slider__content"
+        :class="bottom ? 'programm-card__contant' : ''"
+        :href="event.creation.url"
+        target="_blank"
+      >
+        <div class="slider__capture">
+          <el-image
+            class="slider__img"
+            :class="bottom ? 'programm-card__img' : ''"
+            :src="event.creation.image"
+            fit="cover"
+            loading="lazy"
+            :scroll-container="'.swiper-wrapper'"
+          />
+          <div class="swiper-lazy-preloader"></div>
+          <el-tag class="slider__price">от {{ event.minPrice }} ₽</el-tag>
+        </div>
+        <h5 class="slider__title">{{ event.creation.name }}</h5>
+        <el-text
+          class="slider__tag"
+          v-for="tag in event.creation.tags"
+          :key="tag"
+          >{{ tag }}</el-text
         >
-          <div class="slider__capture">
-            <el-image
-              class="slider__img"
-              :src="event.creation.image"
-              fit="cover"
-            />
-            <el-tag class="slider__price">от {{ event.minPrice }} ₽</el-tag>
-          </div>
-          <h5 class="slider__title">{{ event.creation.name }}</h5>
-          <el-text
-            class="slider__tag"
-            v-for="tag in event.creation.tags"
-            :key="tag"
-            >{{ tag }}</el-text
-          >
-          <el-text class="slider__date">{{
-            transformDate(event.dates)
-          }}</el-text>
-          <el-text class="slider__place">На 5 площадках </el-text>
-        </el-link>
-      </swiper-slide>
-    </swiper>
-  </div>
+        <el-text class="slider__date">{{ transformDate(event.dates) }}</el-text>
+        <el-text class="slider__place">На 5 площадках </el-text>
+      </el-link>
+    </swiper-slide>
+  </swiper>
+
+  <el-link
+    class="slider__button-link"
+    href="https://www.afisha.ru/msk/new-year-for-kids/"
+    target="_blank"
+    >Смотреть все</el-link
+  >
 </template>
+
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
-import { EffectFade, Navigation } from "swiper/modules";
-
-// Import Swiper styles
+import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-
-// import "swiper/css/pagination";
-// import "swiper/css/navigation";
-
-// import required modules
-// import { Pagination, Navigation } from "swiper/modules";
-// import { Navigation } from "swiper/modules";
 
 export default {
   name: "SwiperProgramms",
@@ -61,99 +110,58 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  // setup() {
-  //   return {
-  //     modules: [Navigation],
-  //   };
-  // },
+  props: {
+    bottom: {
+      type: Boolean,
+      default: false,
+    },
+    list: { type: Array, default: () => [] },
+    testData: { type: Array, default: () => [] },
+  },
   setup() {
-    const swiper = useSwiper();
-
+    const onSlideChange = () => {
+      this.loadChunk();
+    };
     return {
-      swiper,
-      modules: [EffectFade, Navigation],
+      onSlideChange,
     };
   },
   mounted() {
-    this.getPrograms();
+    if (this.list && this.list.length > 0) {
+      this.loadChunk();
+    } else {
+      this.swiperContent = this.testData;
+    }
+  },
+
+  updated() {
+    if (this.swiperContent && this.swiperContent.length == 5) {
+      if (this.list && this.list.length > 0) {
+        this.loadChunk();
+      } else {
+        this.swiperContent = this.testData;
+      }
+    }
   },
   data() {
     return {
-      events: [
-        {
-          creation: {
-            name: "Новогоднее цирковое представление у елки в ЦДРИ",
-            image:
-              "https://img01.rl0.ru/afisha/e945x-p0x51f1200x685q85i/s5.afisha.ru/mediastorage/c6/b8/78f43028492948a098bfa670b8c6.jpg",
-            url: "https://www.afisha.ru/performance/novogodnee-cirkovoe-predstavlenie-u-elki-v-cdri-311629/",
-          },
-          dates: ["2024-12-21", "2024-12-22", "2024-12-28", "2024-12-29"],
-          tags: ["Детские елки", "Детские", "Цирк"],
-          minPrice: 1500,
-        },
-        {
-          creation: {
-            name: "Ледовая сказка «Щелкунчик и Мышиный король»",
-            image:
-              "https://img.rl0.ru/afisha/e945x-p0x0f1890x1080q85i/s3.afisha.ru/mediastorage/74/61/e89892700df44c9aa703eb8d6174.jpg",
-            url: "https://www.afisha.ru/performance/ledovaya-skazka-shchelkunchik-i-myshiniy-korol-190013/",
-          },
-          dates: ["2024-12-28", "2024-12-29", "2025-01-03", "2025-01-04"],
-          tags: [
-            "Детские елки",
-            "Детские",
-            "Танцевальные",
-            "Музыкальные",
-            "Ледовые",
-          ],
-          minPrice: 1200,
-        },
-        {
-          creation: {
-            name: "Муми-тролль и Рождество",
-            image:
-              "https://img08.rl0.ru/afisha/e945x-p0x42f1024x585q85i/s2.afisha.ru/mediastorage/1b/26/c7afec791d834fbbac92c1d7261b.jpeg",
-            url: "https://www.afisha.ru/performance/mumi-troll-i-rozhdestvo-116296/",
-          },
-          dates: [
-            "2024-12-21",
-            "2024-12-22",
-            "2024-12-23",
-            "2024-12-24",
-            "2024-12-28",
-            "2024-12-29",
-          ],
-          tags: ["Кукольные", "Детские елки", "Детские"],
-          minPrice: 2300,
-        },
-        {
-          creation: {
-            name: "Щелкунчик",
-            image:
-              "https://img03.rl0.ru/afisha/e945x-p0x0f2018x1153q85i/s3.afisha.ru/mediastorage/59/ff/35a47b16b04744eeaf36979eff59.png",
-            url: "https://www.afisha.ru/performance/shchelkunchik-266172/",
-          },
-          dates: [
-            "2024-12-08",
-            "2024-12-13",
-            "2024-12-28",
-            "2024-12-29",
-            "2025-01-03",
-          ],
-          tags: ["Детские елки", "Детские"],
-          minPrice: 2300,
-        },
-      ],
+      isLoading: false,
+      swiperContent: [],
+      chunkSize: 6,
+      offset: 0,
     };
   },
   methods: {
-    async getPrograms() {
-      await fetch("https://www.afisha.ru/exports/new_year_trees_landing.xml", {
-        mode: "no-cors",
-        method: "get",
-      }).then((response) => {
-        console.log("%c%s", "color: #8c0038", response);
-      });
+    loadChunk() {
+      this.isLoading = true;
+      if (this.offset == 0) {
+        this.swiperContent = [];
+      }
+      const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
+      this.offset += this.chunkSize;
+
+      this.swiperContent.push(...chunk);
+      this.isLoading = false;
     },
     transformDate(dates) {
       const uniqueDates = dates
@@ -184,48 +192,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.slider-container {
-  max-width: 1318px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.swiper.slider {
-  max-width: 1140px;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0 88px;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.swiper {
-  width: 100%;
-  height: 300px;
-  margin: 20px auto;
-}
-.append-buttons {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.append-buttons button {
-  display: inline-block;
-  cursor: pointer;
-  border: 1px solid #007aff;
-  color: #007aff;
-  text-decoration: none;
-  padding: 4px 10px;
-  border-radius: 4px;
-  margin: 0 10px;
-  font-size: 13px;
-}
-</style>

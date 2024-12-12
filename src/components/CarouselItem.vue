@@ -1,13 +1,11 @@
 <template>
   <carousel
     ref="refCarousel"
-    class="slider"
-    :items-to-show="3"
-    :items-to-scroll="3"
-    :gap="30"
-    wrap-around
+    v-loading="isLoading"
+    class="slider slider-carousel"
+    v-bind="config"
   >
-    <slide class="slider__item" v-for="event in events" :key="event">
+    <slide class="slider__item" v-for="event in swiperContent" :key="event">
       <el-link
         class="slider__content"
         :href="event.creation.url"
@@ -30,7 +28,7 @@
 
     <template #addons>
       <el-button
-        class="slider__button slider__button_prev"
+        class="slider__button slider__button_prev carousel__prev"
         @click="$refs.refCarousel.prev()"
       >
         <img
@@ -40,8 +38,8 @@
         />
       </el-button>
       <el-button
-        class="slider__button slider__button_next"
-        @click="$refs.refCarousel.next()"
+        class="slider__button slider__button_next carousel__next"
+        @click="($refs.refCarousel.next(), loadChunk())"
       >
         <img
           class="slider__button_img"
@@ -53,94 +51,76 @@
   </carousel>
 </template>
 
-<script>
+<script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
 // https://vue3-carousel.ismail9k.com/
 
+const config = {
+  itemsToShow: 2,
+  itemsToScroll: 1,
+  gap: 10,
+  snapAlign: "start",
+  wrapAround: true,
+  breakpointMode: "viewport",
+  breakpoints: {
+    950: {
+      snapAlign: "start",
+      itemsToShow: 2,
+      itemsToScroll: 2,
+      gap: 30,
+      mouseDrag: false,
+      touchDrag: false,
+    },
+    1370: {
+      snapAlign: "start",
+      itemsToShow: 3,
+      itemsToScroll: 3,
+      gap: 30,
+      mouseDrag: false,
+      touchDrag: false,
+    },
+  },
+};
+</script>
+
+<script>
 export default {
   name: "CarouselItem",
   components: {
     Carousel,
     Slide,
   },
+  props: {
+    list: { type: Array, default: () => [] },
+    testData: { type: Array, default: () => [] },
+  },
+  mounted() {
+    if (this.list && this.list.length > 0) {
+      this.loadChunk();
+    } else {
+      this.swiperContent = this.testData;
+    }
+  },
   data() {
     return {
-      events: [
-        {
-          creation: {
-            name: "Новогоднее цирковое представление у елки в ЦДРИ",
-            image:
-              "https://img01.rl0.ru/afisha/e945x-p0x51f1200x685q85i/s5.afisha.ru/mediastorage/c6/b8/78f43028492948a098bfa670b8c6.jpg",
-            url: "https://www.afisha.ru/performance/novogodnee-cirkovoe-predstavlenie-u-elki-v-cdri-311629/",
-          },
-          dates: ["2024-12-21", "2024-12-22", "2024-12-28", "2024-12-29"],
-          tags: ["Детские елки", "Детские", "Цирк"],
-          minPrice: 1500,
-        },
-        {
-          creation: {
-            name: "Ледовая сказка «Щелкунчик и Мышиный король»",
-            image:
-              "https://img.rl0.ru/afisha/e945x-p0x0f1890x1080q85i/s3.afisha.ru/mediastorage/74/61/e89892700df44c9aa703eb8d6174.jpg",
-            url: "https://www.afisha.ru/performance/ledovaya-skazka-shchelkunchik-i-myshiniy-korol-190013/",
-          },
-          dates: ["2024-12-28", "2024-12-29", "2025-01-03", "2025-01-04"],
-          tags: [
-            "Детские елки",
-            "Детские",
-            "Танцевальные",
-            "Музыкальные",
-            "Ледовые",
-          ],
-          minPrice: 1200,
-        },
-        {
-          creation: {
-            name: "Муми-тролль и Рождество",
-            image:
-              "https://img08.rl0.ru/afisha/e945x-p0x42f1024x585q85i/s2.afisha.ru/mediastorage/1b/26/c7afec791d834fbbac92c1d7261b.jpeg",
-            url: "https://www.afisha.ru/performance/mumi-troll-i-rozhdestvo-116296/",
-          },
-          dates: [
-            "2024-12-21",
-            "2024-12-22",
-            "2024-12-23",
-            "2024-12-24",
-            "2024-12-28",
-            "2024-12-29",
-          ],
-          tags: ["Кукольные", "Детские елки", "Детские"],
-          minPrice: 2300,
-        },
-        {
-          creation: {
-            name: "Щелкунчик",
-            image:
-              "https://img03.rl0.ru/afisha/e945x-p0x0f2018x1153q85i/s3.afisha.ru/mediastorage/59/ff/35a47b16b04744eeaf36979eff59.png",
-            url: "https://www.afisha.ru/performance/shchelkunchik-266172/",
-          },
-          dates: [
-            "2024-12-08",
-            "2024-12-13",
-            "2024-12-28",
-            "2024-12-29",
-            "2025-01-03",
-          ],
-          tags: ["Детские елки", "Детские"],
-          minPrice: 2300,
-        },
-      ],
+      isLoading: false,
+      swiperContent: [],
+      chunkSize: 6,
+      offset: 0,
     };
   },
   methods: {
-    async getPrograms() {
-      await fetch("https://www.afisha.ru/exports/new_year_trees_landing.xml", {
-        mode: "no-cors",
-        method: "get",
-      }).then((response) => {
-        console.log("%c%s", "color: #8c0038", response);
-      });
+    loadChunk() {
+      this.isLoading = true;
+      if (this.offset == 0) {
+        this.swiperContent = [];
+      }
+      const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
+      this.offset += this.chunkSize;
+
+      this.swiperContent.push(...chunk);
+      this.isLoading = false;
     },
     transformDate(dates) {
       const uniqueDates = dates
@@ -177,7 +157,9 @@ export default {
   order: 2;
 }
 
-.carousel__track {
-  align-items: flex-start;
+@media (max-width: 600px) {
+  .carousel__viewport {
+    max-width: 100%;
+  }
 }
 </style>

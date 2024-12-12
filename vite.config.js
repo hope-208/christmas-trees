@@ -11,7 +11,46 @@ import vueDevTools from "vite-plugin-vue-devtools";
 // https://vite.dev/config/
 export default defineConfig({
   base: "/christmas-trees/",
-  server: { https: true },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://unihelper.in",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq) => {
+            proxyReq.setHeader("Origin", "https://unihelper.in");
+          });
+        },
+      },
+      "/mb": {
+        target: "https://personalization-web-stable.mindbox.ru",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq) => {
+            proxyReq.setHeader(
+              "Origin",
+              "https://personalization-web-stable.mindbox.ru",
+            );
+          });
+        },
+      },
+      "/mb-afisha": {
+        target: "https://afisha.mindbox.ru",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        configure: (proxy) => {
+          proxy.on("proxyReq", (proxyReq) => {
+            proxyReq.setHeader("Origin", "https://afisha.mindbox.ru");
+          });
+        },
+      },
+    },
+  },
   plugins: [
     vue(),
     eslintPlugin(),

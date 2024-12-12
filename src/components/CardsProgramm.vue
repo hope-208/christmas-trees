@@ -1,6 +1,11 @@
 <template>
-  <div class="programm-container">
-    <div class="programm-card" v-for="event in events" :key="event">
+  <carousel
+    ref="refCardsProgramm"
+    v-loading="isLoading"
+    class="programm-container"
+    v-bind="config"
+  >
+    <slide class="programm-card" v-for="event in swiperContent" :key="event">
       <el-link
         class="programm-card__contant"
         :href="event.creation.url"
@@ -21,8 +26,8 @@
         <el-text class="slider__date">{{ transformDate(event.dates) }}</el-text>
         <el-text class="slider__place">На 5 площадках </el-text>
       </el-link>
-    </div>
-  </div>
+    </slide>
+  </carousel>
 
   <el-link
     class="programm-container__button-link"
@@ -32,79 +37,69 @@
   >
 </template>
 
+<script setup>
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide } from "vue3-carousel";
+// https://vue3-carousel.ismail9k.com/
+
+const config = {
+  itemsToShow: 2,
+  itemsToScroll: 1,
+  gap: 10,
+  snapAlign: "start",
+  wrapAround: true,
+  breakpointMode: "viewport",
+  breakpoints: {
+    950: {
+      snapAlign: "start",
+      itemsToShow: 2,
+      itemsToScroll: 2,
+      gap: 30,
+    },
+    1370: {
+      snapAlign: "center",
+      itemsToShow: 3,
+      itemsToScroll: 3,
+      gap: 30,
+    },
+  },
+};
+</script>
+
 <script>
 export default {
   name: "CardsProgramm",
+  props: {
+    list: { type: Array, default: () => [] },
+    testData: { type: Array, default: () => [] },
+  },
+  mounted() {
+    if (this.list && this.list.length > 0) {
+      this.loadChunk();
+    } else {
+      this.swiperContent = this.testData;
+    }
+  },
   data() {
     return {
-      events: [
-        {
-          creation: {
-            name: "Новогоднее цирковое представление у елки в ЦДРИ",
-            image:
-              "https://img01.rl0.ru/afisha/e945x-p0x51f1200x685q85i/s5.afisha.ru/mediastorage/c6/b8/78f43028492948a098bfa670b8c6.jpg",
-            url: "https://www.afisha.ru/performance/novogodnee-cirkovoe-predstavlenie-u-elki-v-cdri-311629/",
-          },
-          dates: ["2024-12-21", "2024-12-22", "2024-12-28", "2024-12-29"],
-          tags: ["Детские елки", "Детские", "Цирк"],
-          minPrice: 1500,
-        },
-        {
-          creation: {
-            name: "Ледовая сказка «Щелкунчик и Мышиный король»",
-            image:
-              "https://img.rl0.ru/afisha/e945x-p0x0f1890x1080q85i/s3.afisha.ru/mediastorage/74/61/e89892700df44c9aa703eb8d6174.jpg",
-            url: "https://www.afisha.ru/performance/ledovaya-skazka-shchelkunchik-i-myshiniy-korol-190013/",
-          },
-          dates: ["2024-12-28", "2024-12-29", "2025-01-03", "2025-01-04"],
-          tags: [
-            "Детские елки",
-            "Детские",
-            "Танцевальные",
-            "Музыкальные",
-            "Ледовые",
-          ],
-          minPrice: 1200,
-        },
-        {
-          creation: {
-            name: "Муми-тролль и Рождество",
-            image:
-              "https://img08.rl0.ru/afisha/e945x-p0x42f1024x585q85i/s2.afisha.ru/mediastorage/1b/26/c7afec791d834fbbac92c1d7261b.jpeg",
-            url: "https://www.afisha.ru/performance/mumi-troll-i-rozhdestvo-116296/",
-          },
-          dates: [
-            "2024-12-21",
-            "2024-12-22",
-            "2024-12-23",
-            "2024-12-24",
-            "2024-12-28",
-            "2024-12-29",
-          ],
-          tags: ["Кукольные", "Детские елки", "Детские"],
-          minPrice: 2300,
-        },
-        {
-          creation: {
-            name: "Щелкунчик",
-            image:
-              "https://img03.rl0.ru/afisha/e945x-p0x0f2018x1153q85i/s3.afisha.ru/mediastorage/59/ff/35a47b16b04744eeaf36979eff59.png",
-            url: "https://www.afisha.ru/performance/shchelkunchik-266172/",
-          },
-          dates: [
-            "2024-12-08",
-            "2024-12-13",
-            "2024-12-28",
-            "2024-12-29",
-            "2025-01-03",
-          ],
-          tags: ["Детские елки", "Детские"],
-          minPrice: 2300,
-        },
-      ],
+      isLoading: false,
+      swiperContent: [],
+      chunkSize: 6,
+      offset: 0,
     };
   },
   methods: {
+    loadChunk() {
+      this.isLoading = true;
+      if (this.offset == 0) {
+        this.swiperContent = [];
+      }
+      const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
+      this.offset += this.chunkSize;
+
+      this.swiperContent.push(...chunk);
+      this.isLoading = false;
+    },
     transformDate(dates) {
       const uniqueDates = dates
         .map((date) => {

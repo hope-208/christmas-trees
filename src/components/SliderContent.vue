@@ -1,18 +1,17 @@
 <template>
-  <carousel
-    ref="refSliderProgram"
-    class="slider-programm"
-    :items-to-show="1"
-    :items-to-scroll="1"
-    wrap-around
-    :snap-align="'center'"
-  >
+  <carousel ref="refSliderProgram" class="slider-programm" v-bind="config">
     <slide
       class="slider-programm__item"
       v-for="programm in programms"
       :key="programm"
     >
       <div class="slider-programm__text-container">
+        <img
+          v-if="programm.logo"
+          class="slider-programm__logo"
+          :src="programm.logo"
+          alt="Логотип."
+        />
         <el-text class="slider-programm__title">{{ programm.title }}</el-text>
         <el-text class="slider-programm__desc">{{
           programm.description
@@ -66,23 +65,53 @@
   >
 </template>
 
-<script>
+<script setup>
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
+// https://vue3-carousel.ismail9k.com/
+
+const config = {
+  itemsToShow: 1,
+  itemsToScroll: 1,
+  gap: 10,
+  snapAlign: "start",
+  wrapAround: true,
+  breakpointMode: "viewport",
+  breakpoints: {
+    950: {
+      itemsToShow: 2,
+      itemsToScroll: 1,
+      snapAlign: "start",
+      wrapAround: true,
+      gap: 20,
+      mouseDrag: false,
+      touchDrag: false,
+    },
+    1300: {
+      snapAlign: "center",
+      itemsToShow: 1,
+      itemsToScroll: 1,
+      gap: 30,
+      wrapAround: true,
+      mouseDrag: false,
+      touchDrag: false,
+    },
+  },
+};
+</script>
+
+<script>
 import prog_1 from "@/assets/img/1-prog.svg";
 import prog_2 from "@/assets/img/2-prog.svg";
+import prog_2_logo from "@/assets/img/prog_2_logo.svg";
 import prog_3 from "@/assets/img/3-prog.svg";
 import prog_4 from "@/assets/img/4-prog.svg";
 import prog_5 from "@/assets/img/5-prog.svg";
+import prog_5_logo from "@/assets/img/prog_5_logo.svg";
 import prog_6 from "@/assets/img/6-prog.svg";
-// https://vue3-carousel.ismail9k.com/
 
 export default {
   name: "SliderContent",
-  components: {
-    Carousel,
-    Slide,
-  },
   data() {
     return {
       programms: [
@@ -98,6 +127,7 @@ export default {
           description:
             "Кто узнал много нового за 2024 год? Тот отгадает все детские загадки про мультики, кукольные театры и музыку в ярком квизе от Афиши. Родителям, чур, не подсказывать!",
           image: prog_2,
+          logo: prog_2_logo,
           tags: ["квиз"],
         },
         {
@@ -117,8 +147,9 @@ export default {
         {
           title: "Музыка",
           description:
-            "Разве бывает праздник в тишине? Каждый ребёнок знает, что нет. Праздник — это про танцы, движения, улыбки и особенную атмосферную зимнюю музыку. За эту атмосферу будет отвечать диджей.",
+            "Разве бывает праздник в тишине? Каждый ребёнок знает, что нет. Праздник — это про танцы, движения, улыбки и особенную атмосферную зимнюю музыку. За эту атмосферу будет отвечать HiFi-стриминг «Звук Дети», который поставит всех на уши.",
           image: prog_5,
+          logo: prog_5_logo,
           tags: ["танцы"],
         },
         {
@@ -133,3 +164,19 @@ export default {
   },
 };
 </script>
+
+<style>
+.carousel__viewport {
+  order: 2;
+}
+
+.carousel__track {
+  align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .carousel__viewport {
+    max-width: 100%;
+  }
+}
+</style>
