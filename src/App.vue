@@ -3,14 +3,6 @@
     <el-container direction="vertical" style="overflow: hidden">
       <HeaderItem />
       <el-main class="main">
-        <!-- <CustomSlider
-          btn
-          :slides="allEvents"
-          :test-data="events"
-          link
-          link-only-mobile
-          :name="'topEvents'"
-        /> -->
         <CarouselItem
           v-if="windowWidth >= 950"
           :list="allEvents"
@@ -73,7 +65,6 @@
           color-text="black"
           style="text-align: left"
         />
-        <!-- <CardsProgramm v-if="windowWidth >= 950" /> -->
         <SwiperProgramms bottom :list="allEvents" :test-data="events" />
       </el-main>
     </el-container>
@@ -84,7 +75,6 @@
 
 <script setup>
 import HeaderItem from "@/components/HeaderItem.vue";
-/*import CustomSlider from "@/components/CustomSlider.vue";*/
 import CarouselItem from "@/components/CarouselItem.vue";
 import SwiperProgramms from "@/components/SwiperProgramms.vue";
 import LeadText from "@/components/LeadText.vue";
@@ -318,7 +308,6 @@ export default {
   }
 }
 
-/* added small blur every 6 snowflakes*/
 .snowflake:nth-child(6n) {
   filter: blur(1px);
 }

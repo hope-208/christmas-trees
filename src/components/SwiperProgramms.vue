@@ -110,7 +110,6 @@ export default {
     Swiper,
     SwiperSlide,
   },
-
   props: {
     bottom: {
       type: Boolean,
@@ -128,7 +127,6 @@ export default {
     };
   },
   created() {
-    // this.handleResize();
     window.addEventListener("resize", this.handleResize);
   },
   mounted() {
@@ -205,12 +203,6 @@ export default {
           ).style.margin = "auto";
           document.querySelector(".slider.slider-swiper").style.margin = "auto";
         }
-
-        // if (this.swiperContent && this.swiperContent.length == 5) {
-        //   if (this.list && this.list.length > 0) {
-        //     this.loadChunk();
-        //   }
-        // }
       }
 
       const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);

@@ -96,23 +96,12 @@ export default {
     testData: { type: Array, default: () => [] },
   },
   mounted() {
-    // if (window.innerWidth > 950) {
-    //   window.addEventListener("resize", () => {
-    //     this.$refs.refCarousel.value.update();
-    //   });
-    // }
-
     if (this.list && this.list.length > 0) {
       this.loadChunk();
     } else {
       this.swiperContent = this.testData;
     }
   },
-  // unmounted() {
-  //   window.removeEventListener("resize", () => {
-  //     this.$refs.refCarousel.value.update();
-  //   });
-  // },
   data() {
     return {
       isLoading: false,
@@ -173,7 +162,4 @@ export default {
     max-width: 100%;
   }
 }
-/* .carousel__track {
-  align-items: flex-start;
-} */
 </style>

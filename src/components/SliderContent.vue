@@ -109,7 +109,6 @@ import prog_4 from "@/assets/img/4-prog.svg";
 import prog_5 from "@/assets/img/5-prog.svg";
 import prog_5_logo from "@/assets/img/prog_5_logo.svg";
 import prog_6 from "@/assets/img/6-prog.svg";
-// https://vue3-carousel.ismail9k.com/
 
 export default {
   name: "SliderContent",

@@ -74,23 +74,12 @@ export default {
     testData: { type: Array, default: () => [] },
   },
   mounted() {
-    // if (window.innerWidth > 950) {
-    //   window.addEventListener("resize", () => {
-    //     this.$refs.refCardsProgramm.value.update();
-    //   });
-    // }
-
     if (this.list && this.list.length > 0) {
       this.loadChunk();
     } else {
       this.swiperContent = this.testData;
     }
   },
-  // unmounted() {
-  //   window.removeEventListener("resize", () => {
-  //     this.$refs.refCardsProgramm.value.update();
-  //   });
-  // },
   data() {
     return {
       isLoading: false,

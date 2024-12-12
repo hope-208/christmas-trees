@@ -10,17 +10,6 @@
     </div>
   </div>
 
-  <!-- <carousel ref="refCarouselCards" class="slider-cards" v-bind="config">
-    <slide class="card" v-for="gift in gifts" :key="gift">
-      <div class="card__caption">
-        <img class="card__label" :src="gift.label" alt="" />
-        <img class="card__img" :src="gift.image" alt="" />
-      </div>
-      <el-text class="card__title">{{ gift.title }}</el-text>
-      <el-text class="card__description">{{ gift.description }}</el-text>
-    </slide>
-  </carousel> -->
-
   <swiper
     v-show="windowWidth < 950"
     ref="refCarouselCards"
@@ -41,29 +30,6 @@
     </swiper-slide>
   </swiper>
 </template>
-
-<!-- <script setup>
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide } from "vue3-carousel";
-// https://vue3-carousel.ismail9k.com/
-
-const config = {
-  itemsToShow: 1,
-  itemsToScroll: 1,
-  gap: 10,
-  snapAlign: "center",
-  wrapAround: true,
-  breakpoints: {
-    450: {
-      snapAlign: "center",
-      itemsToShow: 2,
-      itemsToScroll: 1,
-      gap: 20,
-      wrapAround: true,
-    },
-  },
-};
-</script> -->
 
 <script>
 import label_1 from "@/assets/img/1-label.svg";
