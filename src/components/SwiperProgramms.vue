@@ -126,21 +126,7 @@ export default {
       onSlideChange,
     };
   },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-  },
   mounted() {
-    if (window.innerWidth < 950) {
-      document.querySelector(".slider.slider-swiper").style.marginLeft = "10px";
-      document.querySelector(
-        ".slider-bottom.programm-container",
-      ).style.marginLeft = "10px";
-    } else {
-      document.querySelector(".slider-bottom.programm-container").style.margin =
-        "0 auto";
-      document.querySelector(".slider.slider-swiper").style.margin = "0 auto";
-    }
-
     if (this.list && this.list.length > 0) {
       this.loadChunk();
     } else {
@@ -160,51 +146,17 @@ export default {
   data() {
     return {
       isLoading: false,
-      windowWidth: 1440,
       swiperContent: [],
       chunkSize: 6,
       offset: 0,
     };
   },
   methods: {
-    handleResize() {
-      this.windowWidth = window.innerWidth;
-
-      if (this.windowWidth < 950) {
-        document.querySelector(".slider.slider-swiper").style.marginLeft =
-          "10px";
-        document.querySelector(
-          ".slider-bottom.programm-container",
-        ).style.marginLeft = "10px";
-      } else {
-        document.querySelector(
-          ".slider-bottom.programm-container",
-        ).style.margin = "0 auto";
-        document.querySelector(".slider.slider-swiper").style.margin = "0 auto";
-      }
-    },
     loadChunk() {
       this.isLoading = true;
       if (this.offset == 0) {
         this.swiperContent = [];
-
-        if (window.innerWidth < 950) {
-          if (this.bottom) {
-            document.querySelector(
-              ".slider-bottom.programm-container",
-            ).style.marginLeft = "0";
-          } else {
-            document.querySelector(".slider.slider-swiper").style.marginLeft =
-              "0";
-          }
-        } else {
-          document.querySelector(
-            ".slider-bottom.programm-container",
-          ).style.margin = "auto";
-          document.querySelector(".slider.slider-swiper").style.margin = "auto";
-        }
       }
-
       const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
       this.offset += this.chunkSize;
 

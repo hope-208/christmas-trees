@@ -50,7 +50,7 @@
           text="Каким будет этот праздничный день?*"
           color-text="black"
         />
-        <SliderContent v-if="windowWidth >= 950" />
+        <SliderContent v-if="windowWidth >= 949" />
         <SwiperProgrammContent v-if="windowWidth < 950" />
 
         <LeadText
