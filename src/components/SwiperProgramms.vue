@@ -34,18 +34,21 @@
       },
       '950': {
         slidesPerView: 'auto',
+        slidesPerGroup: 4,
         spaceBetween: 10,
         edgeSwipeThreshold: 0,
         centeredSlides: false,
       },
       '1160': {
         slidesPerView: 'auto',
+        slidesPerGroup: 4,
         spaceBetween: 10,
         edgeSwipeThreshold: 0,
         centeredSlides: false,
       },
       '1350': {
         slidesPerView: 'auto',
+        slidesPerGroup: 4,
         spaceBetween: 12,
         edgeSwipeThreshold: 0,
         centeredSlides: false,
@@ -107,14 +110,7 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  setup() {
-    const onSlideChange = () => {
-      this.loadChunk();
-    };
-    return {
-      onSlideChange,
-    };
-  },
+
   props: {
     bottom: {
       type: Boolean,
@@ -123,27 +119,97 @@ export default {
     list: { type: Array, default: () => [] },
     testData: { type: Array, default: () => [] },
   },
+  setup() {
+    const onSlideChange = () => {
+      this.loadChunk();
+    };
+    return {
+      onSlideChange,
+    };
+  },
+  created() {
+    // this.handleResize();
+    window.addEventListener("resize", this.handleResize);
+  },
   mounted() {
+    // if (window.innerWidth < 950) {
+    //   document.querySelector(".slider.slider-swiper").style.marginLeft = "10px";
+    //   document.querySelector(
+    //     ".slider-bottom.programm-container",
+    //   ).style.marginLeft = "10px";
+    // }
+
     if (this.list && this.list.length > 0) {
       this.loadChunk();
     } else {
       this.swiperContent = this.testData;
     }
   },
+
+  updated() {
+    if (this.swiperContent && this.swiperContent.length == 5) {
+      if (this.list && this.list.length > 0) {
+        this.loadChunk();
+      } else {
+        this.swiperContent = this.testData;
+      }
+    }
+  },
   data() {
     return {
       isLoading: false,
+      windowWidth: 1440,
       swiperContent: [],
       chunkSize: 6,
       offset: 0,
     };
   },
   methods: {
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+
+      if (this.windowWidth < 950) {
+        document.querySelector(".slider.slider-swiper").style.marginLeft =
+          "10px";
+        document.querySelector(
+          ".slider-bottom.programm-container",
+        ).style.marginLeft = "10px";
+      } else {
+        document.querySelector(
+          ".slider-bottom.programm-container",
+        ).style.margin = "0 auto";
+        document.querySelector(".slider.slider-swiper").style.margin = "0 auto";
+      }
+    },
     loadChunk() {
+      console.log("%c%s", "color: #733d00", "loadChunk");
       this.isLoading = true;
       if (this.offset == 0) {
         this.swiperContent = [];
+
+        if (window.innerWidth < 950) {
+          if (this.bottom) {
+            document.querySelector(
+              ".slider-bottom.programm-container",
+            ).style.marginLeft = "0";
+          } else {
+            document.querySelector(".slider.slider-swiper").style.marginLeft =
+              "0";
+          }
+        } else {
+          document.querySelector(
+            ".slider-bottom.programm-container",
+          ).style.margin = "auto";
+          document.querySelector(".slider.slider-swiper").style.margin = "auto";
+        }
+
+        // if (this.swiperContent && this.swiperContent.length == 5) {
+        //   if (this.list && this.list.length > 0) {
+        //     this.loadChunk();
+        //   }
+        // }
       }
+
       const chunk = this.list.slice(this.offset, this.offset + this.chunkSize);
       this.offset += this.chunkSize;
 

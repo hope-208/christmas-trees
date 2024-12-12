@@ -1,19 +1,18 @@
 <template>
   <swiper
     ref="refSwiper"
-    class="slider slider-swiper slider-programm"
+    class="slider slider-swiper slider-programm slider-programm-content"
     :slidesPerView="'auto'"
-    :slidesPerGroup="1"
     :spaceBetween="10"
-    loop
+    :loop="true"
     :breakpoints="{
       '950': {
         slidesPerView: 'auto',
-        slidesPerGroup: 2,
         spaceBetween: 10,
         loop: true,
       },
     }"
+    @slideChange="deleteMarginLeft"
   >
     <swiper-slide
       class="slider-programm__item"
@@ -77,6 +76,10 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  mounted() {
+    document.querySelector(".slider-programm-content").style.marginLeft =
+      "10px";
+  },
   data() {
     return {
       programms: [
@@ -126,6 +129,22 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    deleteMarginLeft() {
+      const slider = document.querySelector(".slider-programm-content");
+
+      if (
+        slider.querySelector(".swiper-wrapper").style.transform &&
+        slider
+          .querySelector(".swiper-slide-active")
+          .getAttribute("data-swiper-slide-index") !== 0 &&
+        slider.querySelector(".swiper-wrapper").style.transform !==
+          "translate3d(0px, 0px, 0px)"
+      ) {
+        slider.style.marginLeft = "0";
+      }
+    },
   },
 };
 </script>

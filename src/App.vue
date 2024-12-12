@@ -167,6 +167,27 @@ export default {
         },
         {
           creation: {
+            name: "Тайна Нового года",
+            image:
+              "https://img06.rl0.ru/afisha/e945x-p91x268f1024x585q85i/s3.afisha.ru/mediastorage/cb/c6/0ee6d4c1740d4a0cbf82b36cc6cb.jpg",
+            url: "https://www.afisha.ru/performance/tayna-novogo-goda-311455/",
+          },
+          dates: [
+            "2024-12-15",
+            "2024-12-17",
+            "2024-12-18",
+            "2024-12-19",
+            "2024-12-21",
+            "2024-12-25",
+            "2024-12-29",
+            "2025-01-04",
+            "2025-01-05",
+          ],
+          tags: ["Детские елки", "Детские"],
+          minPrice: 2300,
+        },
+        {
+          creation: {
             name: "Щелкунчик",
             image:
               "https://img03.rl0.ru/afisha/e945x-p0x0f2018x1153q85i/s3.afisha.ru/mediastorage/59/ff/35a47b16b04744eeaf36979eff59.png",
@@ -315,6 +336,7 @@ export default {
 .lead-text-programm.lead.el-text {
   max-width: 1239px;
   width: 100%;
+  margin-bottom: 44px;
 }
 
 @media (max-width: 1350px) {

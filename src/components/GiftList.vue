@@ -26,9 +26,10 @@
     ref="refCarouselCards"
     class="slider-cards"
     :slidesPerView="'auto'"
-    :slidesPerGroup="1"
     :spaceBetween="10"
-    loop
+    :centeredSlides="true"
+    :initialSlide="1"
+    :loop="true"
   >
     <swiper-slide class="card" v-for="gift in gifts" :key="gift"
       ><div class="card__caption">
