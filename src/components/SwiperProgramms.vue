@@ -132,12 +132,16 @@ export default {
     window.addEventListener("resize", this.handleResize);
   },
   mounted() {
-    // if (window.innerWidth < 950) {
-    //   document.querySelector(".slider.slider-swiper").style.marginLeft = "10px";
-    //   document.querySelector(
-    //     ".slider-bottom.programm-container",
-    //   ).style.marginLeft = "10px";
-    // }
+    if (window.innerWidth < 950) {
+      document.querySelector(".slider.slider-swiper").style.marginLeft = "10px";
+      document.querySelector(
+        ".slider-bottom.programm-container",
+      ).style.marginLeft = "10px";
+    } else {
+      document.querySelector(".slider-bottom.programm-container").style.margin =
+        "0 auto";
+      document.querySelector(".slider.slider-swiper").style.margin = "0 auto";
+    }
 
     if (this.list && this.list.length > 0) {
       this.loadChunk();
@@ -182,7 +186,6 @@ export default {
       }
     },
     loadChunk() {
-      console.log("%c%s", "color: #733d00", "loadChunk");
       this.isLoading = true;
       if (this.offset == 0) {
         this.swiperContent = [];

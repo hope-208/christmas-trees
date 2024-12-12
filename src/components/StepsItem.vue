@@ -180,12 +180,6 @@ export default {
     };
   },
   methods: {
-    checkValidateField(field) {
-      console.log("%c%s", "color: #99614d", field);
-      this.$refs.refForm.validateField(field).then((valid) => {
-        return valid;
-      });
-    },
     submitForm() {
       this.$refs.refForm.validate((valid) => {
         if (valid) {
