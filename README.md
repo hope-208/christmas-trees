@@ -25,8 +25,9 @@ Vue 3, Vite, Element Plus, Vue3-carousel, Swiper, JavaScript
 
 ### Dev
 
+<!-- # клонировать репозиторий -->
+
 ```bash
-# клонировать репозиторий
 git clone https://github.com/hope-208/christmas-trees.git
 
 ```
