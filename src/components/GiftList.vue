@@ -2,8 +2,12 @@
   <div class="cards" v-show="windowWidth >= 950">
     <div class="card" v-for="gift in gifts" :key="gift">
       <div class="card__caption">
-        <img class="card__label" :src="gift.label" alt="" />
-        <img class="card__img" :src="gift.image" alt="" />
+        <el-image class="card__label" :src="gift.label" alt="Логотип." />
+        <el-image
+          class="card__img"
+          :src="gift.image"
+          alt="Фотография подарка."
+        />
       </div>
       <el-text class="card__title">{{ gift.title }}</el-text>
       <el-text class="card__description">{{ gift.description }}</el-text>
@@ -22,8 +26,12 @@
   >
     <swiper-slide class="card" v-for="gift in gifts" :key="gift"
       ><div class="card__caption">
-        <img class="card__label" :src="gift.label" alt="" />
-        <img class="card__img" :src="gift.image" alt="" />
+        <el-image class="card__label" :src="gift.label" alt="Логотип." />
+        <el-image
+          class="card__img"
+          :src="gift.image"
+          alt="Фотография подарка."
+        />
       </div>
       <el-text class="card__title">{{ gift.title }}</el-text>
       <el-text class="card__description">{{ gift.description }}</el-text>
