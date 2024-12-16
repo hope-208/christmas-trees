@@ -748,7 +748,8 @@ body
 .steps
   max-width: 1028px
   width: 100%
-  margin: 0 auto 139px
+  margin: 0 auto 0
+  // margin: 0 auto 139px
   display: flex
   flex-direction: column
   gap: 40px
@@ -951,15 +952,19 @@ body
       
 
   &__desc-form.el-text
+    max-width: 76%
     margin-bottom: 36px
     margin-left: 15px
         
     @media (max-width: 550px) 
       margin-bottom: 20px
       margin-left: 20px
-    
+
     &_error
       color: base.$light-red
+  
+  &__desc-form_two-child.el-text 
+      max-width: 93%   
 
   &__desc-form_error.el-text
     color: base.$red

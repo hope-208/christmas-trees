@@ -65,7 +65,9 @@
               placeholder="@nickname / +7 999 000 00 00"
             />
           </el-form-item>
-          <el-text class="step__desc step__desc-form" id="contactInfo"
+          <el-text
+            class="step__desc step__desc-form step__desc-form_two-child"
+            id="contactInfo"
             >Оставьте свой ник в телеграме или номер телефона, чтобы мы
             связались с вами в случае выигрыша</el-text
           >

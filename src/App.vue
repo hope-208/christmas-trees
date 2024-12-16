@@ -33,29 +33,31 @@
         />
         <StepsItem />
 
-        <LeadText
-          :class="'lead-ahter-gift'"
-          :text="'И&nbsp;это&nbsp;ещё&nbsp;не все&nbsp;подарки!'"
-          color-text="black"
-        />
-        <LeadGift />
-        <LeadText
-          :class="'lead-white'"
-          text="Всего 200 бесплатных билетов! Сразу после покупки билетов на ёлки на сайте или в мобильном приложении Афиши, на почту вам отправится билет на Ёлку 5&nbsp;января."
-          color-text="white"
-        />
+        <div v-if="false">
+          <LeadText
+            :class="'lead-ahter-gift'"
+            :text="'И&nbsp;это&nbsp;ещё&nbsp;не все&nbsp;подарки!'"
+            color-text="black"
+          />
+          <LeadGift />
+          <LeadText
+            :class="'lead-white'"
+            text="Всего 200 бесплатных билетов! Сразу после покупки билетов на ёлки на сайте или в мобильном приложении Афиши, на почту вам отправится билет на Ёлку 5&nbsp;января."
+            color-text="white"
+          />
 
-        <LeadText
-          :class="'lead-black'"
-          text="Каким будет этот праздничный день?*"
-          color-text="black"
-        />
-        <SliderContent v-if="windowWidth >= 949" />
-        <SwiperProgrammContent v-if="windowWidth < 950" />
+          <LeadText
+            :class="'lead-black'"
+            text="Каким будет этот праздничный день?*"
+            color-text="black"
+          />
+          <SliderContent v-if="windowWidth >= 949" />
+          <SwiperProgrammContent v-if="windowWidth < 950" />
+        </div>
 
         <LeadText
           :class="'lead-bottom'"
-          text="Покупайте Ёлки всех размеров на&nbsp;Афише и&nbsp;получайте подарки: новогодний бокс от Афиши и&nbsp;бесплатный билет на Ёлку от&nbsp;Афиши в кинотеатре «Иллюзион» от&nbsp;Афиши и&nbsp;Москино"
+          text="Покупайте Ёлки всех размеров на&nbsp;Афише и&nbsp;получайте подарки: новогодний бокс от Афиши и&nbsp;друзей"
           color-text="white"
         />
 
@@ -285,7 +287,7 @@ export default {
   background: url("./assets/img/star.svg") no-repeat center / cover border-box;
   position: absolute;
   top: -5vh;
-  z-index: 1;
+  z-index: 2;
 }
 
 @keyframes snowfall {

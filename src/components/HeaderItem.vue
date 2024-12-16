@@ -4,7 +4,7 @@
     <div class="header__container">
       <div class="header__title-container">
         <el-text tag="h1" class="header__title"
-          >Ёлки всех размеров
+          >ёлки всех размеров
           <el-text tag="h1" class="header__title header__title_accent"
             >на&nbsp;афише</el-text
           ></el-text
