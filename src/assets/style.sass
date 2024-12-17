@@ -286,6 +286,7 @@ body
   &__content.el-link > .el-link__inner
     display: flex
     flex-direction: column
+    gap: 6px
 
   &__content.el-link.is-underline::after,
   &__content.el-link.is-underline:hover::after
@@ -320,8 +321,8 @@ body
     font-weight: 400
     box-sizing: border-box
 
-    @media (max-width: 1024px)
-      display: none
+    // @media (max-width: 1024px)
+    //   display: none
 
   &__button.el-button, 
   &__button 
@@ -411,6 +412,7 @@ body
     // font-family: Suisse
     margin-block: 0
     margin-inline: 0
+    margin-top: 10px
     color: base.$black
     font-size: 24px
     font-style: normal
@@ -527,7 +529,7 @@ body
   @media (max-width: 600px)
     max-width: 94%
     max-height: 404px
-    padding-top: 70px
+    padding-top: 30px
 
   &__card
     max-height: 606px
@@ -572,16 +574,17 @@ body
     @media (max-width: 600px)
       max-width: 60%
       right: -25px
+      top: 0
 
     @media (max-width: 500px)
       max-width: 75%
-      top: 45px
+      top: 0
       transform: rotate(-19deg)
 
     @media (max-width: 400px)
       max-width: 85%
       right: -18px
-      top: 48px
+      top: 0
       
 
   &__info.el-text
@@ -1438,6 +1441,7 @@ body
     display: flex
     flex-direction: column
     align-items: flex-start
+    gap: 6px
   
   &__img,
   &__img.slider__img img

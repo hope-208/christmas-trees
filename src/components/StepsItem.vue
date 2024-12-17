@@ -116,7 +116,16 @@
         alt="Иллюстрация."
         class="dialog__img"
       />
-      <span class="dialog__msg">{{ textInfo }}</span>
+      <span class="dialog__msg" v-show="submitType === 'success'"
+        >Заявка на&nbsp;участие в&nbsp;розыгрыше успешно отправлена!</span
+      >
+      <span class="dialog__msg" v-show="submitType === 'error'"
+        >Что-то пошло не&nbsp;так. Попробуйте позднее.</span
+      >
+      <span class="dialog__msg" v-show="submitType === 'warning'"
+        >Пожалуйста, заполните корректно все поля, чтобы мы могли связаться с
+        вами.</span
+      >
     </div>
   </el-dialog>
 </template>
@@ -220,22 +229,17 @@ export default {
           })
             .then(() => {
               this.submitType = "success";
-              this.textInfo =
-                "Заявка на&nbsp;участие в&nbsp;розыгрыше успешно отправлена!";
               this.openInfoSubmit = true;
               this.resetForm();
             })
             .catch((error) => {
               console.error(error);
               this.submitType = "error";
-              this.textInfo = "Что-то пошло не&nbsp;так. Попробуйте позднее.";
               this.openInfoSubmit = true;
             });
         } else {
           this.openInfoSubmit = true;
           this.submitType = "warning";
-          this.textInfo =
-            "Пожалуйста, заполните корректно все поля, чтобы мы могли связаться с вами.";
           console.log("Поля формы заполнены некорректно!");
         }
       });

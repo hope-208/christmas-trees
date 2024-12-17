@@ -16,6 +16,7 @@
             class="slider__img"
             :src="event.creation.image"
             fit="cover"
+            loading="lazy"
           />
           <el-tag class="slider__price">от {{ event.minPrice }} ₽</el-tag>
         </div>
