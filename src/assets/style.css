@@ -97,7 +97,7 @@ body .header {
   }
 }
 body .header__container {
-  max-width: 85%;
+  max-width: 1240px;
   width: 100%;
   margin: 0 auto;
 }
@@ -194,8 +194,14 @@ body .header__subtitle {
 body .header__image {
   position: absolute;
   top: 0;
-  right: -200px;
+  left: 45%;
   transform: scale(0.9);
+}
+@media (max-width: 1520px) {
+  body .header__image {
+    left: auto;
+    right: -230px;
+  }
 }
 @media (max-width: 1420px) {
   body .header__image {

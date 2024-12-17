@@ -41,11 +41,6 @@
           >Полные&nbsp;правила</el-link
         >&nbsp;акции «новогодний бокс от Афиши»</el-text
       >
-      <el-text class="footer__info-text">
-        <el-link href="#" target="_blank" class="footer__info-link"
-          >Полные&nbsp;правила</el-link
-        >&nbsp;акции «Ёлка от Афиши и Москино»</el-text
-      >
     </div>
   </footer>
 </template>

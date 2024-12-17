@@ -61,10 +61,8 @@ body
     @media (max-width: 560px)
       height: 550px
 
-
-
     &__container
-      max-width: 85%
+      max-width: 1240px
       width: 100%
       margin: 0 auto
 
@@ -166,9 +164,13 @@ body
 
     &__image
       position: absolute
-      top: 0
-      right: -200px
+      top: 0      
+      left: 45%
       transform: scale(0.9)
+
+      @media (max-width: 1520px)
+        left: auto
+        right: -230px
 
       @media (max-width: 1420px)
         top: -200px
