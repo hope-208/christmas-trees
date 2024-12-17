@@ -101,6 +101,11 @@ body .header__container {
   width: 100%;
   margin: 0 auto;
 }
+@media (max-width: 1420px) {
+  body .header__container {
+    max-width: 85%;
+  }
+}
 @media (max-width: 700px) {
   body .header__container {
     max-width: 100%;
