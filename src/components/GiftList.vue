@@ -2,11 +2,17 @@
   <div class="cards" v-show="windowWidth >= 950">
     <div class="card" v-for="gift in gifts" :key="gift">
       <div class="card__caption">
-        <el-image class="card__label" :src="gift.label" alt="Логотип." />
+        <el-image
+          class="card__label"
+          :src="gift.label"
+          alt="Логотип."
+          loading="lazy"
+        />
         <el-image
           class="card__img"
           :src="gift.image"
           alt="Фотография подарка."
+          loading="lazy"
         />
       </div>
       <el-text class="card__title">{{ gift.title }}</el-text>
@@ -26,11 +32,17 @@
   >
     <swiper-slide class="card" v-for="gift in gifts" :key="gift"
       ><div class="card__caption">
-        <el-image class="card__label" :src="gift.label" alt="Логотип." />
+        <el-image
+          class="card__label"
+          :src="gift.label"
+          alt="Логотип."
+          loading="lazy"
+        />
         <el-image
           class="card__img"
           :src="gift.image"
           alt="Фотография подарка."
+          loading="lazy"
         />
       </div>
       <el-text class="card__title">{{ gift.title }}</el-text>

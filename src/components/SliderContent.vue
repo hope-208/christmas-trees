@@ -32,6 +32,7 @@
           fit="contain"
           alt="Иллюстрация мероприятия."
           class="slider-programm__image"
+          loading="lazy"
         />
       </div>
     </slide>
