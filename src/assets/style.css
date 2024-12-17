@@ -50,6 +50,19 @@ body .page {
   height: 100vh;
   margin: 0 auto;
 }
+body .header-overlay {
+  width: 100%;
+  height: 252px;
+  position: absolute;
+  top: 0;
+  background: linear-gradient(to bottom, #0084FF 0%, #54ACFF 99%);
+  z-index: -1;
+}
+@media (max-width: 850px) {
+  body .header-overlay {
+    height: 165px;
+  }
+}
 body .header {
   position: relative;
   height: 864px;
@@ -81,20 +94,6 @@ body .header {
 @media (max-width: 560px) {
   body .header {
     height: 550px;
-  }
-}
-body .header__overlay {
-  width: 100%;
-  height: 252px;
-  position: absolute;
-  top: 0;
-  background: linear-gradient(to bottom, #0084FF 0%, #54ACFF 99%);
-  opacity: 0.5;
-  z-index: -1;
-}
-@media (max-width: 850px) {
-  body .header__overlay {
-    height: 165px;
   }
 }
 body .header__container {
@@ -243,6 +242,7 @@ body .header__video {
   flex-direction: column;
   padding: 0;
   overflow: hidden;
+  z-index: 2;
 }
 
 .slider-swiper.swiper.slider {

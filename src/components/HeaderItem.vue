@@ -1,6 +1,5 @@
 <template>
   <header class="header">
-    <div class="header__overlay"></div>
     <div class="header__container">
       <div class="header__title-container">
         <el-text tag="h1" class="header__title"

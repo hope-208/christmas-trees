@@ -1,4 +1,5 @@
 <template>
+  <div class="header-overlay"></div>
   <el-scrollbar class="scroll" v-loading="isLoading">
     <el-container direction="vertical" style="overflow: hidden">
       <HeaderItem />
@@ -287,7 +288,7 @@ export default {
   background: url("./assets/img/star.svg") no-repeat center / cover border-box;
   position: absolute;
   top: -5vh;
-  z-index: 2;
+  z-index: 1;
 }
 
 @keyframes snowfall {
