@@ -194,47 +194,44 @@ export default {
     submitForm() {
       this.$refs.refForm.validate((valid) => {
         if (valid) {
-          console.log("%c%s", "color: #0088cc", typeof this.formData.contact);
           const mindboxData = {
-            operation: "ChildrenChristmasTrees",
-            data: {
-              pointOfContact: "LendingDetskieYolki",
-              customer: {
-                email: this.formData.email,
-                mobilePhone:
-                  this.formData.contact[0] == "+" &&
-                  this.formData.contact[1] == "7"
-                    ? this.formData.contact
-                    : this.formData.contact[0] == "7"
-                      ? "+" + this.formData.contact.slice(1)
-                      : this.formData.contact[0] == "8"
-                        ? "+7" + this.formData.contact.slice(1)
-                        : "",
-                customFields: {
-                  tGNickname:
-                    this.formData.contact[0] == "@"
-                      ? this.formData.contact
+            pointOfContact: "LendingDetskieYolki",
+            customer: {
+              email: this.formData.email,
+              mobilePhone:
+                this.formData.contact[0] == "+" &&
+                this.formData.contact[1] == "7"
+                  ? this.formData.contact
+                  : this.formData.contact[0] == "7"
+                    ? "+" + this.formData.contact.slice(1)
+                    : this.formData.contact[0] == "8"
+                      ? "+7" + this.formData.contact.slice(1)
                       : "",
-                },
-                subscriptions: [
-                  {
-                    brand: "Afisha",
-                    pointOfContact: "Email",
-                  },
-                ],
+              customFields: {
+                tGNickname:
+                  this.formData.contact[0] == "@" ? this.formData.contact : "",
               },
+              subscriptions: [
+                {
+                  brand: "Afisha",
+                  pointOfContact: "Email",
+                },
+              ],
             },
           };
           //  fetch("/mb-afisha/campaigns/operations/8457", {
-          fetch("https://afisha.mindbox.ru/campaigns/operations/8457", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "SecretKey Pvy4NXkI1ufWaSlPJC0cK5anxe3SuhpL",
-              Accept: "application/json",
+          fetch(
+            "https://api.mindbox.ru/v3/operations/async?endpointId=afisha.ru&operation=ChildrenChristmasTrees",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "SecretKey Pvy4NXkI1ufWaSlPJC0cK5anxe3SuhpL",
+                Accept: "application/json",
+              },
+              body: JSON.stringify(mindboxData),
             },
-            body: JSON.stringify(mindboxData),
-          })
+          )
             .then(() => {
               this.submitType = "success";
               this.openInfoSubmit = true;
