@@ -194,6 +194,7 @@ export default {
     submitForm() {
       this.$refs.refForm.validate((valid) => {
         if (valid) {
+          console.log("%c%s", "color: #0088cc", typeof this.formData.contact);
           const mindboxData = {
             operation: "ChildrenChristmasTrees",
             data: {
@@ -205,9 +206,9 @@ export default {
                   this.formData.contact[1] == "7"
                     ? this.formData.contact
                     : this.formData.contact[0] == "7"
-                      ? "+" + this.formData.slice(1)
+                      ? "+" + this.formData.contact.slice(1)
                       : this.formData.contact[0] == "8"
-                        ? "+7" + this.formData.slice(1)
+                        ? "+7" + this.formData.contact.slice(1)
                         : "",
                 customFields: {
                   tGNickname:
@@ -224,7 +225,7 @@ export default {
               },
             },
           };
-
+          // /mb-afisha
           fetch("/campaigns/operations/8457", {
             method: "POST",
             headers: {
