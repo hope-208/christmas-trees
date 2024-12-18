@@ -40,26 +40,38 @@ body
   .header
     position: relative
     height: 864px
-    margin-bottom: 200px
+    margin-bottom: 50px
+    // margin-bottom: 200px
     // background: url(./assets/img/header-stars.svg) no-repeat center / cover
     box-sizing: border-box
 
     @media (max-width: 1420px)
+      height: 650px
+      // height: 700px
+      margin-bottom: 50px
+
+    @media (max-width: 1300px)
       height: 700px
-      margin-bottom: 0
+      margin-bottom: 100px
 
     @media (max-width: 1100px)
-      height: 550px
-      margin-bottom: 50px     
+      height: 600px
+      // margin-bottom: 50px     
 
-    @media (max-width: 850px)
-      height: 500px 
+    @media (max-width: 800px)
+      margin-bottom: 50px
+      // height: 500px 
 
     @media (max-width: 700px)
-      margin-bottom: 0
+        height: 550px
+        margin-bottom: 100px
 
-    @media (max-width: 560px)
-      height: 550px
+    @media (max-width: 600px)
+      height: 600px
+      margin-bottom: 50px
+
+    @media (max-width: 500px)
+      // height: 550px
 
     &__container
       max-width: 1240px
@@ -165,7 +177,7 @@ body
     //     margin-bottom: 0
     //     align-items: center
 
-    &__image
+    &__image-svg
       position: absolute
       top: 0      
       left: 45%
@@ -199,6 +211,43 @@ body
         top: -200px
         right: -420px
         transform: scale(0.35)
+      
+    &__image
+      position: absolute
+      top: 0
+      left: 45%
+      transform: scale(1)
+
+      @media (max-width: 1500px)
+        bottom: 0
+        left: 55%
+        transform: scale(1.3)
+
+      @media (max-width: 1420px)
+        top: auto
+        left: 60%
+
+      @media (max-width: 1300px)
+        top: auto
+        left: 50%
+
+      @media (max-width: 900px)
+        left: 40%
+        // transform: scale(0.7)
+
+      @media (max-width: 800px)
+        // left: 45%
+
+      @media (max-width: 700px)
+        right: -45px
+        left: 40%
+
+      @media (max-width: 600px)
+        right: -55px
+        left: 25%
+
+      @media (max-width: 400px)
+        left: 5%
       
     &__video
       display: inline-block

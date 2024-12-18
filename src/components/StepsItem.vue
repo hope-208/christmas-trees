@@ -27,7 +27,12 @@
           </el-text>
           <el-text class="step__desc"
             >Подписываясь, вы принимаете&nbsp;
-            <el-link class="step__link">Правила рассылок</el-link></el-text
+            <el-link
+              href="https://www.afisha.ru/article/pravila-rassylki-afisharu/"
+              target="_blank"
+              class="step__link"
+              >Правила рассылок</el-link
+            ></el-text
           >
         </div>
       </div>

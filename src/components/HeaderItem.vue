@@ -13,19 +13,27 @@
           билеты&nbsp;на&nbsp;Ёлки!</el-text
         >
       </div>
-      <img :src="headerImgGifSmall" alt="Иллюстрация." class="header__image" />
+      <el-image
+        :src="headerImgSmall"
+        alt="Иллюстрация."
+        class="header__image"
+        loading="lazy"
+      />
+      <!-- <img :src="headerImgGifSmall" alt="Иллюстрация." class="header__image" /> -->
     </div>
   </header>
 </template>
 
 <script>
-import headerImgGifSmall from "@/assets/img/afisha-small.gif";
+// import headerImgGifSmall from "@/assets/img/afisha-small.gif";
+import headerImgSmall from "@/assets/img/header-img.svg";
 
 export default {
   name: "HeaderItem",
   data() {
     return {
-      headerImgGifSmall,
+      // headerImgGifSmall,
+      headerImgSmall,
       windowWidth: 1440,
     };
   },
