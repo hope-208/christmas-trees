@@ -225,8 +225,8 @@ export default {
               },
             },
           };
-          //  fetch("/mb-afisha/campaigns/operations/8457", {
-          fetch("https://afisha.mindbox.ru/campaigns/operations/8457", {
+          // fetch("https://afisha.mindbox.ru/campaigns/operations/8457", {
+          fetch("/mb-afisha/campaigns/operations/8457", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
