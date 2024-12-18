@@ -195,32 +195,37 @@ export default {
       this.$refs.refForm.validate((valid) => {
         if (valid) {
           const mindboxData = {
-            pointOfContact: "LendingDetskieYolki",
-            customer: {
-              email: this.formData.email,
-              mobilePhone:
-                this.formData.contact[0] == "+" &&
-                this.formData.contact[1] == "7"
-                  ? this.formData.contact
-                  : this.formData.contact[0] == "7"
-                    ? "+" + this.formData.slice(1)
-                    : this.formData.contact[0] == "8"
-                      ? "+7" + this.formData.slice(1)
+            operation: "ChildrenChristmasTrees",
+            data: {
+              pointOfContact: "LendingDetskieYolki",
+              customer: {
+                email: this.formData.email,
+                mobilePhone:
+                  this.formData.contact[0] == "+" &&
+                  this.formData.contact[1] == "7"
+                    ? this.formData.contact
+                    : this.formData.contact[0] == "7"
+                      ? "+" + this.formData.slice(1)
+                      : this.formData.contact[0] == "8"
+                        ? "+7" + this.formData.slice(1)
+                        : "",
+                customFields: {
+                  tGNickname:
+                    this.formData.contact[0] == "@"
+                      ? this.formData.contact
                       : "",
-              customFields: {
-                tGNickname:
-                  this.formData.contact[0] == "@" ? this.formData.contact : "",
-              },
-              subscriptions: [
-                {
-                  brand: "Afisha",
-                  pointOfContact: "Email",
                 },
-              ],
+                subscriptions: [
+                  {
+                    brand: "Afisha",
+                    pointOfContact: "Email",
+                  },
+                ],
+              },
             },
           };
 
-          fetch("/mb-afisha/campaigns/operations/8457", {
+          fetch("/campaigns/operations/8457", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

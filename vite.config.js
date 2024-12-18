@@ -28,7 +28,7 @@ export default defineConfig({
         target: "https://personalization-web-stable.mindbox.ru",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/mb/, ""),
         configure: (proxy) => {
           proxy.on("proxyReq", (proxyReq) => {
             proxyReq.setHeader(
@@ -42,7 +42,7 @@ export default defineConfig({
         target: "https://afisha.mindbox.ru",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/mb-afisha/, ""),
         configure: (proxy) => {
           proxy.on("proxyReq", (proxyReq) => {
             proxyReq.setHeader("Origin", "https://afisha.mindbox.ru");
